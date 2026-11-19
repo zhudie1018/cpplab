@@ -5531,7 +5531,9 @@
         html += '<div style="margin-top:10px;display:flex;gap:8px">';
         html += '<button class="btn primary" data-start="' + i + '">' + (active ? '重新载入起始代码' : '做这题') + '</button>';
         html += '<button class="btn" data-hint="' + i + '">看提示</button>';
+        html += '<button class="btn" data-answer="' + i + '">看答案</button>';
         html += '</div>';
+        html += '<div class="hint hidden" id="answer-' + i + '" style="margin-top:8px"></div>';
         html += '<div class="hint hidden" id="hint-' + i + '" style="margin-top:8px;font-size:12.5px;color:var(--muted)">' +
           esc(e.hint) + '</div>';
         html += '</div>';
@@ -5559,6 +5561,11 @@
         el.fileLabel.textContent = '习题 ' + (state.exerciseIndex + 1) + '.cpp';
         renderDoc();
         setStatus('开始第 ' + (state.exerciseIndex + 1) + ' 题', 'ok');
+      });
+    });
+    el.doc.querySelectorAll('[data-answer]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        showAnswer(Number(btn.dataset.answer));
       });
     });
     el.doc.querySelectorAll('[data-hint]').forEach(function (btn) {
@@ -5921,6 +5928,81 @@
     el.kbd.classList.add('hidden');
     closeKB();
     generateAI();
+  }
+
+  function answerCacheKey(i) {
+    return 'cpplab_ans_' + state.lang + '_' + state.chapter + '_' +
+      state.sectionIndex + '_' + i;
+  }
+
+  async function showAnswer(i) {
+    var s = section();
+    var e = s.ex[i];
+    var box = document.getElementById('answer-' + i);
+    if (!e || !box) return;
+    box.classList.remove('hidden');
+
+    var cached = '';
+    try { cached = localStorage.getItem(answerCacheKey(i)) || ''; } catch (err) {}
+    if (e.solution || cached) {
+      renderAnswer(box, e.solution || cached);
+      return;
+    }
+
+    if (!apiKey()) {
+      box.innerHTML = '<div style="color:var(--dim)">还没有答案。填了 API Key 后这里会显示 AI 写的参考解法；' +
+        '也可以先点「⚙ 设置」配一下。</div>';
+      setStatus('需要先填 API Key', 'warn');
+      return;
+    }
+
+    box.innerHTML = '<div style="color:var(--muted)">正在写参考解法…</div>';
+    var testsText = e.tests.map(function (t, k) {
+      return '测试点' + (k + 1) + ' 输入：' + JSON.stringify(t.stdin) + ' 期望输出：' + JSON.stringify(t.expect);
+    }).join('\n');
+
+    try {
+      var res = await fetch(apiBase() + '/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + apiKey()
+        },
+        body: JSON.stringify({
+          model: apiModel(),
+          messages: [
+            { role: 'system', content: '你是 C++ 老师，只输出代码，不要任何解释文字。' },
+            { role: 'user', content:
+              '题目：' + e.title + '\n' + e.prompt + '\n\n' + testsText +
+              '\n\n请给出完整可编译的 C++ 程序（含 #include 和 main），只输出代码。' }
+          ],
+          temperature: 0.2,
+          max_tokens: 1200
+        })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      var data = await res.json();
+      var code = (data.choices && data.choices[0] && data.choices[0].message.content) || '';
+      code = code.replace(/^```[a-zA-Z]*\s*/g, '').replace(/```\s*$/g, '').trim();
+      if (code.indexOf('int main') < 0) throw new Error('AI 没有返回完整程序');
+      try { localStorage.setItem(answerCacheKey(i), code); } catch (err) {}
+      renderAnswer(box, code);
+      setStatus('已生成参考解法', 'ok');
+    } catch (err) {
+      box.innerHTML = '<div style="color:#d93b3b">生成失败：' + esc(err.message) + '</div>';
+      setStatus('生成答案失败', 'bad');
+    }
+  }
+
+  function renderAnswer(box, code) {
+    box.innerHTML = '<div style="font-size:12px;font-weight:700;color:#2e7d6b;margin-bottom:6px">参考解法</div>' +
+      '<div class="code" style="margin:0 0 8px">' + esc(code) + '</div>' +
+      '<button class="btn" id="ans-load">载入编辑器</button>';
+    var b = box.querySelector('#ans-load');
+    if (b) b.addEventListener('click', function () {
+      setCode(code);
+      setStatus('已把参考解法载入编辑器', 'ok');
+    });
   }
 
   async function generateAI() {
