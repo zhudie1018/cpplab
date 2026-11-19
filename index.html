@@ -124,6 +124,16 @@
   .kb-note{margin-top:8px;padding:8px 10px;background:#f6f9ff;border-left:3px solid var(--blue);
     border-radius:6px;font-size:12px;line-height:1.85;color:#33415c}
   .kb-note-t{font-weight:700;font-size:11.5px;color:var(--blue-deep);margin-bottom:4px}
+  .kbd{position:absolute;inset:0;background:var(--bg);z-index:90;display:flex;flex-direction:column}
+  .kbd.hidden{display:none}
+  .kbd-top{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fff;border-bottom:1px solid var(--line)}
+  .kbd-body{flex:1;overflow:auto;padding:18px 20px 40px}
+  .kbd-sec{margin-bottom:16px}
+  .kbd-label{font-size:12px;font-weight:700;color:var(--blue-deep);margin-bottom:6px}
+  .kbd-code{background:#0f1729;color:#e6ecff;border-radius:10px;padding:12px 14px;
+    font-family:Consolas,monospace;font-size:12.5px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+  .kbd-p{font-size:13px;line-height:1.95;color:#33415c}
+  .kbd-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 </style>
 </head>
 <body>
@@ -185,6 +195,14 @@
       <div class="kb-sec-title">头文件区 <span class="kb-count" id="kbHeadCount"></span></div>
       <div id="kbHeadList" class="kb-list"></div>
     </div>
+  </div>
+
+  <div class="kbd hidden" id="kbd">
+    <div class="kbd-top">
+      <button class="btn" id="kbdBack">← 返回知识库</button>
+      <div class="kb-title" id="kbdTitle"></div>
+    </div>
+    <div class="kbd-body" id="kbdBody"></div>
   </div>
 </div>
 
@@ -4789,6 +4807,9 @@
     kbCodeCount: document.getElementById('kbCodeCount'),
     kbHeadCount: document.getElementById('kbHeadCount'),
     kbList: document.getElementById('kbCodeList'),
+    kbd: document.getElementById('kbd'),
+    kbdTitle: document.getElementById('kbdTitle'),
+    kbdBody: document.getElementById('kbdBody'),
     kbSearch: document.getElementById('kbSearch'),
     setKey: document.getElementById('setKey'),
     setBase: document.getElementById('setBase'),
@@ -5149,7 +5170,7 @@
       items.forEach(function (k) {
         codeCount++;
         var h = KB_HEADER[k.name] || '';
-        codeHtml += '<div class="kb-item" data-code="' + esc(k.example || '') + '">';
+        codeHtml += '<div class="kb-item" data-idx="' + KB.indexOf(k) + '">';
         codeHtml += '<div class="kb-name">' + esc(k.name) +
           '<span class="kb-group">' + esc(k.group) + '</span>' +
           (h ? '<span class="kb-h">' + esc(h) + '</span>' : '') + '</div>';
@@ -5171,7 +5192,7 @@
         .toLowerCase().indexOf(q) >= 0;
     }).forEach(function (h) {
       headCount++;
-      headHtml += '<div class="kb-item" data-code="' + esc(h.code) + '">';
+      headHtml += '<div class="kb-item" data-hidx="' + HEADERS.indexOf(h) + '">';
       headHtml += '<div class="kb-name">' + esc(h.name) +
         '<span class="kb-group">' + (h.lang === 'cpp' ? 'C++' : 'C') + '</span></div>';
       headHtml += '<div class="kb-sig">' + esc(h.desc) + '</div>';
@@ -5189,12 +5210,77 @@
     [el.kbCodeList, el.kbHeadList].forEach(function (list) {
       list.querySelectorAll('.kb-item').forEach(function (node) {
         node.addEventListener('click', function () {
-          setCode(node.dataset.code || '');
-          closeKB();
-          setStatus('已把示例载入编辑器', 'ok');
+          if (node.dataset.idx !== undefined) {
+            openKbDetail('code', Number(node.dataset.idx));
+          } else if (node.dataset.hidx !== undefined) {
+            openKbDetail('head', Number(node.dataset.hidx));
+          }
         });
       });
     });
+  }
+
+  function openKbDetail(kind, index) {
+    var title, bodyHtml = '';
+    if (kind === 'code') {
+      var k = KB[index];
+      if (!k) return;
+      var h = KB_HEADER[k.name] || '';
+      title = k.name + (h ? '　' + h : '');
+      bodyHtml += '<div class="kbd-sec"><div class="kbd-label">它是干什么的</div>' +
+        '<div class="kbd-p">' + esc(k.desc) + '</div></div>';
+      bodyHtml += '<div class="kbd-sec"><div class="kbd-label">基本写法</div>' +
+        '<div class="kbd-code">' + esc(k.sig) + '</div></div>';
+      if (k.note) {
+        bodyHtml += '<div class="kbd-sec"><div class="kbd-label">详细说明 / 进阶写法</div>' +
+          '<div class="kbd-p">' + esc(k.note).replace(/\n/g, '<br>') + '</div></div>';
+      }
+      bodyHtml += '<div class="kbd-sec"><div class="kbd-label">完整可运行示例</div>' +
+        '<div class="kbd-code">' + esc(k.example || '') + '</div></div>';
+      bodyHtml += '<div class="kbd-actions">' +
+        '<button class="btn primary" data-kbd-load="' + index + '">载入编辑器</button>' +
+        '<button class="btn" data-kbd-copy="' + index + '">复制代码</button></div>';
+    } else {
+      var hd = HEADERS[index];
+      if (!hd) return;
+      title = hd.name;
+      bodyHtml += '<div class="kbd-sec"><div class="kbd-label">这个头文件里有什么</div>' +
+        '<div class="kbd-p">' + esc(hd.desc) + '<br><br>' + esc(hd.funcs.join(' / ')) + '</div></div>';
+      bodyHtml += '<div class="kbd-sec"><div class="kbd-label">最小可运行示例</div>' +
+        '<div class="kbd-code">' + esc(hd.code) + '</div></div>';
+      bodyHtml += '<div class="kbd-actions">' +
+        '<button class="btn primary" data-kbd-load="h' + index + '">载入编辑器</button>' +
+        '<button class="btn" data-kbd-copy="h' + index + '">复制代码</button></div>';
+    }
+    el.kbdTitle.textContent = title;
+    el.kbdBody.innerHTML = bodyHtml;
+    el.kbdBody.querySelectorAll('[data-kbd-load]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.kbdLoad;
+        var code = id.charAt(0) === 'h'
+          ? (HEADERS[Number(id.slice(1))] || {}).code
+          : (KB[Number(id)] || {}).example;
+        setCode(code || '');
+        closeKB();
+        setStatus('已把示例载入编辑器', 'ok');
+      });
+    });
+    el.kbdBody.querySelectorAll('[data-kbd-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.kbdCopy;
+        var code = id.charAt(0) === 'h'
+          ? (HEADERS[Number(id.slice(1))] || {}).code
+          : (KB[Number(id)] || {}).example;
+        try {
+          navigator.clipboard.writeText(code || '');
+          setStatus('已复制', 'ok');
+        } catch (e) {
+          setStatus('复制失败，请手动选中', 'bad');
+        }
+      });
+    });
+    el.kbd.classList.remove('hidden');
+    document.querySelector('.kbd-body').scrollTop = 0;
   }
 
   async function generateAI() {
@@ -5487,6 +5573,9 @@
   el.set.addEventListener('click', openSettings);
   el.kb.addEventListener('click', openKB);
   document.getElementById('kbBack').addEventListener('click', closeKB);
+  document.getElementById('kbdBack').addEventListener('click', function () {
+    el.kbd.classList.add('hidden');
+  });
   el.kbSearch.addEventListener('input', function () { renderKB(el.kbSearch.value); });
   document.getElementById('setSave').addEventListener('click', saveSettings);
   document.getElementById('setCancel').addEventListener('click', closeSettings);
