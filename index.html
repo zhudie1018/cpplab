@@ -5600,6 +5600,7 @@
   }
 
   function openKB(preset) {
+    if (typeof preset !== 'string') preset = '';
     var q = String(preset || '').trim();
     el.kbSearch.value = q;
     renderKB(q);
@@ -6033,7 +6034,7 @@
   el.run.addEventListener('click', run);
   el.ai.addEventListener('click', generateAI);
   el.set.addEventListener('click', openSettings);
-  el.kb.addEventListener('click', openKB);
+  el.kb.addEventListener('click', function () { openKB(''); });
   document.getElementById('kbBack').addEventListener('click', closeKB);
   document.getElementById('kbdBack').addEventListener('click', function () {
     el.kbd.classList.add('hidden');
