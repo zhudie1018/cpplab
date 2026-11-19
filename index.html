@@ -101,6 +101,17 @@
     border-radius:10px;background:#fff;color:var(--text);outline:none;margin-bottom:10px}
   .kb-search:focus{border-color:var(--blue)}
   .kb-list{max-height:58vh;overflow:auto}
+  .kbpage{position:fixed;inset:0;z-index:80;background:var(--bg);display:flex;flex-direction:column}
+  .kbpage.hidden{display:none}
+  .kb-top{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .kb-title{font-size:16px;font-weight:700;color:var(--text)}
+  .kb-top .kb-search{flex:1;min-width:220px;margin:0}
+  .kb-body{flex:1;overflow:auto;padding:16px 18px 30px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media (max-width:820px){.kb-body{grid-template-columns:1fr}}
+  .kb-sec{min-width:0}
+  .kb-sec-title{font-size:13px;font-weight:700;color:var(--text);margin:2px 0 10px;position:sticky;top:0;background:var(--bg);padding:6px 0}
+  .kb-count{font-weight:400;color:var(--dim);font-size:11.5px;margin-left:6px}
+  .kb-h{display:inline-block;font-family:Consolas,monospace;font-size:11.5px;color:var(--blue-deep);background:#eef3ff;border-radius:5px;padding:2px 7px;margin-left:6px}
   .kb-item{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;cursor:pointer;background:#fff}
   .kb-item:hover{border-color:var(--blue-light);box-shadow:0 3px 10px rgba(77,107,254,.10)}
   .kb-name{font-weight:700;font-size:13px;color:var(--text)}
@@ -153,14 +164,20 @@
 
 <footer>标准写法可直接运行；习题会按测试点自动判题。判题需要联网（公共编译服务，约每分钟 20 次）。AI 出题需在「设置」里填自己的 API Key，Key 只存在本机浏览器。</footer>
 
-<div class="modal hidden" id="kbmodal">
-  <div class="box" style="width:min(96vw,760px)">
-    <h2>📚 知识库</h2>
-    <p>常用代码速查。点任意一条，会把示例代码放进编辑器。</p>
-    <input id="kbSearch" class="kb-search" placeholder="搜索：cout、setprecision、sort、链表、栈…" autocomplete="off">
-    <div id="kbList" class="kb-list"></div>
-    <div class="modal-actions">
-      <button class="btn" id="kbClose">关闭</button>
+<div class="kbpage hidden" id="kbpage">
+  <div class="kb-top">
+    <button class="btn" id="kbBack">← 返回</button>
+    <div class="kb-title">📚 知识库</div>
+    <input id="kbSearch" class="kb-search" placeholder="搜功能：排序、读取一行、保留小数、开平方、栈、文件读写…" autocomplete="off">
+  </div>
+  <div class="kb-body">
+    <div class="kb-sec">
+      <div class="kb-sec-title">常用代码区 <span class="kb-count" id="kbCodeCount"></span></div>
+      <div id="kbCodeList" class="kb-list"></div>
+    </div>
+    <div class="kb-sec">
+      <div class="kb-sec-title">头文件区 <span class="kb-count" id="kbHeadCount"></span></div>
+      <div id="kbHeadList" class="kb-list"></div>
     </div>
   </div>
 </div>
@@ -4401,7 +4418,7 @@
   "name": "printf",
   "sig": "printf(\"%d\\n\", a);",
   "desc": "格式化输出。%d 整数、%f 小数、%c 字符、%s 字符串、%ld 长整型。",
-  "example": "printf(\"%d %.2f %c\\n\", 3, 1.5, 'A');"
+  "example": "#include <stdio.h>\n\nint main() {\n    int a = 3;\n    double x = 1.5;\n    char ch = 'A';\n    printf(\"%d %.2f %c\\n\", a, x, ch);\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4409,7 +4426,7 @@
   "name": "scanf",
   "sig": "scanf(\"%d\", &a);",
   "desc": "格式化输入，变量前必须加 &（字符串数组除外）。double 用 %lf。",
-  "example": "int a; double x; scanf(\"%d %lf\", &a, &x);"
+  "example": "#include <stdio.h>\n\nint main() {\n    int a;\n    double x;\n    if (scanf(\"%d %lf\", &a, &x) != 2) return 1;\n    printf(\"%d %.1f\\n\", a, x);\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4417,7 +4434,7 @@
   "name": "puts",
   "sig": "puts(\"hello\");",
   "desc": "输出一行并自动换行。",
-  "example": "puts(\"hello\");"
+  "example": "#include <stdio.h>\n\nint main() {\n    puts(\"hello\");\n    puts(\"world\");\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4425,15 +4442,15 @@
   "name": "strlen",
   "sig": "strlen(s)",
   "desc": "字符串长度，不含结尾的 '\\0'。",
-  "example": "#include <string.h>\nprintf(\"%d\", (int)strlen(\"abc\"));"
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[] = \"hello\";\n    printf(\"%d\\n\", (int)strlen(s));\n    return 0;\n}"
  },
  {
   "lang": "c",
   "group": "字符串",
   "name": "strcmp",
   "sig": "strcmp(a, b)",
-  "desc": "比较字符串，相等返回 0。",
-  "example": "if (strcmp(a, b) == 0) puts(\"same\");"
+  "desc": "比较字符串，相等返回 0，a<b 返回负数。",
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[] = \"abc\", b[] = \"abd\";\n    printf(\"%d\\n\", strcmp(a, b));\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4441,7 +4458,7 @@
   "name": "strcpy",
   "sig": "strcpy(dst, src)",
   "desc": "把 src 复制到 dst，dst 要够大。",
-  "example": "char d[20]; strcpy(d, \"hi\");"
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char dst[20];\n    strcpy(dst, \"hi\");\n    printf(\"%s\\n\", dst);\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4449,7 +4466,7 @@
   "name": "sprintf",
   "sig": "sprintf(buf, \"%d\", x);",
   "desc": "把格式化内容写进字符串。",
-  "example": "char buf[20]; sprintf(buf, \"%d\", 42);"
+  "example": "#include <stdio.h>\n\nint main() {\n    char buf[50];\n    int n = 42;\n    sprintf(buf, \"n = %d\", n);\n    printf(\"%s\\n\", buf);\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4457,7 +4474,7 @@
   "name": "malloc",
   "sig": "malloc(n * sizeof(int))",
   "desc": "申请堆内存，用完 free。",
-  "example": "int *a = (int*)malloc(n * sizeof(int));\nfree(a);"
+  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 3;\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) a[i] = i + 1;\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    free(a);\n    return 0;\n}"
  },
  {
   "lang": "c",
@@ -4465,15 +4482,15 @@
   "name": "sqrt / pow",
   "sig": "sqrt(x)  pow(a, b)",
   "desc": "开方、幂，需要 <math.h>。",
-  "example": "#include <math.h>\nprintf(\"%.2f\", sqrt(2.0));"
+  "example": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    printf(\"%.3f\\n\", sqrt(2.0));\n    printf(\"%.1f\\n\", pow(2, 10));\n    return 0;\n}"
  },
  {
   "lang": "c",
   "group": "数学",
   "name": "abs",
-  "sig": "abs(x) / fabs(x)",
-  "desc": "整数绝对值用 abs，小数用 fabs。",
-  "example": "printf(\"%d\", abs(-3));"
+  "sig": "abs(x)",
+  "desc": "整数绝对值。",
+  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    printf(\"%d\\n\", abs(-7));\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4481,7 +4498,7 @@
   "name": "cout",
   "sig": "cout << x << endl;",
   "desc": "输出，endl 换行并刷新。",
-  "example": "cout << \"sum = \" << s << endl;"
+  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int s = 42;\n    cout << \"sum = \" << s << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4489,7 +4506,7 @@
   "name": "cin",
   "sig": "cin >> a >> b;",
   "desc": "读入，自动跳过空格和换行。",
-  "example": "int a, b; cin >> a >> b;"
+  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4497,7 +4514,7 @@
   "name": "getline",
   "sig": "getline(cin, s);",
   "desc": "读一整行（含空格）。和 cin 混用时先 cin.ignore()。",
-  "example": "string s; getline(cin, s);"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    getline(cin, s);\n    cout << s.size() << \" 个字符\" << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4505,7 +4522,7 @@
   "name": "setprecision",
   "sig": "cout << fixed << setprecision(2);",
   "desc": "固定小数位数，需要 <iomanip>。",
-  "example": "cout << fixed << setprecision(2) << 3.14159; // 3.14"
+  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 3.14159 << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4513,15 +4530,15 @@
   "name": "setw",
   "sig": "cout << setw(5) << x;",
   "desc": "设置输出宽度，常配合对齐。",
-  "example": "cout << setw(5) << 42;"
+  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << setw(6) << setfill('0') << 42 << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "string",
   "name": "size",
   "sig": "s.size()",
-  "desc": "字符个数。",
-  "example": "cout << s.size();"
+  "desc": "字符个数（无符号类型，比较时注意）。",
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello\";\n    cout << s.size() << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4529,7 +4546,7 @@
   "name": "find",
   "sig": "s.find(\"ab\")",
   "desc": "找子串，找不到返回 string::npos。",
-  "example": "if (s.find(\"x\") == string::npos) cout << \"no\";"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    size_t p = s.find(\"world\");\n    if (p != string::npos) cout << \"位置 \" << p << endl;\n    else cout << \"没找到\" << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4537,23 +4554,23 @@
   "name": "substr",
   "sig": "s.substr(pos, len)",
   "desc": "截取子串。",
-  "example": "s.substr(0, 5)"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    cout << s.substr(0, 5) << endl;\n    cout << s.substr(6) << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "vector",
   "name": "push_back",
   "sig": "v.push_back(x)",
-  "desc": "末尾追加。",
-  "example": "vector<int> v; v.push_back(3);"
+  "desc": "末尾追加元素。",
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(3);\n    v.push_back(1);\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "vector",
   "name": "size",
   "sig": "v.size()",
-  "desc": "元素个数（无符号，比较时注意类型）。",
-  "example": "for (int i = 0; i < (int)v.size(); i++)"
+  "desc": "元素个数（无符号，和 int 比较要转换）。",
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3};\n    cout << v.size() << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4561,15 +4578,15 @@
   "name": "二维 vector",
   "sig": "vector<vector<int>> g(n, vector<int>(m));",
   "desc": "n 行 m 列的二维数组。",
-  "example": "vector<vector<int>> g(3, vector<int>(4));"
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n = 2, m = 3;\n    vector<vector<int>> g(n, vector<int>(m, 0));\n    g[1][2] = 7;\n    cout << g[1][2] << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "map/set",
   "name": "map",
   "sig": "map<string, int> cnt;",
-  "desc": "键值对，遍历按 key 升序，cnt[w]++ 统计。",
-  "example": "cnt[w]++;"
+  "desc": "键值对，遍历按 key 升序。",
+  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> cnt;\n    cnt[\"apple\"]++;\n    cnt[\"apple\"]++;\n    cnt[\"pear\"]++;\n    for (auto &p : cnt) cout << p.first << \" \" << p.second << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4577,7 +4594,7 @@
   "name": "set",
   "sig": "set<int> st;",
   "desc": "自动去重并升序。",
-  "example": "st.insert(3);"
+  "example": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> st;\n    st.insert(3);\n    st.insert(1);\n    st.insert(3);\n    for (int x : st) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4585,15 +4602,15 @@
   "name": "count",
   "sig": "mp.count(k)",
   "desc": "存在返回 1，否则 0。",
-  "example": "if (mp.count(x)) ..."
+  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> mp;\n    mp[\"a\"] = 1;\n    cout << mp.count(\"a\") << \" \" << mp.count(\"b\") << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "algorithm",
   "name": "sort",
   "sig": "sort(v.begin(), v.end())",
-  "desc": "升序；加 greater<int>() 变降序。需要 <algorithm>。",
-  "example": "sort(v.begin(), v.end());"
+  "desc": "升序；加 greater<int>() 变降序。",
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 2};\n    sort(v.begin(), v.end());\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4601,7 +4618,7 @@
   "name": "reverse",
   "sig": "reverse(v.begin(), v.end())",
   "desc": "原地反转。",
-  "example": "reverse(s.begin(), s.end());"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"abc\";\n    reverse(s.begin(), s.end());\n    cout << s << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4609,7 +4626,7 @@
   "name": "max_element",
   "sig": "*max_element(v.begin(), v.end())",
   "desc": "返回指向最大值的迭代器，记得加 *。",
-  "example": "int mx = *max_element(v.begin(), v.end());"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 9, 2};\n    cout << *max_element(v.begin(), v.end()) << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4617,7 +4634,7 @@
   "name": "lower_bound",
   "sig": "lower_bound(v.begin(), v.end(), x)",
   "desc": "有序区间里第一个 ≥ x 的位置。",
-  "example": "int p = lower_bound(v.begin(), v.end(), x) - v.begin();"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 3, 3, 7};\n    int p = lower_bound(v.begin(), v.end(), 3) - v.begin();\n    cout << p << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4625,7 +4642,7 @@
   "name": "stack",
   "sig": "stack<int> st;",
   "desc": "后进先出：push / pop / top / empty。",
-  "example": "st.push(1); int x = st.top(); st.pop();"
+  "example": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> st;\n    st.push(1);\n    st.push(2);\n    cout << st.top() << endl;\n    st.pop();\n    cout << st.top() << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4633,15 +4650,15 @@
   "name": "queue",
   "sig": "queue<int> q;",
   "desc": "先进先出：push / pop / front。",
-  "example": "q.push(1); int x = q.front(); q.pop();"
+  "example": "#include <iostream>\n#include <queue>\nusing namespace std;\n\nint main() {\n    queue<int> q;\n    q.push(1);\n    q.push(2);\n    cout << q.front() << endl;\n    q.pop();\n    cout << q.front() << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "数学",
   "name": "gcd",
   "sig": "__gcd(a, b)",
-  "desc": "最大公约数（C++17）。",
-  "example": "int g = __gcd(12, 18); // 6"
+  "desc": "最大公约数（C++17 也可用 std::gcd）。",
+  "example": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    cout << __gcd(12, 18) << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
@@ -4649,18 +4666,90 @@
   "name": "sqrt / pow",
   "sig": "sqrt(x)  pow(a, b)",
   "desc": "开方、幂，需要 <cmath>。",
-  "example": "cout << sqrt(2.0);"
+  "example": "#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    cout << sqrt(16.0) << \" \" << pow(2, 8) << endl;\n    return 0;\n}"
  },
  {
   "lang": "cpp",
   "group": "数学",
   "name": "abs",
   "sig": "abs(x)",
-  "desc": "绝对值（整数）。",
-  "example": "cout << abs(-3);"
+  "desc": "绝对值。",
+  "example": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\n\nint main() {\n    cout << abs(-7) << endl;\n    return 0;\n}"
  }
 ];
-  /* DATA_END */
+
+  /* 每条常用代码属于哪个头文件 */
+  /* ============ 知识库：头文件区 ============ */
+  var HEADERS = [
+    { lang: 'c', name: '<stdio.h>', desc: '标准输入输出：打印、读取、文件读写',
+      funcs: ['printf', 'scanf', 'gets/puts', 'fopen/fclose', 'fprintf/fscanf', 'sprintf', 'getchar/putchar'],
+      code: '#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf("%d %d", &a, &b);\n    printf("%d\\n", a + b);\n    return 0;\n}' },
+    { lang: 'c', name: '<stdlib.h>', desc: '内存分配、类型转换、随机数、程序退出',
+      funcs: ['malloc/free', 'atoi/atof', 'rand/srand', 'qsort', 'abs', 'exit'],
+      code: '#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *a = (int*)malloc(5 * sizeof(int));\n    a[0] = 42;\n    printf("%d\\n", a[0]);\n    free(a);\n    return 0;\n}' },
+    { lang: 'c', name: '<string.h>', desc: '字符串与内存块操作',
+      funcs: ['strlen', 'strcmp', 'strcpy', 'strcat', 'strstr', 'memset', 'memcpy'],
+      code: '#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[50] = "hello";\n    strcat(s, " world");\n    printf("%s (%d)\\n", s, (int)strlen(s));\n    return 0;\n}' },
+    { lang: 'c', name: '<math.h>', desc: '数学函数',
+      funcs: ['sqrt', 'pow', 'fabs', 'sin/cos', 'log/exp', 'ceil/floor'],
+      code: '#include <stdio.h>\n#include <math.h>\n\nint main() {\n    printf("%.3f\\n", sqrt(2.0));\n    printf("%.0f\\n", pow(2, 10));\n    return 0;\n}' },
+    { lang: 'c', name: '<ctype.h>', desc: '字符判断与转换',
+      funcs: ['isdigit', 'isalpha', 'toupper', 'tolower', 'isspace'],
+      code: '#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    printf("%c\\n", toupper(97));\n    printf("%d\\n", isdigit(55) != 0);\n    return 0;\n}' },
+    { lang: 'cpp', name: '<iostream>', desc: 'C++ 标准输入输出流',
+      funcs: ['cin', 'cout', 'endl', 'getline'],
+      code: '#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<iomanip>', desc: '输出格式控制：小数位、宽度、对齐',
+      funcs: ['setprecision', 'fixed', 'setw', 'setfill', 'left/right'],
+      code: '#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 3.14159 << endl;\n    cout << setw(6) << setfill(\'0\') << 42 << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<string>', desc: 'C++ 字符串类',
+      funcs: ['size', 'substr', 'find', 'append', 'c_str', 'compare'],
+      code: '#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = "hello world";\n    cout << s.substr(0, 5) << endl;\n    cout << s.find("world") << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<vector>', desc: '动态数组',
+      funcs: ['push_back', 'pop_back', 'size', 'resize', 'begin/end', 'clear'],
+      code: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(3);\n    v.push_back(1);\n    for (int x : v) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<algorithm>', desc: '排序、查找、最值、去重',
+      funcs: ['sort', 'reverse', 'max_element', 'min_element', 'lower_bound', 'unique'],
+      code: '#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 2};\n    sort(v.begin(), v.end());\n    cout << *max_element(v.begin(), v.end()) << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<map>', desc: '键值对（按 key 有序）',
+      funcs: ['operator[]', 'count', 'find', 'erase', 'size'],
+      code: '#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> cnt;\n    cnt["apple"]++;\n    cnt["apple"]++;\n    cout << cnt["apple"] << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<set>', desc: '有序去重集合',
+      funcs: ['insert', 'count', 'erase', 'size'],
+      code: '#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> s;\n    s.insert(3); s.insert(1); s.insert(3);\n    for (int x : s) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<queue>', desc: '队列与优先队列',
+      funcs: ['push', 'pop', 'front', 'back', 'priority_queue'],
+      code: '#include <iostream>\n#include <queue>\nusing namespace std;\n\nint main() {\n    queue<int> q;\n    q.push(1); q.push(2);\n    cout << q.front() << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<stack>', desc: '栈（后进先出）',
+      funcs: ['push', 'pop', 'top', 'empty'],
+      code: '#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> st;\n    st.push(1); st.push(2);\n    cout << st.top() << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<cmath>', desc: 'C++ 数学函数',
+      funcs: ['sqrt', 'pow', 'fabs', 'round', 'floor'],
+      code: '#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    cout << sqrt(16.0) << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<functional>', desc: '函数对象，配合 sort 用 greater',
+      funcs: ['greater<int>', 'less<int>', 'function'],
+      code: '#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <functional>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 3, 2};\n    sort(v.begin(), v.end(), greater<int>());\n    for (int x : v) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
+    { lang: 'cpp', name: '<fstream>', desc: 'C++ 文件读写',
+      funcs: ['ifstream', 'ofstream', 'getline', 'close'],
+      code: '#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out("a.txt");\n    out << 42 << endl;\n    out.close();\n    ifstream in("a.txt");\n    int x;\n    in >> x;\n    return 0;\n}' },
+  ];
+
+  var KB_HEADER = {
+    'printf': '<stdio.h>', 'scanf': '<stdio.h>', 'puts': '<stdio.h>',
+    'strlen': '<string.h>', 'strcmp': '<string.h>', 'strcpy': '<string.h>', 'sprintf': '<stdio.h>',
+    'malloc': '<stdlib.h>', 'sqrt / pow': '<math.h>', 'abs': '<stdlib.h> / <cmath>',
+    'cout': '<iostream>', 'cin': '<iostream>', 'getline': '<string>',
+    'setprecision': '<iomanip>', 'setw': '<iomanip>',
+    'size': '<string> / <vector>', 'find': '<string>', 'substr': '<string>',
+    'push_back': '<vector>', '二维 vector': '<vector>',
+    'map': '<map>', 'set': '<set>', 'count': '<map> / <set>',
+    'sort': '<algorithm>', 'reverse': '<algorithm>', 'max_element': '<algorithm>',
+    'lower_bound': '<algorithm>',
+    'stack': '<stack>', 'queue': '<queue>',
+    'gcd': '<numeric>'
+  };
+
+  /* ============ 知识库：常用代码区（原有条目 + 头文件标注） ============ */
 
   // ---------------- 状态 ----------------
   var state = { lang: 'cpp', level: 'basic', chapter: LANGS.cpp.basic[0].id, sectionIndex: 0, mode: 'std', exerciseIndex: 0 };
@@ -4677,8 +4766,13 @@
     kb: document.getElementById('btnKB'),
     set: document.getElementById('btnSet'),
     modal: document.getElementById('settings'),
-    kbModal: document.getElementById('kbmodal'),
-    kbList: document.getElementById('kbList'),
+    kbModal: document.getElementById('kbpage'),
+    kbPage: document.getElementById('kbpage'),
+    kbCodeList: document.getElementById('kbCodeList'),
+    kbHeadList: document.getElementById('kbHeadList'),
+    kbCodeCount: document.getElementById('kbCodeCount'),
+    kbHeadCount: document.getElementById('kbHeadCount'),
+    kbList: document.getElementById('kbCodeList'),
     kbSearch: document.getElementById('kbSearch'),
     setKey: document.getElementById('setKey'),
     setBase: document.getElementById('setBase'),
@@ -5000,42 +5094,75 @@
   function openKB() {
     el.kbSearch.value = '';
     renderKB('');
-    el.kbModal.classList.remove('hidden');
+    el.kbPage.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
     setTimeout(function () { el.kbSearch.focus(); }, 30);
   }
 
   function closeKB() {
-    el.kbModal.classList.add('hidden');
+    el.kbPage.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 
   function renderKB(filter) {
     var q = String(filter || '').trim().toLowerCase();
-    var html = '';
+    var codeHtml = '';
+    var codeCount = 0;
+
     ['cpp', 'c'].forEach(function (lang) {
       var items = KB.filter(function (k) {
         if (k.lang !== lang) return false;
         if (!q) return true;
-        return (k.name + ' ' + k.desc + ' ' + k.group + ' ' + k.sig + ' ' + (k.example || ''))
-          .toLowerCase().indexOf(q) >= 0;
+        var h = KB_HEADER[k.name] || '';
+        return (k.name + ' ' + k.desc + ' ' + k.group + ' ' + k.sig + ' ' +
+          (k.example || '') + ' ' + h).toLowerCase().indexOf(q) >= 0;
       });
       if (!items.length) return;
-      html += '<h3 style="margin:12px 0 8px;font-size:13px;color:var(--muted)">' +
+      codeHtml += '<h3 style="margin:12px 0 8px;font-size:13px;color:var(--muted)">' +
         (lang === 'cpp' ? 'C++' : 'C') + ' · ' + items.length + ' 条</h3>';
       items.forEach(function (k) {
-        html += '<div class="kb-item" data-code="' + esc(k.example || '') + '">';
-        html += '<div class="kb-name">' + esc(k.name) +
-          '<span class="kb-group">' + esc(k.group) + '</span></div>';
-        html += '<div class="kb-sig">' + esc(k.sig) + '</div>';
-        html += '<div class="kb-desc">' + esc(k.desc) + '</div>';
-        html += '</div>';
+        codeCount++;
+        var h = KB_HEADER[k.name] || '';
+        codeHtml += '<div class="kb-item" data-code="' + esc(k.example || '') + '">';
+        codeHtml += '<div class="kb-name">' + esc(k.name) +
+          '<span class="kb-group">' + esc(k.group) + '</span>' +
+          (h ? '<span class="kb-h">' + esc(h) + '</span>' : '') + '</div>';
+        codeHtml += '<div class="kb-sig">' + esc(k.sig) + '</div>';
+        codeHtml += '<div class="kb-desc">' + esc(k.desc) + '</div>';
+        codeHtml += '</div>';
       });
     });
-    el.kbList.innerHTML = html || '<p style="font-size:13px;color:var(--dim)">没有匹配的条目，换个关键词试试。</p>';
-    el.kbList.querySelectorAll('.kb-item').forEach(function (node) {
-      node.addEventListener('click', function () {
-        setCode(node.dataset.code || '');
-        closeKB();
-        setStatus('已把示例载入编辑器', 'ok');
+
+    var headHtml = '';
+    var headCount = 0;
+    HEADERS.filter(function (h) {
+      if (!q) return true;
+      return (h.name + ' ' + h.desc + ' ' + h.funcs.join(' ') + ' ' + h.code)
+        .toLowerCase().indexOf(q) >= 0;
+    }).forEach(function (h) {
+      headCount++;
+      headHtml += '<div class="kb-item" data-code="' + esc(h.code) + '">';
+      headHtml += '<div class="kb-name">' + esc(h.name) +
+        '<span class="kb-group">' + (h.lang === 'cpp' ? 'C++' : 'C') + '</span></div>';
+      headHtml += '<div class="kb-sig">' + esc(h.desc) + '</div>';
+      headHtml += '<div class="kb-desc">常用：' + esc(h.funcs.join(' / ')) + '</div>';
+      headHtml += '</div>';
+    });
+
+    el.kbCodeCount.textContent = codeCount + ' 条';
+    el.kbHeadCount.textContent = headCount + ' 个';
+    el.kbCodeList.innerHTML = codeHtml ||
+      '<p style="font-size:13px;color:var(--dim)">没有匹配的代码，换个关键词试试。</p>';
+    el.kbHeadList.innerHTML = headHtml ||
+      '<p style="font-size:13px;color:var(--dim)">没有匹配的头文件。</p>';
+
+    [el.kbCodeList, el.kbHeadList].forEach(function (list) {
+      list.querySelectorAll('.kb-item').forEach(function (node) {
+        node.addEventListener('click', function () {
+          setCode(node.dataset.code || '');
+          closeKB();
+          setStatus('已把示例载入编辑器', 'ok');
+        });
       });
     });
   }
@@ -5329,11 +5456,8 @@
   el.ai.addEventListener('click', generateAI);
   el.set.addEventListener('click', openSettings);
   el.kb.addEventListener('click', openKB);
-  document.getElementById('kbClose').addEventListener('click', closeKB);
+  document.getElementById('kbBack').addEventListener('click', closeKB);
   el.kbSearch.addEventListener('input', function () { renderKB(el.kbSearch.value); });
-  el.kbModal.addEventListener('click', function (e) {
-    if (e.target === el.kbModal) closeKB();
-  });
   document.getElementById('setSave').addEventListener('click', saveSettings);
   document.getElementById('setCancel').addEventListener('click', closeSettings);
   document.getElementById('setClear').addEventListener('click', function () {
