@@ -121,6 +121,8 @@
   .kb-group{font-weight:400;font-size:11px;color:var(--blue);background:#e9efff;border-radius:999px;padding:2px 8px;margin-left:6px}
   .kb-sig{font-family:Consolas,monospace;font-size:12px;color:var(--blue-deep);margin:5px 0}
   .kb-desc{font-size:12px;color:var(--muted);line-height:1.6}
+  .kb-note{margin-top:8px;padding:8px 10px;background:#f6f9ff;border-left:3px solid var(--blue);
+    border-radius:6px;font-size:12px;line-height:1.85;color:#33415c}
 </style>
 </head>
 <body>
@@ -4454,7 +4456,8 @@
   "name": "printf",
   "sig": "printf(\"%d\\n\", a);",
   "desc": "格式化输出。%d 整数、%f 小数、%c 字符、%s 字符串、%ld 长整型。",
-  "example": "#include <stdio.h>\n\nint main() {\n    int a = 3;\n    double x = 1.5;\n    char ch = 'A';\n    printf(\"%d %.2f %c\\n\", a, x, ch);\n    return 0;\n}"
+  "example": "#include <stdio.h>\n\nint main() {\n    int a = 3;\n    double x = 1.5;\n    char ch = 'A';\n    printf(\"%d %.2f %c\\n\", a, x, ch);\n    return 0;\n}",
+  "note": "基本格式：printf(\"格式串\", 变量1, 变量2, ...); 格式串里有几个占位符，后面就跟着几个值。\n常用占位符：%d 整数、%ld 长整型、%f 小数（默认 6 位）、%.2f 保留 2 位、%c 字符、%s 字符串、%x 十六进制。\n进阶：%5d 右对齐占 5 格、%-5d 左对齐、%05d 补零；想输出百分号写 %%。"
  },
  {
   "lang": "c",
@@ -4462,7 +4465,8 @@
   "name": "scanf",
   "sig": "scanf(\"%d\", &a);",
   "desc": "格式化输入，变量前必须加 &（字符串数组除外）。double 用 %lf。",
-  "example": "#include <stdio.h>\n\nint main() {\n    int a;\n    double x;\n    if (scanf(\"%d %lf\", &a, &x) != 2) return 1;\n    printf(\"%d %.1f\\n\", a, x);\n    return 0;\n}"
+  "example": "#include <stdio.h>\n\nint main() {\n    int a;\n    double x;\n    if (scanf(\"%d %lf\", &a, &x) != 2) return 1;\n    printf(\"%d %.1f\\n\", a, x);\n    return 0;\n}",
+  "note": "基本格式：scanf(\"格式串\", &变量, ...); 除了字符串数组，每个变量前都要加 &。\n返回值是成功读到的个数，可以拿来判断输入是否合法：if (scanf(\"%d\", &a) != 1) return 1;\n坑：%d 后面如果紧跟 %c，会读到上一次留下的换行，写成 \" %c\"（前面加空格）就能跳过空白。"
  },
  {
   "lang": "c",
@@ -4470,7 +4474,8 @@
   "name": "puts",
   "sig": "puts(\"hello\");",
   "desc": "输出一行并自动换行。",
-  "example": "#include <stdio.h>\n\nint main() {\n    puts(\"hello\");\n    puts(\"world\");\n    return 0;\n}"
+  "example": "#include <stdio.h>\n\nint main() {\n    puts(\"hello\");\n    puts(\"world\");\n    return 0;\n}",
+  "note": "基本格式：puts(s); 输出字符串后自动换行，比 printf(\"%s\\n\", s) 省事。\n它只有一个参数，不能格式化；要拼内容还是用 printf。"
  },
  {
   "lang": "c",
@@ -4478,7 +4483,8 @@
   "name": "strlen",
   "sig": "strlen(s)",
   "desc": "字符串长度，不含结尾的 '\\0'。",
-  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[] = \"hello\";\n    printf(\"%d\\n\", (int)strlen(s));\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[] = \"hello\";\n    printf(\"%d\\n\", (int)strlen(s));\n    return 0;\n}",
+  "note": "基本格式：strlen(s)，返回从 s 开始到第一个 '\\0' 之前的字符数。\n注意返回类型是 size_t（无符号），和 -1 比较时要小心：if (strlen(s) - 1 >= 0) 永远为真。\n进阶：只想数前 n 个字符用 strnlen(s, n)。"
  },
  {
   "lang": "c",
@@ -4486,7 +4492,8 @@
   "name": "strcmp",
   "sig": "strcmp(a, b)",
   "desc": "比较字符串，相等返回 0，a<b 返回负数。",
-  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[] = \"abc\", b[] = \"abd\";\n    printf(\"%d\\n\", strcmp(a, b));\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[] = \"abc\", b[] = \"abd\";\n    printf(\"%d\\n\", strcmp(a, b));\n    return 0;\n}",
+  "note": "基本格式：strcmp(a, b)，按字典序比较，相等返回 0，a 小返回负数，a 大返回正数。\n所以判等要写 if (strcmp(a, b) == 0)，不能写 a == b（那比的是地址）。\n进阶：只比较前 n 个字符用 strncmp(a, b, n)。"
  },
  {
   "lang": "c",
@@ -4494,7 +4501,8 @@
   "name": "strcpy",
   "sig": "strcpy(dst, src)",
   "desc": "把 src 复制到 dst，dst 要够大。",
-  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char dst[20];\n    strcpy(dst, \"hi\");\n    printf(\"%s\\n\", dst);\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char dst[20];\n    strcpy(dst, \"hi\");\n    printf(\"%s\\n\", dst);\n    return 0;\n}",
+  "note": "基本格式：strcpy(dst, src)，把 src 连同 '\\0' 一起复制到 dst，dst 必须够大。\n它不检查长度，越界会直接踩内存；安全写法是 strncpy(dst, src, sizeof(dst) - 1) 再手动补 '\\0'。"
  },
  {
   "lang": "c",
@@ -4502,7 +4510,8 @@
   "name": "sprintf",
   "sig": "sprintf(buf, \"%d\", x);",
   "desc": "把格式化内容写进字符串。",
-  "example": "#include <stdio.h>\n\nint main() {\n    char buf[50];\n    int n = 42;\n    sprintf(buf, \"n = %d\", n);\n    printf(\"%s\\n\", buf);\n    return 0;\n}"
+  "example": "#include <stdio.h>\n\nint main() {\n    char buf[50];\n    int n = 42;\n    sprintf(buf, \"n = %d\", n);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+  "note": "基本格式：sprintf(buf, \"格式串\", ...); 和 printf 一样，只是结果写进字符串而不是屏幕。\n常用来把数字拼进字符串，比如拼文件名。\n更安全的是 snprintf(buf, sizeof(buf), ...)，能限制最多写多少字节，防止溢出。"
  },
  {
   "lang": "c",
@@ -4510,7 +4519,8 @@
   "name": "malloc",
   "sig": "malloc(n * sizeof(int))",
   "desc": "申请堆内存，用完 free。",
-  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 3;\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) a[i] = i + 1;\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    free(a);\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 3;\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) a[i] = i + 1;\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    free(a);\n    return 0;\n}",
+  "note": "基本格式：int *a = (int*)malloc(n * sizeof(int)); 申请 n 个 int 的空间。\nmalloc 返回 void*，要强制转换成需要的类型；申请失败会返回 NULL，严格说应该检查。\n进阶：calloc(n, size) 会顺便清零；realloc 可以扩容；用完一定要 free，否则内存泄漏。"
  },
  {
   "lang": "c",
@@ -4518,7 +4528,8 @@
   "name": "sqrt / pow",
   "sig": "sqrt(x)  pow(a, b)",
   "desc": "开方、幂，需要 <math.h>。",
-  "example": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    printf(\"%.3f\\n\", sqrt(2.0));\n    printf(\"%.1f\\n\", pow(2, 10));\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    printf(\"%.3f\\n\", sqrt(2.0));\n    printf(\"%.1f\\n\", pow(2, 10));\n    return 0;\n}",
+  "note": "基本格式：sqrt(x)、pow(a, b)，都在 <cmath> 里，参数是 double。\n要点：pow 返回浮点数，pow(2, 10) 得到 1024.0，想当整数用要转换。\n进阶：整数快速幂自己写循环更快更准；判断完全平方数别用 sqrt 比较小数，用 i*i == n。"
  },
  {
   "lang": "c",
@@ -4526,7 +4537,8 @@
   "name": "abs",
   "sig": "abs(x)",
   "desc": "整数绝对值。",
-  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    printf(\"%d\\n\", abs(-7));\n    return 0;\n}"
+  "example": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    printf(\"%d\\n\", abs(-7));\n    return 0;\n}",
+  "note": "基本格式：abs(x)，整数绝对值；小数用 fabs(x)。\n坑：<cstdlib> 的 abs 只处理 int，long long 要用 llabs 或 std::abs（C++11 起有重载）。"
  },
  {
   "lang": "cpp",
@@ -4534,7 +4546,8 @@
   "name": "cout",
   "sig": "cout << x << endl;",
   "desc": "输出，endl 换行并刷新。",
-  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int s = 42;\n    cout << \"sum = \" << s << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int s = 42;\n    cout << \"sum = \" << s << endl;\n    return 0;\n}",
+  "note": "基本格式：cout << 内容1 << 内容2; 可以连着写，endl 表示换行并刷新缓冲区。\n和 printf 的区别：不用记 %d/%f，类型自动识别；但格式化（保留小数、补零）要靠 <iomanip>。\n进阶：追求速度可以关同步 ios::sync_with_stdio(false); cin.tie(0); 大数据量时明显更快。\n坑：cout 里混用 printf 时，如果关了同步会乱序，二选一就好。"
  },
  {
   "lang": "cpp",
@@ -4542,7 +4555,8 @@
   "name": "cin",
   "sig": "cin >> a >> b;",
   "desc": "读入，自动跳过空格和换行。",
-  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}",
+  "note": "基本格式：cin >> a >> b; 自动跳过空格、换行，按变量类型解析。\n进阶：while (cin >> x) 可以一直读到输入结束（EOF），做题时很好用。\n坑：cin 和 getline 混用时，cin 会把换行留在缓冲区，getline 会立刻读到空行，要先用 cin.ignore() 吃掉。"
  },
  {
   "lang": "cpp",
@@ -4550,7 +4564,8 @@
   "name": "getline",
   "sig": "getline(cin, s);",
   "desc": "读一整行（含空格）。和 cin 混用时先 cin.ignore()。",
-  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    getline(cin, s);\n    cout << s.size() << \" 个字符\" << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    getline(cin, s);\n    cout << s.size() << \" 个字符\" << endl;\n    return 0;\n}",
+  "note": "基本格式：getline(cin, s); 读一整行，包含空格，遇到换行结束（换行符会被丢掉）。\n它读到的是 string，不是字符数组。\n进阶：getline(cin, s, ',') 可以指定分隔符，按逗号切分一行；while (getline(cin, s)) 可逐行读文件。"
  },
  {
   "lang": "cpp",
@@ -4558,7 +4573,8 @@
   "name": "setprecision",
   "sig": "cout << fixed << setprecision(2);",
   "desc": "固定小数位数，需要 <iomanip>。",
-  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 3.14159 << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 3.14159 << endl;\n    return 0;\n}",
+  "note": "基本格式：cout << fixed << setprecision(2) << x; 输出两位小数。\n要点：setprecision 单独用是「有效数字位数」，配合 fixed 才是「小数点后位数」，所以基本都一起写。\n进阶：设置一次会一直生效，之后所有输出都按这个精度；想恢复默认用 cout.unsetf(ios::fixed)。"
  },
  {
   "lang": "cpp",
@@ -4566,7 +4582,8 @@
   "name": "setw",
   "sig": "cout << setw(5) << x;",
   "desc": "设置输出宽度，常配合对齐。",
-  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << setw(6) << setfill('0') << 42 << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << setw(6) << setfill('0') << 42 << endl;\n    return 0;\n}",
+  "note": "基本格式：cout << setw(6) << x; 让 x 至少占 6 个字符宽，默认右对齐、空格填充。\n要点：setw 只对「紧接着的下一个输出」生效，每次都要重新写。\n进阶：setfill('0') 改成补零、left / right 控制对齐；表格对齐常用 setw + left。"
  },
  {
   "lang": "cpp",
@@ -4574,7 +4591,8 @@
   "name": "size",
   "sig": "s.size()",
   "desc": "字符个数（无符号类型，比较时注意）。",
-  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello\";\n    cout << s.size() << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello\";\n    cout << s.size() << endl;\n    return 0;\n}",
+  "note": "基本格式：v.size() 返回元素个数（size_t）。\n坑：和 string 一样，v.size() - 1 在空容器时是天文数字，循环条件要写成 i < (int)v.size()。\n相关：v.empty() 判空比 v.size() == 0 更直观。"
  },
  {
   "lang": "cpp",
@@ -4582,7 +4600,8 @@
   "name": "find",
   "sig": "s.find(\"ab\")",
   "desc": "找子串，找不到返回 string::npos。",
-  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    size_t p = s.find(\"world\");\n    if (p != string::npos) cout << \"位置 \" << p << endl;\n    else cout << \"没找到\" << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    size_t p = s.find(\"world\");\n    if (p != string::npos) cout << \"位置 \" << p << endl;\n    else cout << \"没找到\" << endl;\n    return 0;\n}",
+  "note": "基本格式：s.find(子串)，返回第一次出现的下标，找不到返回 string::npos。\n判断要写 if (s.find(x) != string::npos)，不能和 -1 比（类型不同）。\n进阶：s.find(子串, pos) 从 pos 往后找，配合循环可以数出现次数；rfind 从后往前找。"
  },
  {
   "lang": "cpp",
@@ -4590,7 +4609,8 @@
   "name": "substr",
   "sig": "s.substr(pos, len)",
   "desc": "截取子串。",
-  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    cout << s.substr(0, 5) << endl;\n    cout << s.substr(6) << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"hello world\";\n    cout << s.substr(0, 5) << endl;\n    cout << s.substr(6) << endl;\n    return 0;\n}",
+  "note": "基本格式：s.substr(pos, len) 从 pos 开始取 len 个字符。\n要点：省略 len 就取到末尾：s.substr(pos)；pos 超出长度会抛异常（out_of_range），用前先判长度。\n进阶：substr 会复制一份字符串，频繁截取大字符串时比较慢。"
  },
  {
   "lang": "cpp",
@@ -4598,7 +4618,8 @@
   "name": "push_back",
   "sig": "v.push_back(x)",
   "desc": "末尾追加元素。",
-  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(3);\n    v.push_back(1);\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(3);\n    v.push_back(1);\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}",
+  "note": "基本格式：v.push_back(x) 在末尾追加一个元素，容量不够时自动扩容（通常是翻倍）。\n要点：扩容会让之前的迭代器和引用失效。\n进阶：已知大小时先 v.reserve(n) 一次性留够，能避免反复扩容；v.emplace_back(...) 可以直接原地构造。"
  },
  {
   "lang": "cpp",
@@ -4606,7 +4627,8 @@
   "name": "size",
   "sig": "v.size()",
   "desc": "元素个数（无符号，和 int 比较要转换）。",
-  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3};\n    cout << v.size() << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3};\n    cout << v.size() << endl;\n    return 0;\n}",
+  "note": "基本格式：v.size() 返回元素个数（size_t）。\n坑：和 string 一样，v.size() - 1 在空容器时是天文数字，循环条件要写成 i < (int)v.size()。\n相关：v.empty() 判空比 v.size() == 0 更直观。"
  },
  {
   "lang": "cpp",
@@ -4614,7 +4636,8 @@
   "name": "二维 vector",
   "sig": "vector<vector<int>> g(n, vector<int>(m));",
   "desc": "n 行 m 列的二维数组。",
-  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n = 2, m = 3;\n    vector<vector<int>> g(n, vector<int>(m, 0));\n    g[1][2] = 7;\n    cout << g[1][2] << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n = 2, m = 3;\n    vector<vector<int>> g(n, vector<int>(m, 0));\n    g[1][2] = 7;\n    cout << g[1][2] << endl;\n    return 0;\n}",
+  "note": "基本格式：vector<vector<int>> g(n, vector<int>(m, 0)); 建 n 行 m 列、初值为 0 的二维数组。\n要点：两对尖括号之间要留空格（C++11 之后可以不留，但老编译器会报错）。\n进阶：邻接表用 vector<vector<int>> g(n + 1); 每行长度可以不同，比二维数组省内存。"
  },
  {
   "lang": "cpp",
@@ -4622,7 +4645,8 @@
   "name": "map",
   "sig": "map<string, int> cnt;",
   "desc": "键值对，遍历按 key 升序。",
-  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> cnt;\n    cnt[\"apple\"]++;\n    cnt[\"apple\"]++;\n    cnt[\"pear\"]++;\n    for (auto &p : cnt) cout << p.first << \" \" << p.second << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> cnt;\n    cnt[\"apple\"]++;\n    cnt[\"apple\"]++;\n    cnt[\"pear\"]++;\n    for (auto &p : cnt) cout << p.first << \" \" << p.second << endl;\n    return 0;\n}",
+  "note": "基本格式：map<键类型, 值类型> mp; mp[key] = value; 按键自动升序排列。\n要点：mp[k] 在 k 不存在时会「自动创建并默认初始化」，所以用它查询会悄悄插入元素；\n只想查询应该用 mp.count(k) 或 mp.find(k)。\n进阶：unordered_map 不排序但更快；遍历时 auto &p : mp，p.first 是键、p.second 是值。"
  },
  {
   "lang": "cpp",
@@ -4630,7 +4654,8 @@
   "name": "set",
   "sig": "set<int> st;",
   "desc": "自动去重并升序。",
-  "example": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> st;\n    st.insert(3);\n    st.insert(1);\n    st.insert(3);\n    for (int x : st) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> st;\n    st.insert(3);\n    st.insert(1);\n    st.insert(3);\n    for (int x : st) cout << x << \" \";\n    cout << endl;\n    return 0;\n}",
+  "note": "基本格式：set<int> s; s.insert(x); 自动去重并按升序排好。\n要点：s.count(x) 判断存在返回 1；s.erase(x) 删除；不能用 s[i] 下标访问。\n进阶：set 底层是红黑树，每次操作 O(log n)；只判重不排序用 unordered_set 更快。"
  },
  {
   "lang": "cpp",
@@ -4638,7 +4663,8 @@
   "name": "count",
   "sig": "mp.count(k)",
   "desc": "存在返回 1，否则 0。",
-  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> mp;\n    mp[\"a\"] = 1;\n    cout << mp.count(\"a\") << \" \" << mp.count(\"b\") << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> mp;\n    mp[\"a\"] = 1;\n    cout << mp.count(\"a\") << \" \" << mp.count(\"b\") << endl;\n    return 0;\n}",
+  "note": "基本格式：mp.count(k) 存在返回 1、不存在返回 0（set 同理）。\n要点：判断「有没有」用 count 最安全，不会像 mp[k] 那样插入新元素。\n进阶：C++20 有 mp.contains(k)，语义更直观。"
  },
  {
   "lang": "cpp",
@@ -4646,7 +4672,8 @@
   "name": "sort",
   "sig": "sort(v.begin(), v.end())",
   "desc": "升序；加 greater<int>() 变降序。",
-  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 2};\n    sort(v.begin(), v.end());\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 2};\n    sort(v.begin(), v.end());\n    for (int x : v) cout << x << \" \";\n    cout << endl;\n    return 0;\n}",
+  "note": "基本格式：sort(first, last); 排序区间 [first, last)，左闭右开——包含 first，不包含 last。\n所以数组写 sort(a, a + n)，vector 写 sort(v.begin(), v.end())，写 a + n - 1 会漏掉最后一个元素。\n降序：sort(v.rbegin(), v.rend()) 或 sort(v.begin(), v.end(), greater<int>())。\n进阶：结构体排序要自己写比较函数 bool cmp(const P& a, const P& b) { return a.x > b.x; }，或者传 lambda；sort 是 O(n log n)，但不稳定，要稳定用 stable_sort。"
  },
  {
   "lang": "cpp",
@@ -4654,7 +4681,8 @@
   "name": "reverse",
   "sig": "reverse(v.begin(), v.end())",
   "desc": "原地反转。",
-  "example": "#include <iostream>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"abc\";\n    reverse(s.begin(), s.end());\n    cout << s << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"abc\";\n    reverse(s.begin(), s.end());\n    cout << s << endl;\n    return 0;\n}",
+  "note": "基本格式：reverse(first, last)，同样是左闭右开，原地反转。\n所以 reverse(v.begin(), v.end()) 才是整个 vector，写 v.end() - 1 会漏一个。\n进阶：字符串也能直接 reverse(s.begin(), s.end())。"
  },
  {
   "lang": "cpp",
@@ -4662,7 +4690,8 @@
   "name": "max_element",
   "sig": "*max_element(v.begin(), v.end())",
   "desc": "返回指向最大值的迭代器，记得加 *。",
-  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 9, 2};\n    cout << *max_element(v.begin(), v.end()) << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 9, 2};\n    cout << *max_element(v.begin(), v.end()) << endl;\n    return 0;\n}",
+  "note": "基本格式：max_element(first, last) 返回指向最大元素的迭代器（左闭右开）。\n要点：返回的是迭代器不是值，要加 * 取值；想知道下标就减去 begin()。\n进阶：minmax_element 一次同时拿到最小和最大，比调用两次快。"
  },
  {
   "lang": "cpp",
@@ -4670,7 +4699,8 @@
   "name": "lower_bound",
   "sig": "lower_bound(v.begin(), v.end(), x)",
   "desc": "有序区间里第一个 ≥ x 的位置。",
-  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 3, 3, 7};\n    int p = lower_bound(v.begin(), v.end(), 3) - v.begin();\n    cout << p << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 3, 3, 7};\n    int p = lower_bound(v.begin(), v.end(), 3) - v.begin();\n    cout << p << endl;\n    return 0;\n}",
+  "note": "基本格式：lower_bound(first, last, x) 在有序区间里找第一个 ≥ x 的位置，返回迭代器。\n要点：区间必须已经升序，否则结果没意义；减 begin() 得到下标，等于 end() 说明没有 ≥ x 的元素。\n进阶：upper_bound 找第一个 > x；要找「有几个 ≤ x」就用 upper_bound - begin()。"
  },
  {
   "lang": "cpp",
@@ -4678,7 +4708,8 @@
   "name": "stack",
   "sig": "stack<int> st;",
   "desc": "后进先出：push / pop / top / empty。",
-  "example": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> st;\n    st.push(1);\n    st.push(2);\n    cout << st.top() << endl;\n    st.pop();\n    cout << st.top() << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> st;\n    st.push(1);\n    st.push(2);\n    cout << st.top() << endl;\n    st.pop();\n    cout << st.top() << endl;\n    return 0;\n}",
+  "note": "基本格式：stack<int> st; st.push(x); st.top(); st.pop(); st.empty();\n要点：top() 只是看栈顶，pop() 只删除不返回，所以取值和出栈要分两步写。\n进阶：对空栈调用 top()/pop() 是未定义行为，操作前先判 empty()。"
  },
  {
   "lang": "cpp",
@@ -4686,7 +4717,8 @@
   "name": "queue",
   "sig": "queue<int> q;",
   "desc": "先进先出：push / pop / front。",
-  "example": "#include <iostream>\n#include <queue>\nusing namespace std;\n\nint main() {\n    queue<int> q;\n    q.push(1);\n    q.push(2);\n    cout << q.front() << endl;\n    q.pop();\n    cout << q.front() << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <queue>\nusing namespace std;\n\nint main() {\n    queue<int> q;\n    q.push(1);\n    q.push(2);\n    cout << q.front() << endl;\n    q.pop();\n    cout << q.front() << endl;\n    return 0;\n}",
+  "note": "基本格式：queue<int> q; q.push(x); q.front(); q.pop();\n要点：front 是队头（先进先出），back 是队尾；同样 pop 不返回值。\n进阶：priority_queue<int> 是优先队列（默认大根堆），push/pop 都是 O(log n)，常用来做「每次取最大」。"
  },
  {
   "lang": "cpp",
@@ -4694,7 +4726,8 @@
   "name": "gcd",
   "sig": "__gcd(a, b)",
   "desc": "最大公约数（C++17 也可用 std::gcd）。",
-  "example": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    cout << __gcd(12, 18) << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    cout << __gcd(12, 18) << endl;\n    return 0;\n}",
+  "note": "基本格式：__gcd(a, b)（GCC 内置）或 C++17 的 std::gcd(a, b)。\n要点：结果是最大公约数；最小公倍数 = a / gcd(a, b) * b（先除后乘防溢出）。\n进阶：自己手写也很短：int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }。"
  },
  {
   "lang": "cpp",
@@ -4702,7 +4735,8 @@
   "name": "sqrt / pow",
   "sig": "sqrt(x)  pow(a, b)",
   "desc": "开方、幂，需要 <cmath>。",
-  "example": "#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    cout << sqrt(16.0) << \" \" << pow(2, 8) << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    cout << sqrt(16.0) << \" \" << pow(2, 8) << endl;\n    return 0;\n}",
+  "note": "基本格式：sqrt(x)、pow(a, b)，都在 <cmath> 里，参数是 double。\n要点：pow 返回浮点数，pow(2, 10) 得到 1024.0，想当整数用要转换。\n进阶：整数快速幂自己写循环更快更准；判断完全平方数别用 sqrt 比较小数，用 i*i == n。"
  },
  {
   "lang": "cpp",
@@ -4710,65 +4744,10 @@
   "name": "abs",
   "sig": "abs(x)",
   "desc": "绝对值。",
-  "example": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\n\nint main() {\n    cout << abs(-7) << endl;\n    return 0;\n}"
+  "example": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\n\nint main() {\n    cout << abs(-7) << endl;\n    return 0;\n}",
+  "note": "基本格式：abs(x)，整数绝对值；小数用 fabs(x)。\n坑：<cstdlib> 的 abs 只处理 int，long long 要用 llabs 或 std::abs（C++11 起有重载）。"
  }
 ];
-
-  /* 每条常用代码属于哪个头文件 */
-  /* ============ 知识库：头文件区 ============ */
-  var HEADERS = [
-    { lang: 'c', name: '<stdio.h>', desc: '标准输入输出：打印、读取、文件读写',
-      funcs: ['printf', 'scanf', 'gets/puts', 'fopen/fclose', 'fprintf/fscanf', 'sprintf', 'getchar/putchar'],
-      code: '#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf("%d %d", &a, &b);\n    printf("%d\\n", a + b);\n    return 0;\n}' },
-    { lang: 'c', name: '<stdlib.h>', desc: '内存分配、类型转换、随机数、程序退出',
-      funcs: ['malloc/free', 'atoi/atof', 'rand/srand', 'qsort', 'abs', 'exit'],
-      code: '#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *a = (int*)malloc(5 * sizeof(int));\n    a[0] = 42;\n    printf("%d\\n", a[0]);\n    free(a);\n    return 0;\n}' },
-    { lang: 'c', name: '<string.h>', desc: '字符串与内存块操作',
-      funcs: ['strlen', 'strcmp', 'strcpy', 'strcat', 'strstr', 'memset', 'memcpy'],
-      code: '#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[50] = "hello";\n    strcat(s, " world");\n    printf("%s (%d)\\n", s, (int)strlen(s));\n    return 0;\n}' },
-    { lang: 'c', name: '<math.h>', desc: '数学函数',
-      funcs: ['sqrt', 'pow', 'fabs', 'sin/cos', 'log/exp', 'ceil/floor'],
-      code: '#include <stdio.h>\n#include <math.h>\n\nint main() {\n    printf("%.3f\\n", sqrt(2.0));\n    printf("%.0f\\n", pow(2, 10));\n    return 0;\n}' },
-    { lang: 'c', name: '<ctype.h>', desc: '字符判断与转换',
-      funcs: ['isdigit', 'isalpha', 'toupper', 'tolower', 'isspace'],
-      code: '#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    printf("%c\\n", toupper(97));\n    printf("%d\\n", isdigit(55) != 0);\n    return 0;\n}' },
-    { lang: 'cpp', name: '<iostream>', desc: 'C++ 标准输入输出流',
-      funcs: ['cin', 'cout', 'endl', 'getline'],
-      code: '#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<iomanip>', desc: '输出格式控制：小数位、宽度、对齐',
-      funcs: ['setprecision', 'fixed', 'setw', 'setfill', 'left/right'],
-      code: '#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 3.14159 << endl;\n    cout << setw(6) << setfill(\'0\') << 42 << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<string>', desc: 'C++ 字符串类',
-      funcs: ['size', 'substr', 'find', 'append', 'c_str', 'compare'],
-      code: '#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = "hello world";\n    cout << s.substr(0, 5) << endl;\n    cout << s.find("world") << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<vector>', desc: '动态数组',
-      funcs: ['push_back', 'pop_back', 'size', 'resize', 'begin/end', 'clear'],
-      code: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(3);\n    v.push_back(1);\n    for (int x : v) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<algorithm>', desc: '排序、查找、最值、去重',
-      funcs: ['sort', 'reverse', 'max_element', 'min_element', 'lower_bound', 'unique'],
-      code: '#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 2};\n    sort(v.begin(), v.end());\n    cout << *max_element(v.begin(), v.end()) << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<map>', desc: '键值对（按 key 有序）',
-      funcs: ['operator[]', 'count', 'find', 'erase', 'size'],
-      code: '#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> cnt;\n    cnt["apple"]++;\n    cnt["apple"]++;\n    cout << cnt["apple"] << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<set>', desc: '有序去重集合',
-      funcs: ['insert', 'count', 'erase', 'size'],
-      code: '#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> s;\n    s.insert(3); s.insert(1); s.insert(3);\n    for (int x : s) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<queue>', desc: '队列与优先队列',
-      funcs: ['push', 'pop', 'front', 'back', 'priority_queue'],
-      code: '#include <iostream>\n#include <queue>\nusing namespace std;\n\nint main() {\n    queue<int> q;\n    q.push(1); q.push(2);\n    cout << q.front() << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<stack>', desc: '栈（后进先出）',
-      funcs: ['push', 'pop', 'top', 'empty'],
-      code: '#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> st;\n    st.push(1); st.push(2);\n    cout << st.top() << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<cmath>', desc: 'C++ 数学函数',
-      funcs: ['sqrt', 'pow', 'fabs', 'round', 'floor'],
-      code: '#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    cout << sqrt(16.0) << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<functional>', desc: '函数对象，配合 sort 用 greater',
-      funcs: ['greater<int>', 'less<int>', 'function'],
-      code: '#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <functional>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 3, 2};\n    sort(v.begin(), v.end(), greater<int>());\n    for (int x : v) cout << x << " ";\n    cout << endl;\n    return 0;\n}' },
-    { lang: 'cpp', name: '<fstream>', desc: 'C++ 文件读写',
-      funcs: ['ifstream', 'ofstream', 'getline', 'close'],
-      code: '#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out("a.txt");\n    out << 42 << endl;\n    out.close();\n    ifstream in("a.txt");\n    int x;\n    in >> x;\n    return 0;\n}' },
-  ];
 
   var KB_HEADER = {
     'printf': '<stdio.h>', 'scanf': '<stdio.h>', 'puts': '<stdio.h>',
@@ -5169,6 +5148,9 @@
           (h ? '<span class="kb-h">' + esc(h) + '</span>' : '') + '</div>';
         codeHtml += '<div class="kb-sig">' + esc(k.sig) + '</div>';
         codeHtml += '<div class="kb-desc">' + esc(k.desc) + '</div>';
+        if (k.note) {
+          codeHtml += '<div class="kb-note">' + esc(k.note).replace(/\n/g, '<br>') + '</div>';
+        }
         codeHtml += '</div>';
       });
     });
