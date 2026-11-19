@@ -5709,18 +5709,25 @@
             (sec.funcs || []).forEach(function (f) {
               if (!f || !f.name || have[f.name]) return;
               have[f.name] = true;
+              var snippet = f.example || ('// ' + f.name + ' 的写法\n' + (f.sig || ''));
+              var isFull = snippet.indexOf('int main') >= 0;
+              var full = isFull ? snippet
+                : (sec.std && sec.std.length && sec.std[0].code && sec.std[0].code.indexOf('int main') >= 0
+                    ? sec.std[0].code : '');
               KB.push({
                 lang: lang,
                 group: '语法',
                 name: f.name,
                 sig: f.sig || '',
                 desc: f.desc || '',
-                example: f.example || ('// ' + f.name + ' 的写法\n' + (f.sig || '')),
+                example: full || snippet,
+                exampleIsSnippet: !full,
                 zh: '',
                 header: '',
                 note: '来自「' + ch.name + ' · ' + sec.name + '」的常用函数讲解。\n'
                     + (f.desc || '') + '\n'
-                    + (f.example ? '这里的示例是写法片段，完整可运行例子见上面的示例块。' : '')
+                    + (full ? '下面的完整程序就是这一节的示例，可以直接运行看效果。'
+                            : '这个点只有写法片段，配合所在小节的完整示例一起看。')
               });
             });
           });
