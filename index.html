@@ -5779,14 +5779,14 @@
 
   function examplesHtml(k) {
     var out = '';
-    if (k.exampleC) {
-      out += '<div class="kb-ex-l">C 写法</div><div class="kb-code-s">' + esc(k.exampleC) + '</div>';
-    }
-    if (k.exampleCpp) {
-      out += '<div class="kb-ex-l">C++ 写法</div><div class="kb-code-s">' + esc(k.exampleCpp) + '</div>';
-    }
-    if (!k.exampleC && !k.exampleCpp) {
-      out += '<div class="kb-ex-l">示例</div><div class="kb-code-s">' + esc(k.example || '') + '</div>';
+    var nativeLabel = k.lang === 'c' ? 'C 写法' : 'C++ 写法';
+    var otherLabel = k.lang === 'c' ? 'C++ 写法' : 'C 写法';
+    var other = k.lang === 'c' ? k.exampleCpp : k.exampleC;
+    out += '<div class="kb-ex-l">' + nativeLabel + '</div><div class="kb-code-s">' +
+      esc(k.example || '') + '</div>';
+    if (other) {
+      out += '<div class="kb-ex-l">' + otherLabel + '</div><div class="kb-code-s">' +
+        esc(other) + '</div>';
     }
     return out;
   }
