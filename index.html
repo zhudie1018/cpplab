@@ -123,6 +123,7 @@
   .kb-desc{font-size:12px;color:var(--muted);line-height:1.6}
   .kb-note{margin-top:8px;padding:8px 10px;background:#f6f9ff;border-left:3px solid var(--blue);
     border-radius:6px;font-size:12px;line-height:1.85;color:#33415c}
+  .kb-note-t{font-weight:700;font-size:11.5px;color:var(--blue-deep);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -4887,6 +4888,7 @@
           html += '<div style="font-weight:700;font-size:13.5px">' + esc(f.name) + '</div>';
           html += '<div class="code" style="margin:6px 0 8px">' + esc(f.sig) + '</div>';
           html += '<p style="margin:0">' + esc(f.desc) + '</p>';
+          html += '<button class="btn" style="margin-top:8px" data-kb="' + esc(f.name) + '">详细解释 →</button>';
           if (f.example) {
             html += '<div class="code" style="margin-bottom:0">' + esc(f.example) + '</div>';
           }
@@ -4960,10 +4962,14 @@
     }
     el.doc.innerHTML = html;
 
-    el.doc.querySelectorAll('[data-load-std]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+    el.doc.querySelectorAll('[data-load-std]').forEach(function (btn) {      btn.addEventListener('click', function () {
         setCode(section().std[Number(btn.dataset.loadStd)].code);
         setStatus('已载入标准写法', 'ok');
+      });
+    });
+    el.doc.querySelectorAll('[data-kb]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openKB(btn.dataset.kb || '');
       });
     });
     el.doc.querySelectorAll('[data-start]').forEach(function (btn) {
@@ -5110,9 +5116,10 @@
     setStatus(apiKey() ? 'Key 已保存' : 'Key 已清空', apiKey() ? 'ok' : 'warn');
   }
 
-  function openKB() {
-    el.kbSearch.value = '';
-    renderKB('');
+  function openKB(preset) {
+    var q = String(preset || '').trim();
+    el.kbSearch.value = q;
+    renderKB(q);
     el.kbPage.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     setTimeout(function () { el.kbSearch.focus(); }, 30);
@@ -5146,10 +5153,11 @@
         codeHtml += '<div class="kb-name">' + esc(k.name) +
           '<span class="kb-group">' + esc(k.group) + '</span>' +
           (h ? '<span class="kb-h">' + esc(h) + '</span>' : '') + '</div>';
-        codeHtml += '<div class="kb-sig">' + esc(k.sig) + '</div>';
+        codeHtml += '<div class="kb-sig"><b>基本：</b>' + esc(k.sig) + '</div>';
         codeHtml += '<div class="kb-desc">' + esc(k.desc) + '</div>';
         if (k.note) {
-          codeHtml += '<div class="kb-note">' + esc(k.note).replace(/\n/g, '<br>') + '</div>';
+          codeHtml += '<div class="kb-note"><div class="kb-note-t">详细说明 / 进阶写法</div>' +
+            esc(k.note).replace(/\n/g, '<br>') + '</div>';
         }
         codeHtml += '</div>';
       });
