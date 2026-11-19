@@ -5546,6 +5546,7 @@
     });
     el.doc.querySelectorAll('[data-kb]').forEach(function (btn) {
       btn.addEventListener('click', function () {
+        mergeFuncsIntoKB();
         openKB(btn.dataset.kb || '');
       });
     });
@@ -5693,7 +5694,43 @@
     setStatus(apiKey() ? 'Key 已保存' : 'Key 已清空', apiKey() ? 'ok' : 'warn');
   }
 
+  var kbMerged = false;
+
+  // 把「常用函数讲解」里还没进知识库的条目补进来（语法点、运算符等）
+  function mergeFuncsIntoKB() {
+    if (kbMerged) return;
+    kbMerged = true;
+    var have = {};
+    KB.forEach(function (k) { have[k.name] = true; });
+    ['cpp', 'c'].forEach(function (lang) {
+      ['basic', 'advanced'].forEach(function (lv) {
+        (LANGS[lang] && LANGS[lang][lv] ? LANGS[lang][lv] : []).forEach(function (ch) {
+          (ch.sections || []).forEach(function (sec) {
+            (sec.funcs || []).forEach(function (f) {
+              if (!f || !f.name || have[f.name]) return;
+              have[f.name] = true;
+              KB.push({
+                lang: lang,
+                group: '语法',
+                name: f.name,
+                sig: f.sig || '',
+                desc: f.desc || '',
+                example: f.example || ('// ' + f.name + ' 的写法\n' + (f.sig || '')),
+                zh: '',
+                header: '',
+                note: '来自「' + ch.name + ' · ' + sec.name + '」的常用函数讲解。\n'
+                    + (f.desc || '') + '\n'
+                    + (f.example ? '这里的示例是写法片段，完整可运行例子见上面的示例块。' : '')
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+
   function openKB(preset) {
+    mergeFuncsIntoKB();
     if (typeof preset !== 'string') preset = '';
     var q = String(preset || '').trim();
     el.kbSearch.value = q;
