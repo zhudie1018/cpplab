@@ -124,6 +124,7 @@
   .kb-note{margin-top:8px;padding:8px 10px;background:#f6f9ff;border-left:3px solid var(--blue);
     border-radius:6px;font-size:12px;line-height:1.85;color:#33415c}
   .kb-note-t{font-weight:700;font-size:11.5px;color:var(--blue-deep);margin-bottom:4px}
+  .kb-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
   .kb-ex-l{font-size:11px;font-weight:700;color:var(--dim);margin:10px 0 4px}
   .kb-code-s{background:#0f1729;color:#e6ecff;border-radius:8px;padding:10px 12px;
     font-family:Consolas,monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
@@ -5343,6 +5344,7 @@
   var state = { lang: 'cpp', level: 'basic', chapter: LANGS.cpp.basic[0].id, sectionIndex: 0, mode: 'std', exerciseIndex: 0 };
   var editor = null;
   var aiExercise = null;   // AI 现场生成的题
+  var kbTarget = null;     // 从知识库点「AI 出题」时的目标条目
   var aiBusy = false;
   var aiVerify = null;     // AI 题自检结果 {ok, bad}
 
@@ -5737,6 +5739,8 @@
           codeHtml += '<div class="kb-note"><div class="kb-note-t">详细说明 / 进阶写法</div>' +
             esc(k.note).replace(/\n/g, '<br>') + '</div>';
         }
+        codeHtml += '<div class="kb-actions">' +
+          '<button class="btn" data-kbd-ai="' + KB.indexOf(k) + '">✨ AI 出题</button></div>';
         codeHtml += '</div>';
       });
     });
@@ -5765,6 +5769,12 @@
       '<p style="font-size:13px;color:var(--dim)">没有匹配的头文件。</p>';
 
     [el.kbCodeList, el.kbHeadList].forEach(function (list) {
+      list.querySelectorAll('[data-kbd-ai]').forEach(function (btn) {
+        btn.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          startKbAi(Number(btn.dataset.kbdAi));
+        });
+      });
       list.querySelectorAll('.kb-item').forEach(function (node) {
         node.addEventListener('click', function () {
           if (node.dataset.idx !== undefined) {
@@ -5810,7 +5820,8 @@
         examplesHtml(k) + '</div>';
       bodyHtml += '<div class="kbd-actions">' +
         '<button class="btn primary" data-kbd-load="' + index + '">载入编辑器</button>' +
-        '<button class="btn" data-kbd-copy="' + index + '">复制代码</button></div>';
+        '<button class="btn" data-kbd-copy="' + index + '">复制代码</button>' +
+        '<button class="btn" data-kbd-ai="' + index + '">✨ AI 出题</button></div>';
     } else {
       var hd = HEADERS[index];
       if (!hd) return;
@@ -5850,8 +5861,22 @@
         }
       });
     });
+    el.kbdBody.querySelectorAll('[data-kbd-ai]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        startKbAi(Number(btn.dataset.kbdAi));
+      });
+    });
     el.kbd.classList.remove('hidden');
     document.querySelector('.kbd-body').scrollTop = 0;
+  }
+
+  function startKbAi(index) {
+    var k = KB[index];
+    if (!k) return;
+    kbTarget = k;
+    el.kbd.classList.add('hidden');
+    closeKB();
+    generateAI();
   }
 
   async function generateAI() {
@@ -5871,7 +5896,21 @@
     if (aiExercise) titles.push(aiExercise.title);
 
     var sys = '你是 C++ 入门教练。只输出 JSON，不要解释。';
-    var user =
+    var kbUser = kbTarget
+      ? ('学生正在学：' + kbTarget.name + '（' + kbTarget.sig + '）\n'
+         + '作用：' + kbTarget.desc + '\n'
+         + (kbTarget.note ? ('要点：' + kbTarget.note + '\n') : '')
+         + '\n请出一道必须用到它的编程题，专门练这个点：\n'
+         + '1. 题目要小，正确代码不超过 20 行，体现这个函数/语法的典型用法；\n'
+         + '2. 优先用 C++，只有 C 版本的函数就用 C；只用标准输入输出；\n'
+         + '3. 测试点 2~3 个，输入输出确定且唯一；\n'
+         + '4. starter 是完整可编译骨架，关键调用处留 // 补全；\n'
+         + '5. solution 是完整参考解法，必须能通过所有测试点；\n'
+         + '6. expect 要和 solution 输出完全一致。\n\n'
+         + '输出 JSON：{"title":"题名","level":"入门|简单|进阶","prompt":"题面","starter":"完整代码",'
+         + '"solution":"参考解法","hint":"一句话提示","tests":[{"stdin":"...","expect":"..."}]}')
+      : null;
+    var user = kbTarget ? kbUser :
       '语言：' + LANGS[state.lang].name + '\n章节：' + c.name + ' / ' + s.name + '\n本节要点：' + s.intro + '\n已有题目：' + (titles.join('、') || '无') +
       '\n\n请出一道新的练习题，要求：\n' +
       '1. 一题只考一个知识点，难度以初学者为准，正确代码不超过 15 行；\n' +
@@ -5921,6 +5960,7 @@
 
       aiExercise = obj;
       aiVerify = null;
+      kbTarget = null;
       setCode(obj.starter);
       state.mode = 'ex';
       el.mode.querySelectorAll('button').forEach(function (x) {
