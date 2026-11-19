@@ -101,6 +101,9 @@
     border-radius:10px;background:#fff;color:var(--text);outline:none;margin-bottom:10px}
   .kb-search:focus{border-color:var(--blue)}
   .kb-list{max-height:58vh;overflow:auto}
+  .note{margin:8px 0 10px;padding:10px 12px;background:#f6f9ff;border-left:3px solid var(--blue);
+    border-radius:8px;font-size:12.5px;line-height:1.9;color:#33415c}
+  .note-t{font-weight:700;color:var(--blue-deep);margin-bottom:4px;font-size:12px}
   .kbpage{position:fixed;inset:0;z-index:80;background:var(--bg);display:flex;flex-direction:column}
   .kbpage.hidden{display:none}
   .kb-top{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -2873,7 +2876,8 @@
       "std": [
        {
         "title": "输出整数与小数",
-        "code": "#include <stdio.h>\nint main() {\n    int a = 7;\n    double x = 3.14159;\n    printf(\"%d\\n\", a);\n    printf(\"%.2f\\n\", x);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a = 7;\n    double x = 3.14159;\n    printf(\"%d\\n\", a);\n    printf(\"%.2f\\n\", x);\n    return 0;\n}",
+        "note": "第 1 行 #include <stdio.h>：把「输入输出工具箱」拿进来，printf/scanf 都在里面。\nint a = 7;：声明一个整数变量 a，并放进 7。double x = 3.14159;：声明一个小数变量（double 比 float 更精确）。\nprintf(\"%d\\n\", a);：%d 是「这里要放一个整数」的占位符，\\n 表示换行。\nprintf(\"%.2f\\n\", x);：%.2f 表示保留两位小数输出。\n最后 return 0; 告诉系统程序正常结束，养成习惯别漏。"
        }
       ],
       "ex": [
@@ -2926,7 +2930,8 @@
       "std": [
        {
         "title": "读两个数",
-        "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}",
+        "note": "scanf(\"%d %d\", &a, &b); 里的 %d %d 表示要读两个整数；变量名前的 & 是「取地址」，告诉 scanf 把读到的东西放到哪块内存里，漏了 & 程序会崩。\n输入时两个数用空格或换行隔开都可以。\nprintf(\"%d\\n\", a * b); 直接算乘积并输出。"
        }
       ],
       "ex": [
@@ -2970,7 +2975,8 @@
       "std": [
        {
         "title": "四则运算",
-        "code": "#include <stdio.h>\nint main() {\n    int a = 7, b = 2;\n    printf(\"%d %d %d %d\\n\", a + b, a - b, a * b, a / b);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a = 7, b = 2;\n    printf(\"%d %d %d %d\\n\", a + b, a - b, a * b, a / b);\n    return 0;\n}",
+        "note": "一行声明两个变量：int a = 7, b = 2; 逗号隔开即可。\nprintf 里按顺序写 4 个 %d，对应后面 4 个值：和、差、积、商。\n注意 a / b 是整数除法，7/2 得 3 而不是 3.5——这是初学者最常踩的坑，想要小数得把其中一个转成 double，例如 (double)a / b。"
        }
       ],
       "ex": [
@@ -3030,7 +3036,8 @@
       "std": [
        {
         "title": "成绩等级",
-        "code": "#include <stdio.h>\nint main() {\n    int s;\n    scanf(\"%d\", &s);\n    if (s >= 90) printf(\"A\\n\");\n    else if (s >= 80) printf(\"B\\n\");\n    else if (s >= 60) printf(\"C\\n\");\n    else printf(\"D\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int s;\n    scanf(\"%d\", &s);\n    if (s >= 90) printf(\"A\\n\");\n    else if (s >= 80) printf(\"B\\n\");\n    else if (s >= 60) printf(\"C\\n\");\n    else printf(\"D\\n\");\n    return 0;\n}",
+        "note": "这段是「从高到低」判断：先看是否 ≥90，是就输出 A 并跳过后面；不是才继续看 ≥80……\nif / else if 是一条链，只会执行其中一个分支，所以顺序很重要，不能把 >=60 放最前面。\n最后的 else 处理所有剩下的情况（<60）。"
        }
       ],
       "ex": [
@@ -3093,7 +3100,8 @@
       "std": [
        {
         "title": "简易计算器",
-        "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    char op;\n    scanf(\"%d %c %d\", &a, &op, &b);\n    switch (op) {\n        case '+': printf(\"%d\\n\", a + b); break;\n        case '-': printf(\"%d\\n\", a - b); break;\n        case '*': printf(\"%d\\n\", a * b); break;\n        case '/': printf(\"%d\\n\", a / b); break;\n    }\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    char op;\n    scanf(\"%d %c %d\", &a, &op, &b);\n    switch (op) {\n        case '+': printf(\"%d\\n\", a + b); break;\n        case '-': printf(\"%d\\n\", a - b); break;\n        case '*': printf(\"%d\\n\", a * b); break;\n        case '/': printf(\"%d\\n\", a / b); break;\n    }\n    return 0;\n}",
+        "note": "先读整数 a、字符 op、整数 b：scanf(\"%d %c %d\", &a, &op, &b); 中间的空格能自动跳过空白字符。\nswitch (op) 按 op 的值跳转到对应 case；每个 case 末尾的 break 很重要，不加会继续往下执行（叫「穿透」）。\n这里的 / 是整数除法，10/3 得 3。"
        }
       ],
       "ex": [
@@ -3137,7 +3145,8 @@
       "std": [
        {
         "title": "1 到 n 求和",
-        "code": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) s += i;\n    printf(\"%d\\n\", s);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) s += i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+        "note": "int s = 0; 先准备一个「累加器」，一定要初始化为 0，否则里面是垃圾值。\nfor (int i = 1; i <= n; i++) 表示 i 从 1 开始，每次加 1，直到超过 n。\n循环体 s += i; 等价于 s = s + i;，把每个 i 加进累加器。\n循环结束后输出 s。"
        }
       ],
       "ex": [
@@ -3201,7 +3210,8 @@
       "std": [
        {
         "title": "求和函数",
-        "code": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\n\nint main() {\n    printf(\"%d\\n\", add(3, 4));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\n\nint main() {\n    printf(\"%d\\n\", add(3, 4));\n    return 0;\n}",
+        "note": "函数的写法是「返回类型 名字(参数列表) { 函数体 }」。\nint add(int a, int b) 表示：调用时传两个整数进来，函数会返回一个整数。\nreturn a + b; 把结果交回给调用它的地方，main 里的 add(3, 4) 就变成了 7。\n注意：函数要写在调用之前，或者在前面先声明一行 int add(int, int);。"
        }
       ],
       "ex": [
@@ -3247,7 +3257,8 @@
       "std": [
        {
         "title": "通过指针修改",
-        "code": "#include <stdio.h>\n\nvoid addOne(int *p) { (*p)++; }\n\nint main() {\n    int a = 1;\n    addOne(&a);\n    printf(\"%d\\n\", a);\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nvoid addOne(int *p) { (*p)++; }\n\nint main() {\n    int a = 1;\n    addOne(&a);\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+        "note": "关键在 void addOne(int *p)：参数是「指针」，也就是变量的地址，而不是变量的副本。\n调用时写 addOne(&a)，把 a 的地址传进去；函数里 (*p)++ 通过地址改到了外面真正的 a。\n如果参数写成 int p（不加 *），改的只是副本，外面的 a 不会变——这就是值传递和地址传递的区别。\n(*p) 外面的括号不能省，*p++ 的含义完全不同。"
        }
       ],
       "ex": [
@@ -3281,7 +3292,8 @@
       "std": [
        {
         "title": "递归求阶乘",
-        "code": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}\n\nint main() {\n    printf(\"%lld\\n\", fact(5));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}\n\nint main() {\n    printf(\"%lld\\n\", fact(5));\n    return 0;\n}",
+        "note": "递归就是「函数自己调用自己」，必须有一个终止条件，否则会无限递归直到栈溢出。\nif (n <= 1) return 1; 就是出口：0! 和 1! 都等于 1。\nreturn n * fact(n - 1); 把大问题化成小一号的问题，一路退到出口再逐层返回。\n用 long long 接收结果，因为 13! 就超出 int 的范围了。"
        }
       ],
       "ex": [
@@ -3332,7 +3344,8 @@
       "std": [
        {
         "title": "求最大值",
-        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int mx = a[0];\n    for (int i = 1; i < n; i++) if (a[i] > mx) mx = a[i];\n    printf(\"%d\\n\", mx);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int mx = a[0];\n    for (int i = 1; i < n; i++) if (a[i] > mx) mx = a[i];\n    printf(\"%d\\n\", mx);\n    return 0;\n}",
+        "note": "先读 n，再用循环把 n 个数读进数组 a。\nint mx = a[0]; 假设第一个就是最大，然后从第二个开始逐个比较：只要 a[i] 比 mx 大就更新 mx。\n循环结束 mx 就是最大值。这种「先假设、再逐个挑战」是求最值的通用套路。"
        }
       ],
       "ex": [
@@ -3385,7 +3398,8 @@
       "std": [
        {
         "title": "矩阵求和",
-        "code": "#include <stdio.h>\nint main() {\n    int n, m, a[105][105], s = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++) {\n            scanf(\"%d\", &a[i][j]);\n            s += a[i][j];\n        }\n    printf(\"%d\\n\", s);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n, m, a[105][105], s = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++) {\n            scanf(\"%d\", &a[i][j]);\n            s += a[i][j];\n        }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+        "note": "二维数组 a[105][105] 的第一个下标是行，第二个是列，都从 0 开始。\n两层循环：外层 i 走行，内层 j 走列，读一个数就加进 s。\nscanf(\"%d %d\", &n, &m); 先读行数和列数，后面的读入才知道循环几次。"
        }
       ],
       "ex": [
@@ -3419,7 +3433,8 @@
       "std": [
        {
         "title": "数组求和函数",
-        "code": "#include <stdio.h>\n\nint sumOf(int a[], int n) {\n    int s = 0;\n    for (int i = 0; i < n; i++) s += a[i];\n    return s;\n}\n\nint main() {\n    int a[3] = {1, 2, 3};\n    printf(\"%d\\n\", sumOf(a, 3));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nint sumOf(int a[], int n) {\n    int s = 0;\n    for (int i = 0; i < n; i++) s += a[i];\n    return s;\n}\n\nint main() {\n    int a[3] = {1, 2, 3};\n    printf(\"%d\\n\", sumOf(a, 3));\n    return 0;\n}",
+        "note": "数组当参数时写成 int a[]，但编译器不知道它有多长，所以必须再传一个 n。\n函数里 a[i] 访问的就是 main 里的那个数组，不会复制一份（这叫「数组退化为指针」）。\n所以函数里改 a[i]，外面的数组也会跟着变；想只读不改就要自己注意别赋值。"
        }
       ],
       "ex": [
@@ -3466,7 +3481,8 @@
       "std": [
        {
         "title": "手动求长度",
-        "code": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    int len = 0;\n    while (s[len] != '\\0') len++;\n    printf(\"%d\\n\", len);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    int len = 0;\n    while (s[len] != '\\0') len++;\n    printf(\"%d\\n\", len);\n    return 0;\n}",
+        "note": "C 的字符串就是字符数组，末尾有一个看不见的 '\\0' 作为结束标志。\nwhile (s[len] != '\\0') len++; 从头数，遇到 '\\0' 就停，len 正好是字符个数。\n所以别忘了给数组留出放 '\\0' 的位置：存 5 个字符至少要 char s[6]。"
        }
       ],
       "ex": [
@@ -3525,7 +3541,8 @@
       "std": [
        {
         "title": "用 strlen 求长度",
-        "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", (int)strlen(s));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", (int)strlen(s));\n    return 0;\n}",
+        "note": "strlen 在 <string.h> 里，所以要 #include <string.h>。\n它返回的类型是 size_t（无符号整数），直接 printf 用 %d 可能报警告，所以强转成 int：(int)strlen(s)。\nstrlen 数到 '\\0' 为止，不把 '\\0' 算进长度。"
        }
       ],
       "ex": [
@@ -3572,7 +3589,8 @@
       "std": [
        {
         "title": "指针交换",
-        "code": "#include <stdio.h>\nint main() {\n    int a = 1, b = 2, t;\n    int *p = &a, *q = &b;\n    t = *p; *p = *q; *q = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a = 1, b = 2, t;\n    int *p = &a, *q = &b;\n    t = *p; *p = *q; *q = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+        "note": "int *p = &a, *q = &b; 让 p 指向 a、q 指向 b，p 里存的是 a 的地址。\nt = *p; 取出 a 的值暂存；*p = *q; 把 b 的值写进 a；*q = t; 再把暂存的值写进 b。\n全程操作的是「地址指向的内容」，所以 a、b 真的交换了。如果直接写 int t = a; a = b; b = t; 也一样，指针版是为了练习指针用法。"
        }
       ],
       "ex": [
@@ -3612,7 +3630,8 @@
       "std": [
        {
         "title": "用指针遍历",
-        "code": "#include <stdio.h>\nint main() {\n    int a[3] = {1, 2, 3};\n    int *p = a;\n    for (int i = 0; i < 3; i++) printf(\"%d \", *(p + i));\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a[3] = {1, 2, 3};\n    int *p = a;\n    for (int i = 0; i < 3; i++) printf(\"%d \", *(p + i));\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "数组名 a 本身就等于 &a[0]，所以 int *p = a; 让 p 指向第一个元素。\n*(p + i) 等价于 a[i]：p 向后移动 i 个元素再取值。\n所以 for 循环里既能写 a[i]，也能写 *(p + i)，两种写法等价。"
        }
       ],
       "ex": [
@@ -3652,7 +3671,8 @@
       "std": [
        {
         "title": "动态数组",
-        "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n = 3;\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) a[i] = i + 1;\n    int s = 0;\n    for (int i = 0; i < n; i++) s += a[i];\n    printf(\"%d\\n\", s);\n    free(a);\n    return 0;\n}"
+        "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n = 3;\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) a[i] = i + 1;\n    int s = 0;\n    for (int i = 0; i < n; i++) s += a[i];\n    printf(\"%d\\n\", s);\n    free(a);\n    return 0;\n}",
+        "note": "malloc(n * sizeof(int)) 向系统要 n 个 int 那么大的内存，返回的是 void*，所以要强转成 int*。\n拿到之后就能像普通数组一样用 a[i]。\n用完必须 free(a); 把内存还回去，否则就是内存泄漏。"
        }
       ],
       "ex": [
@@ -3699,7 +3719,8 @@
       "std": [
        {
         "title": "结构体存学生",
-        "code": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s = {\"小明\", 90};\n    printf(\"%s %d\\n\", s.name, s.score);\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s = {\"小明\", 90};\n    printf(\"%s %d\\n\", s.name, s.score);\n    return 0;\n}",
+        "note": "struct Student { char name[20]; int score; }; 定义了一个新类型，里面有两个成员。\nstruct Student s = {\"小明\", 90}; 按定义顺序初始化。\n访问成员用点号：s.name、s.score。\n注意结构体定义后面的分号不能漏。"
        }
       ],
       "ex": [
@@ -3739,7 +3760,8 @@
       "std": [
        {
         "title": "枚举 + switch",
-        "code": "#include <stdio.h>\nint main() {\n    enum Color { RED, GREEN, BLUE };\n    enum Color c = GREEN;\n    switch (c) {\n        case RED: printf(\"red\\n\"); break;\n        case GREEN: printf(\"green\\n\"); break;\n        case BLUE: printf(\"blue\\n\"); break;\n    }\n    return 0;\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    enum Color { RED, GREEN, BLUE };\n    enum Color c = GREEN;\n    switch (c) {\n        case RED: printf(\"red\\n\"); break;\n        case GREEN: printf(\"green\\n\"); break;\n        case BLUE: printf(\"blue\\n\"); break;\n    }\n    return 0;\n    return 0;\n}",
+        "note": "enum Color { RED, GREEN, BLUE }; 给 0、1、2 各起了个名字，读代码时比数字直观。\nenum Color c = GREEN; 现在 c 的值是 1。\nswitch (c) 里写 case RED: 等价于 case 0:，但可读性好得多。"
        }
       ],
       "ex": [
@@ -3783,7 +3805,8 @@
       "std": [
        {
         "title": "结构体数组求平均",
-        "code": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    struct Student a[3] = {{90}, {80}, {70}};\n    int s = 0;\n    for (int i = 0; i < 3; i++) s += a[i].score;\n    printf(\"%.2f\\n\", s / 3.0);\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    struct Student a[3] = {{90}, {80}, {70}};\n    int s = 0;\n    for (int i = 0; i < 3; i++) s += a[i].score;\n    printf(\"%.2f\\n\", s / 3.0);\n    return 0;\n}",
+        "note": "struct Student a[3]; 是一个「表」，每个元素都有 score。\na[0].score 表示第 0 个学生的分数，注意是「先取元素，再取成员」。\n累加后除以 3.0（写成小数）才能得到小数结果，写 3 会做整数除法。"
        }
       ],
       "ex": [
@@ -3842,7 +3865,8 @@
       "std": [
        {
         "title": "写入再读出",
-        "code": "#include <stdio.h>\nint main() {\n    FILE *fp = fopen(\"data.txt\", \"w\");\n    fprintf(fp, \"%d\\n\", 42);\n    fclose(fp);\n\n    fp = fopen(\"data.txt\", \"r\");\n    int x;\n    fscanf(fp, \"%d\", &x);\n    fclose(fp);\n    printf(\"%d\\n\", x);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    FILE *fp = fopen(\"data.txt\", \"w\");\n    fprintf(fp, \"%d\\n\", 42);\n    fclose(fp);\n\n    fp = fopen(\"data.txt\", \"r\");\n    int x;\n    fscanf(fp, \"%d\", &x);\n    fclose(fp);\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+        "note": "fopen(\"data.txt\", \"w\") 以「写」方式打开文件，文件不存在会创建，存在会被清空。\nfprintf 和 printf 用法一样，只是第一个参数是文件指针。\n写完一定要 fclose，否则内容可能还没真正落盘。\n再用 \"r\" 方式打开、fscanf 读回来，验证写进去的是 42。"
        }
       ],
       "ex": []
@@ -3881,7 +3905,8 @@
       "std": [
        {
         "title": "用宏求最大值",
-        "code": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main() {\n    printf(\"%d\\n\", MAX(3, 8));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main() {\n    printf(\"%d\\n\", MAX(3, 8));\n    return 0;\n}",
+        "note": "#define 是「文本替换」，编译前预处理器会把代码里所有 MAX(a, b) 直接换成后面的式子。\n所以参数和整体都要加括号：((a) > (b) ? (a) : (b))，否则遇到 MAX(1+2, 3) 这种会算错。\n宏没有类型检查，也不能调试，复杂逻辑还是写函数更安全。"
        }
       ],
       "ex": [
@@ -3934,7 +3959,8 @@
       "std": [
        {
         "title": "统计二进制 1 的个数",
-        "code": "#include <stdio.h>\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int cnt = 0;\n    while (x) { cnt += x & 1; x >>= 1; }\n    printf(\"%d\\n\", cnt);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int cnt = 0;\n    while (x) { cnt += x & 1; x >>= 1; }\n    printf(\"%d\\n\", cnt);\n    return 0;\n}",
+        "note": "x & 1 取出最低位：是 1 就说明这一位是 1。\nx >>= 1 把整体右移一位，原来的次低位变成最低位。\n循环直到 x 变成 0，cnt 就是 1 的个数。比如 5 是 101，有 2 个 1。"
        }
       ],
       "ex": [
@@ -3978,7 +4004,8 @@
       "std": [
        {
         "title": "清零数组",
-        "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int a[5];\n    memset(a, 0, sizeof(a));\n    for (int i = 0; i < 5; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int a[5];\n    memset(a, 0, sizeof(a));\n    for (int i = 0; i < 5; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "memset(a, 0, sizeof(a)) 把从 a 开始的 sizeof(a) 个字节全部设成 0。\n它是按「字节」操作的，所以只适合填 0 或 -1；想给 int 数组填 1 是不行的（会得到 16843009）。\nsizeof(a) 只有在数组还在当前作用域时才等于整个数组大小，传进函数后就变成指针大小了。"
        }
       ],
       "ex": [
@@ -4021,7 +4048,8 @@
       "std": [
        {
         "title": "冒泡排序",
-        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++)\n        for (int j = 0; j < n - 1 - i; j++)\n            if (a[j] > a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++)\n        for (int j = 0; j < n - 1 - i; j++)\n            if (a[j] > a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "每一轮把相邻两个数比较，大的往后换，一轮下来最大的就「沉」到末尾。\n外层 i 控制轮数，内层 j 只需比较到 n-1-i（后面的已经排好了）。\n两层循环，时间复杂度 O(n²)，n 到 10^5 就会超时，所以实际做题多用 sort。"
        }
       ],
       "ex": [
@@ -4055,7 +4083,8 @@
       "std": [
        {
         "title": "选择排序",
-        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++) {\n        int mn = i;\n        for (int j = i + 1; j < n; j++) if (a[j] < a[mn]) mn = j;\n        int t = a[i]; a[i] = a[mn]; a[mn] = t;\n    }\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++) {\n        int mn = i;\n        for (int j = i + 1; j < n; j++) if (a[j] < a[mn]) mn = j;\n        int t = a[i]; a[i] = a[mn]; a[mn] = t;\n    }\n    for (int i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "每一轮在「还没排好的部分」里找最小的，和这一轮的起点交换。\nmn 记录最小值的下标，内层循环结束后再交换，比冒泡的交换次数少。\n同样 O(n²)，但它是「不稳定」排序：相等的元素相对顺序可能变。"
        }
       ],
       "ex": [
@@ -4102,7 +4131,8 @@
       "std": [
        {
         "title": "二分查找",
-        "code": "#include <stdio.h>\nint main() {\n    int a[5] = {1, 3, 5, 7, 9};\n    int x = 7, l = 0, r = 4, ans = -1;\n    while (l <= r) {\n        int mid = (l + r) / 2;\n        if (a[mid] == x) { ans = mid; break; }\n        else if (a[mid] < x) l = mid + 1;\n        else r = mid - 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int a[5] = {1, 3, 5, 7, 9};\n    int x = 7, l = 0, r = 4, ans = -1;\n    while (l <= r) {\n        int mid = (l + r) / 2;\n        if (a[mid] == x) { ans = mid; break; }\n        else if (a[mid] < x) l = mid + 1;\n        else r = mid - 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}",
+        "note": "前提是数组已经有序，否则不能用。\n每次取中间 mid，和 x 比较：相等就找到；a[mid] < x 说明目标在右半边，l = mid + 1；否则 r = mid - 1。\n循环条件是 l <= r，写成 l < r 会漏掉最后一个元素。"
        }
       ],
       "ex": [
@@ -4153,7 +4183,8 @@
       "std": [
        {
         "title": "括号匹配",
-        "code": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char st[105];\n    int top = 0, ok = 1;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') st[top++] = s[i];\n        else if (s[i] == ')') {\n            if (top == 0) { ok = 0; break; }\n            top--;\n        }\n    }\n    if (top != 0) ok = 0;\n    printf(\"%s\\n\", ok ? \"yes\" : \"no\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char st[105];\n    int top = 0, ok = 1;\n    for (int i = 0; s[i]; i++) {\n        if (s[i] == '(') st[top++] = s[i];\n        else if (s[i] == ')') {\n            if (top == 0) { ok = 0; break; }\n            top--;\n        }\n    }\n    if (top != 0) ok = 0;\n    printf(\"%s\\n\", ok ? \"yes\" : \"no\");\n    return 0;\n}",
+        "note": "用数组模拟栈：top 指向「下一个空位」。\n遇到 ( 就入栈 st[top++] = s[i]；遇到 ) 就先检查栈空不空（空了说明多了一个右括号），再出栈 top--。\n扫完后栈必须为空，否则说明左括号多了。两个条件都满足才输出 yes。"
        }
       ],
       "ex": [
@@ -4197,7 +4228,8 @@
       "std": [
        {
         "title": "队列模拟",
-        "code": "#include <stdio.h>\nint main() {\n    int q[105], head = 0, tail = 0;\n    for (int i = 1; i <= 3; i++) q[tail++] = i;\n    while (head < tail) printf(\"%d \", q[head++]);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int q[105], head = 0, tail = 0;\n    for (int i = 1; i <= 3; i++) q[tail++] = i;\n    while (head < tail) printf(\"%d \", q[head++]);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "head 指向队头，tail 指向队尾的下一个空位，队列里元素个数是 tail - head。\n入队：q[tail++] = x；出队：取 q[head] 后 head++。\n只要 head < tail 就说明队列非空。"
        }
       ],
       "ex": [
@@ -4250,7 +4282,8 @@
       "std": [
        {
         "title": "头插法建链表",
-        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node { int val; struct Node *next; };\n\nint main() {\n    struct Node *head = 0;\n    for (int i = 1; i <= 3; i++) {\n        struct Node *p = (struct Node*)malloc(sizeof(struct Node));\n        p->val = i;\n        p->next = head;\n        head = p;\n    }\n    for (struct Node *p = head; p; p = p->next) printf(\"%d \", p->val);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node { int val; struct Node *next; };\n\nint main() {\n    struct Node *head = 0;\n    for (int i = 1; i <= 3; i++) {\n        struct Node *p = (struct Node*)malloc(sizeof(struct Node));\n        p->val = i;\n        p->next = head;\n        head = p;\n    }\n    for (struct Node *p = head; p; p = p->next) printf(\"%d \", p->val);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "每个结点用 malloc 单独申请，里面存 val 和 next。\n头插法：p->next = head; head = p; 新结点变成新的表头，所以最后链表顺序和输入相反。\np->val 中的 -> 是「指针取成员」，等价于 (*p).val。\n遍历时 for (p = head; p; p = p->next) 用 p 本身判断是否到头（NULL 为假）。"
        }
       ],
       "ex": [
@@ -4291,7 +4324,8 @@
       "std": [
        {
         "title": "递归斐波那契",
-        "code": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 2) return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main() {\n    printf(\"%d\\n\", fib(10));\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 2) return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main() {\n    printf(\"%d\\n\", fib(10));\n    return 0;\n}",
+        "note": "出口：n <= 2 时返回 1（f(1)=f(2)=1）。\n递推：f(n) = f(n-1) + f(n-2)，把大问题拆成两个小问题。\n朴素递归会重复计算很多次，n 到 40 就很慢，实际要用循环或记忆化的写法（见下一节 DP）。"
        }
       ],
       "ex": [
@@ -4335,7 +4369,8 @@
       "std": [
        {
         "title": "爬楼梯",
-        "code": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f[65];\n    f[1] = 1; f[2] = 2;\n    for (int i = 3; i <= n; i++) f[i] = f[i - 1] + f[i - 2];\n    printf(\"%lld\\n\", f[n]);\n    return 0;\n}"
+        "code": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f[65];\n    f[1] = 1; f[2] = 2;\n    for (int i = 3; i <= n; i++) f[i] = f[i - 1] + f[i - 2];\n    printf(\"%lld\\n\", f[n]);\n    return 0;\n}",
+        "note": "这是最基础的动态规划：f[i] 表示走到第 i 级有多少种走法。\n最后一步要么从 i-1 迈 1 级，要么从 i-2 迈 2 级，所以 f[i] = f[i-1] + f[i-2]。\n初值 f[1] = 1、f[2] = 2，然后从 3 推到 n。和斐波那契只差初值。"
        }
       ],
       "ex": [
@@ -4386,7 +4421,8 @@
       "std": [
        {
         "title": "中序遍历",
-        "code": "#include <stdio.h>\n\nint n = 7;\nint a[8] = {0, 1, 2, 3, 4, 5, 6, 7};\n\nvoid dfs(int i) {\n    if (i > n) return;\n    dfs(2 * i);\n    printf(\"%d \", a[i]);\n    dfs(2 * i + 1);\n}\n\nint main() {\n    dfs(1);\n    printf(\"\\n\");\n    return 0;\n}"
+        "code": "#include <stdio.h>\n\nint n = 7;\nint a[8] = {0, 1, 2, 3, 4, 5, 6, 7};\n\nvoid dfs(int i) {\n    if (i > n) return;\n    dfs(2 * i);\n    printf(\"%d \", a[i]);\n    dfs(2 * i + 1);\n}\n\nint main() {\n    dfs(1);\n    printf(\"\\n\");\n    return 0;\n}",
+        "note": "完全二叉树可以不用指针，直接放在数组里：a[1] 是根，a[2i] 是左孩子，a[2i+1] 是右孩子。\n中序遍历的顺序是「左子树 → 根 → 右子树」，所以 dfs 里先递归 2i，再输出 a[i]，最后递归 2i+1。\ni > n 就说明这个位置没有结点，直接返回。"
        }
       ],
       "ex": [
@@ -4882,6 +4918,10 @@
       s.std.forEach(function (item, i) {
         html += '<div class="card"><h2 style="font-size:14px">' + esc(item.title) + '</h2>';
         html += '<div class="code">' + esc(item.code) + '</div>';
+        if (item.note) {
+          html += '<div class="note"><div class="note-t">逐段讲解</div>' +
+            esc(item.note).replace(/\n/g, '<br>') + '</div>';
+        }
         html += '<button class="btn" data-load-std="' + i + '">载入编辑器</button></div>';
       });
     } else {
