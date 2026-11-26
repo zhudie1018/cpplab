@@ -148,6 +148,18 @@
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .doc.fadein{animation:fadeUp .26s ease}
+  /* 顶栏固定：不换行、不跳动 */
+  header{flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;
+    height:56px;padding:0 14px;gap:8px;scrollbar-width:none}
+  header::-webkit-scrollbar{display:none}
+  header > *{flex-shrink:0}
+  #chapter{width:232px}
+  #section{width:188px}
+  header select{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+  header .seg{flex-shrink:0}
+  header .btn{white-space:nowrap}
+  header .spacer{flex:1 1 auto;min-width:0}
+
   /* ===== 柔和主题 ===== */
   .hello{display:flex;align-items:center;gap:8px;padding:8px 18px;
     background:linear-gradient(90deg,#fff6f7,#fdf1f4);border-bottom:1px solid var(--line);
