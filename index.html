@@ -12804,24 +12804,43 @@
     morning: [
       '早上好呀，今天也一起加油！(๑•̀ㅂ•́)و✧',
       '早起的人运气都不会太差哦～(｡･ω･｡)ﾉ',
-      '新的一天，先来一道入门题热热身？(๑>◡<๑)'
+      '新的一天，先来一道入门题热热身？(๑>◡<๑)',
+      '太阳都出来了，你也要发光呀 (｡•̀ᴗ-)✧',
+      '早餐吃了没？不吃脑子会转不动的 (｡•́︿•̀｡)',
+      '今天想先啃哪一科？我听你的～(｡･ω･｡)',
+      '昨天没弄懂的，今天再试一次？(ง •̀_•́)ง',
+      '早上头脑最清楚，适合啃硬骨头 (๑•̀ㅂ•́)و'
     ],
     noon: [
       '中午啦，吃饱了才有力气写代码嘛～(๑´ڡ`๑)',
       '别光顾着敲代码，记得午休哦 (｡•́︿•̀｡)',
-      '下午的题目我陪你一起啃！(ง •̀_•́)ง'
+      '下午的题目我陪你一起啃！(ง •̀_•́)ง',
+      '上午的战果怎么样？说说看 (๑>◡<๑)',
+      '困了就趴十分钟，效率反而更高哦 (｡-ω-)zzz',
+      '饭后别马上坐着，走两步～(｡･ω･｡)ﾉ',
+      '半天的疲劳，一杯水就能救回来 (๑•̀ㅂ•́)'
     ],
     evening: [
       '晚上好呀，今天学得怎么样？(｡･ω･｡)',
       '一天一点点，期末就不慌张啦～(๑•̀ㅂ•́)و',
-      '错题不可怕，我陪你一起弄懂它！(๑>◡<๑)'
+      '错题不可怕，我陪你一起弄懂它！(๑>◡<๑)',
+      '晚上的时间最完整，适合做套题 (ง •̀_•́)ง',
+      '今天有哪道题卡住你了吗？(｡･ω･｡)ﾉ',
+      '把今天学到的写下来，记得更牢 (๑•̀ㅂ•́)و✧',
+      '别一直盯着屏幕，眼睛也要休息 (｡•́︿•̀｡)',
+      '学完这一节，就奖励自己一下嘛～(๑´ڡ`๑)'
     ],
     night: [
       '夜深了，写完这题就去睡觉哦 (｡-ω-)zzz',
       '熬夜会长痘的，快去睡！(๑•́ ₃ •̀๑)',
-      '有我在，慢慢来就好啦～(っ´ω`)ﾉ'
+      '有我在，慢慢来就好啦～(っ´ω`)ﾉ',
+      '明天再战也一样，别硬撑 (｡•́︿•̀｡)',
+      '睡前把手机放下，脑子才转得开 (｡-ω-)',
+      '今天的努力，我都记着呢 (๑•̀ㅂ•́)و',
+      '晚安，做个好梦～(˘ω˘)♡'
     ]
   };
+
   function helloList() {
     var h = new Date().getHours();
     if (h < 6) return HELLO.night;
@@ -12830,20 +12849,28 @@
     if (h < 23) return HELLO.evening;
     return HELLO.night;
   }
-  var helloIdx = Math.floor(Math.random() * 3);
+
+  var helloIdx = 0;
+
   function renderHello() {
     var el = document.getElementById('helloText');
     if (!el) return;
     var list = helloList();
     el.textContent = list[helloIdx % list.length];
   }
+
   document.addEventListener('DOMContentLoaded', function () {
+    var list = helloList();
+    helloIdx = Math.floor(Math.random() * list.length);
     renderHello();
     var box = document.getElementById('hello');
-    if (box) box.addEventListener('click', function () {
-      helloIdx = (helloIdx + 1 + Math.floor(Math.random() * 2)) % 3;
-      renderHello();
-    });
+    if (box) {
+      box.addEventListener('click', function () {
+        var l = helloList();
+        helloIdx = (helloIdx + 1) % l.length;
+        renderHello();
+      });
+    }
   });
 
   function moveSegSlider(seg) {
