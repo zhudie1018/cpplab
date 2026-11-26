@@ -378,7 +378,7 @@
        },
        {
         "title": "交换两个变量",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入两个整数 a、b，交换后输出（先输出 b 再输出 a）。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, t;\n    cin >> a >> b;\n\n    // 用 t 做临时变量交换\n    return 0;\n}",
         "hint": "t = a; a = b; b = t;",
@@ -481,7 +481,7 @@
       "ex": [
        {
         "title": "圆的面积",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入半径 r，输出面积，保留两位小数，π 取 3.14159。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    double r;\n    cin >> r;\n\n    // 输出面积\n    return 0;\n}",
         "hint": "cout << fixed << setprecision(2) 之后再输出。",
@@ -498,7 +498,7 @@
        },
        {
         "title": "三数平均",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入三个整数，输出平均值，保留一位小数。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n\n    // 输出平均值\n    return 0;\n}",
         "hint": "和用 double 存，再除以 3。",
@@ -555,7 +555,7 @@
       "ex": [
        {
         "title": "闰年判断",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入年份 y，是闰年输出 yes，否则 no。（能被 4 整除且不能被 100 整除，或能被 400 整除）",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int y;\n    cin >> y;\n\n    // 判断闰年\n    return 0;\n}",
         "hint": "(y % 4 == 0 && y % 100 != 0) || y % 400 == 0",
@@ -576,7 +576,7 @@
        },
        {
         "title": "能否组成三角形",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入三个正整数，任意两边之和大于第三边输出 yes，否则 no。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n\n    // 判断\n    return 0;\n}",
         "hint": "三个条件用 && 连起来。",
@@ -643,7 +643,7 @@
        },
        {
         "title": "三个数里的最大值",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入三个整数，输出最大的那个。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
@@ -731,7 +731,7 @@
        },
        {
         "title": "简易计算器",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 a、运算符、b（如 3 + 4），输出结果。支持 + - * /。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    char op;\n    cin >> a >> op >> b;\n\n    // 用 switch 计算\n    return 0;\n}",
         "hint": "注意除号是 '/'，字符用单引号。",
@@ -815,7 +815,7 @@
        },
        {
         "title": "n 的阶乘",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（0 ≤ n ≤ 12），输出 n!。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
@@ -865,7 +865,7 @@
       "ex": [
        {
         "title": "星号直角三角形",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n，输出 n 行：第 i 行有 i 个星号。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 打印三角形\n    return 0;\n}",
         "hint": "外层控制行号 i，内层打印 i 个星号。",
@@ -899,7 +899,7 @@
        },
        {
         "title": "各位数字之和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入非负整数 n，输出各位数字之和。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 求各位和\n    return 0;\n}",
         "hint": "n % 10 取个位，n / 10 去掉个位。",
@@ -1034,7 +1034,7 @@
        },
        {
         "title": "数组求和函数",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数。写函数 sumOf 求总和。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint sumOf(int a[], int n) {\n    // 补全\n    return 0;\n}\n\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; ++i) cin >> a[i];\n    cout << sumOf(a, n) << endl;\n    return 0;\n}",
         "hint": "循环累加 a[i]。",
@@ -1068,7 +1068,7 @@
       "ex": [
        {
         "title": "递归求阶乘",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（0 ≤ n ≤ 12），用递归输出 n!。",
         "starter": "#include <iostream>\nusing namespace std;\n\nlong long fact(int n) {\n    // 补全（想一想出口）\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fact(n) << endl;\n    return 0;\n}",
         "hint": "n <= 1 时返回 1，否则返回 n * fact(n - 1)。",
@@ -1085,7 +1085,7 @@
        },
        {
         "title": "斐波那契",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（1 ≤ n ≤ 30），输出第 n 项。f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint fib(int n) {\n    // 补全\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fib(n) << endl;\n    return 0;\n}",
         "hint": "n <= 2 返回 1。n=10 应为 55。",
@@ -1159,7 +1159,7 @@
        },
        {
         "title": "反转输出",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，倒序输出，空格分隔。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int a[105];\n\n    // 倒着输出\n    return 0;\n}",
         "hint": "正着读，倒着输出。",
@@ -1176,7 +1176,7 @@
        },
        {
         "title": "求平均分",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出平均值，保留两位小数。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 求平均\n    return 0;\n}",
         "hint": "和用 double 存。",
@@ -1237,7 +1237,7 @@
        },
        {
         "title": "矩阵最大值",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n m，接下来 n 行每行 m 个整数，输出最大值。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    int a[105][105];\n\n    // 求最大值\n    return 0;\n}",
         "hint": "初值取 a[0][0]。",
@@ -1289,7 +1289,7 @@
       "ex": [
        {
         "title": "字符串反转",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入一个单词，输出反转后的结果。",
         "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n\n    return 0;\n}",
         "hint": "倒着遍历下标，或 reverse(s.begin(), s.end())。",
@@ -1302,7 +1302,7 @@
        },
        {
         "title": "统计某个字符",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行一个单词，第二行一个字符，输出该字符出现次数。",
         "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    char c;\n    cin >> s >> c;\n\n    return 0;\n}",
         "hint": "遍历字符串，相等就计数。",
@@ -1315,7 +1315,7 @@
        },
        {
         "title": "统计元音字母",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入只含小写字母的单词，输出元音（a e i o u）个数。",
         "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n\n    return 0;\n}",
         "hint": "逐个判断是不是 aeiou 之一。",
@@ -1359,7 +1359,7 @@
       "ex": [
        {
         "title": "升序排序",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从小到大输出，空格分隔。",
         "starter": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 排序后输出\n    return 0;\n}",
         "hint": "可以用冒泡，也可以直接 sort。",
@@ -1416,7 +1416,7 @@
       "ex": [
        {
         "title": "用指针交换两个数",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "读入两个整数，用指针参数的函数交换并输出。",
         "starter": "#include <iostream>\nusing namespace std;\n\nvoid swapPtr(int* a, int* b) {\n    // 补全\n}\n\nint main() {\n    int x, y;\n    cin >> x >> y;\n    swapPtr(&x, &y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
         "hint": "函数里用 *a、*b 操作的就是外面。",
@@ -1433,7 +1433,7 @@
        },
        {
         "title": "两个数都变成它们的和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 a、b，用指针让 a、b 都变成 a + b。",
         "starter": "#include <iostream>\nusing namespace std;\n\nvoid toSum(int* a, int* b) {\n    // 补全\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    toSum(&a, &b);\n    cout << a << \" \" << b << endl;\n    return 0;\n}",
         "hint": "先把和存起来再赋值，别让其中一个被覆盖。",
@@ -1490,7 +1490,7 @@
        },
        {
         "title": "用指针求最大值",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，第二行 n 个整数，用指针遍历求最大值。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; ++i) cin >> a[i];\n\n    // 用指针遍历\n\n    return 0;\n}",
         "hint": "指针 +1 指向下一个元素。",
@@ -1580,7 +1580,7 @@
       "ex": [
        {
         "title": "用 new 分配数组求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 new 分配数组并求和。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 用 new 分配，读入并求和\n\n    return 0;\n}",
         "hint": "int* a = new int[n]; 最后 delete[] a;",
@@ -1627,7 +1627,7 @@
       "ex": [
        {
         "title": "结构体存成绩求平均",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数成绩，用结构体存后输出平均分（两位小数）。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nstruct Student {\n    int score;\n};\n\nint main() {\n    int n;\n    cin >> n;\n\n    return 0;\n}",
         "hint": "累加后除以 n。",
@@ -1644,7 +1644,7 @@
        },
        {
         "title": "成绩最高的人",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，接下来 n 行“姓名 成绩”，输出成绩最高的姓名。",
         "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int score;\n};\n\nint main() {\n    int n;\n    cin >> n;\n\n    return 0;\n}",
         "hint": "记录最大值的下标。",
@@ -1690,7 +1690,7 @@
       "ex": [
        {
         "title": "颜色名字",
-        "level": "简单",
+        "level": "普通",
         "prompt": "定义 enum Color { RED, GREEN, BLUE }，读入 0/1/2，输出 red/green/blue。",
         "starter": "#include <iostream>\nusing namespace std;\n\nenum Color { RED, GREEN, BLUE };\n\nint main() {\n    int x;\n    cin >> x;\n\n    // 转成 Color 再用 switch\n\n    return 0;\n}",
         "hint": "Color c = (Color)x; 然后 switch。",
@@ -1707,7 +1707,7 @@
        },
        {
         "title": "方向判断",
-        "level": "简单",
+        "level": "普通",
         "prompt": "定义 enum Dir { UP, DOWN, LEFT, RIGHT }，读入 0~3，输出 up/down/left/right。",
         "starter": "#include <iostream>\nusing namespace std;\n\nenum Dir { UP, DOWN, LEFT, RIGHT };\n\nint main() {\n    int x;\n    cin >> x;\n\n    return 0;\n}",
         "hint": "switch 里写 case UP 这样的名字，不用写 0。",
@@ -1757,7 +1757,7 @@
       "ex": [
        {
         "title": "大数求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数（可能很大），用 using ll = long long 求总和。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    return 0;\n}",
         "hint": "sum 声明成 long long，避免溢出。",
@@ -1804,7 +1804,7 @@
       "ex": [
        {
         "title": "矩形类求面积",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入宽高（实数），用类封装，输出面积（两位小数）。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nclass Rectangle {\npublic:\n    // 补全构造函数与 area()\nprivate:\n    double w_, h_;\n};\n\nint main() {\n    double w, h;\n    cin >> w >> h;\n\n    return 0;\n}",
         "hint": "构造函数初始化 w_、h_。",
@@ -1848,7 +1848,7 @@
       "ex": [
        {
         "title": "计数器类",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用类封装计数，输出其中正数的个数。",
         "starter": "#include <iostream>\nusing namespace std;\n\nclass Counter {\npublic:\n    void add(int x) { /* 补全 */ }\n    int value() const { return cnt_; }\nprivate:\n    int cnt_ = 0;\n};\n\nint main() {\n    int n;\n    cin >> n;\n    Counter c;\n\n    return 0;\n}",
         "hint": "add 里判断 x > 0 才 ++cnt_。",
@@ -1953,7 +1953,7 @@
       "ex": [
        {
         "title": "用多态算面积",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "读入半径 r，用 Shape 基类指针指向 Circle，输出面积（两位小数，π=3.14159）。",
         "starter": "#include <iostream>\n#include <iomanip>\nusing namespace std;\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Circle : public Shape {\npublic:\n    explicit Circle(double r) : r_(r) {}\n    double area() const override { return 3.14159 * r_ * r_; }\nprivate:\n    double r_;\n};\n\nint main() {\n    double r;\n    cin >> r;\n\n    // 用 Shape* 指向 Circle，输出面积\n\n    return 0;\n}",
         "hint": "Shape* s = new Circle(r); 然后 s->area()。",
@@ -2010,7 +2010,7 @@
       "ex": [
        {
         "title": "动态读入求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入若干整数直到输入结束，输出它们的和（用 vector）。",
         "starter": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    int x;\n    while (cin >> x) {\n        // 存进 v\n    }\n\n    return 0;\n}",
         "hint": "push_back 后再遍历求和。",
@@ -2050,7 +2050,7 @@
       "ex": [
        {
         "title": "统计单词出现次数",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，接下来 n 个单词。按字典序输出每个单词和次数。",
         "starter": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    return 0;\n}",
         "hint": "map 遍历本身按 key 升序。",
@@ -2063,7 +2063,7 @@
        },
        {
         "title": "去重并排序",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，去重后从小到大输出。",
         "starter": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    return 0;\n}",
         "hint": "set 插入后自动去重排序。",
@@ -2109,7 +2109,7 @@
       "ex": [
        {
         "title": "用算法求最大值",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 max_element 输出最大值。",
         "starter": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> v(n);\n    for (int i = 0; i < n; ++i) cin >> v[i];\n\n    return 0;\n}",
         "hint": "int mx = *max_element(v.begin(), v.end());",
@@ -2188,7 +2188,7 @@
       "ex": [
        {
         "title": "安全的除法",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 a、b，输出 a / b（整数除法）；如果 b 是 0，输出 error。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n\n    return 0;\n}",
         "hint": "可以 if 判断，也可以 throw 再 catch。",
@@ -2291,7 +2291,7 @@
       "ex": [
        {
         "title": "降序排序",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从大到小输出。",
         "starter": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> v(n);\n    for (int i = 0; i < n; i++) cin >> v[i];\n\n    // 降序输出\n    return 0;\n}",
         "hint": "sort 加 greater<int>()，或排序后倒着输出。",
@@ -2338,7 +2338,7 @@
       "ex": [
        {
         "title": "排序去重",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，去重后升序输出。",
         "starter": "#include <iostream>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> v(n);\n    for (int i = 0; i < n; i++) cin >> v[i];\n\n    // 排序去重输出\n    return 0;\n}",
         "hint": "unique 只把相邻重复挪到后面，必须先 sort。",
@@ -2378,7 +2378,7 @@
       "ex": [
        {
         "title": "括号匹配",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入只含 ( 和 ) 的字符串，匹配输出 yes，否则 no。",
         "starter": "#include <iostream>\n#include <stack>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n\n    // 用 stack 判断\n    return 0;\n}",
         "hint": "遇到 ( 入栈，遇到 ) 出栈；最后栈空才算匹配。",
@@ -2429,7 +2429,7 @@
       "ex": [
        {
         "title": "汉诺塔步数",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（1 ≤ n ≤ 30），输出移动 n 个盘子需要的步数（2^n - 1）。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 输出 2^n - 1\n    return 0;\n}",
         "hint": "可以用循环推：f[i] = 2*f[i-1] + 1。",
@@ -2473,7 +2473,7 @@
       "ex": [
        {
         "title": "爬楼梯",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "一次可以走 1 级或 2 级，读入 n，输出走到第 n 级的方案数。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    // 输出方案数\n    return 0;\n}",
         "hint": "f[1]=1, f[2]=2, f[i]=f[i-1]+f[i-2]。",
@@ -2524,7 +2524,7 @@
       "ex": [
        {
         "title": "二叉树中序遍历",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，第二行 n 个整数（按完全二叉树顺序给出）。输出中序遍历结果，空格分隔。",
         "starter": "#include <iostream>\n#include <functional>\nusing namespace std;\n\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 1; i <= n; i++) cin >> a[i];\n\n    // 中序遍历输出\n    return 0;\n}",
         "hint": "递归：先 dfs(2i)，再输出 a[i]，最后 dfs(2i+1)。",
@@ -2577,7 +2577,7 @@
       "ex": [
        {
         "title": "无权图最短路",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n m，接下来 m 行是无向边，最后一行两个点 s、t。输出 s 到 t 的最少边数，不通输出 -1。",
         "starter": "#include <iostream>\n#include <queue>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    vector<vector<int>> g(n + 1);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        cin >> u >> v;\n        // 加边（无向）\n    }\n\n    // BFS 输出距离\n    return 0;\n}",
         "hint": "dist 全部初始化为 -1，起点设 0，用队列逐层扩展。",
@@ -2621,7 +2621,7 @@
       "ex": [
        {
         "title": "连通块个数",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n m，接下来 m 行是无向边（结点编号 1..n）。输出图的连通块个数。",
         "starter": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    vector<vector<int>> g(n + 1);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        cin >> u >> v;\n        // 加边\n    }\n\n    // 数连通块\n    return 0;\n}",
         "hint": "对每个未访问的点开始一次 DFS，计数加一。",
@@ -2668,7 +2668,7 @@
       "ex": [
        {
         "title": "判断是否连通",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n m，接下来 m 行是无向边，最后一行 a b。若 a 和 b 连通输出 yes，否则 no。",
         "starter": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n\n    // 初始化并查集、合并每条边\n\n    return 0;\n    return 0;\n}",
         "hint": "fa[i]=i；每条边 union(u,v)；最后比较 find(a) 和 find(b)。",
@@ -2713,7 +2713,7 @@
       "ex": [
        {
         "title": "最少硬币数",
-        "level": "简单",
+        "level": "普通",
         "prompt": "面值为 100、50、10、5、1，读入金额，输出最少硬币数。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int money;\n    cin >> money;\n    int v[] = {100, 50, 10, 5, 1};\n\n    // 贪心求硬币数\n    return 0;\n}",
         "hint": "循环里 cnt += money / v[i]，再 money %= v[i]。",
@@ -2764,7 +2764,7 @@
       "ex": [
        {
         "title": "区间和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，第三行 l r（1 开始）。输出 a[l] 到 a[r] 的和。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a[105], pre[105] = {0};\n    cin >> n;\n    for (int i = 1; i <= n; i++) cin >> a[i];\n    int l, r;\n    cin >> l >> r;\n\n    // 前缀和求区间和\n    return 0;\n}",
         "hint": "pre[i] = pre[i-1] + a[i]，答案是 pre[r] - pre[l-1]。",
@@ -2804,7 +2804,7 @@
       "ex": [
        {
         "title": "区间加",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，第二行 n 个整数，第三行 l r v。把 a[l..r] 都加 v，输出结果。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 1; i <= n; i++) cin >> a[i];\n    int l, r, v;\n    cin >> l >> r >> v;\n\n    // 用差分做区间加\n    return 0;\n}",
         "hint": "diff[l] += v; diff[r+1] -= v; 再前缀和加回去。",
@@ -2851,7 +2851,7 @@
       "ex": [
        {
         "title": "模式串出现次数",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行主串，第二行模式串（都不含空格）。输出模式串在主串中出现的次数（允许重叠）。",
         "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s, p;\n    cin >> s >> p;\n\n    // 统计出现次数\n    return 0;\n}",
         "hint": "用 s.find(p, pos)，每次 pos + 1 继续找。",
@@ -2921,7 +2921,7 @@
        },
        {
         "title": "保留两位小数",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入一个小数，输出保留两位小数的结果。",
         "starter": "#include <stdio.h>\nint main() {\n    double x;\n    scanf(\"%lf\", &x);\n    // 输出保留两位\n    return 0;\n}",
         "hint": "格式符写 %.2f。",
@@ -3132,7 +3132,7 @@
       "ex": [
        {
         "title": "简易计算器",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 a、运算符、b（如 3 + 4），输出结果，支持 + - * /。",
         "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    char op;\n    scanf(\"%d %c %d\", &a, &op, &b);\n    // 用 switch 计算\n    return 0;\n}",
         "hint": "注意字符用单引号，%c 前留空格可以跳过空白。",
@@ -3194,7 +3194,7 @@
        },
        {
         "title": "阶乘",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（0 ≤ n ≤ 12），输出 n!。",
         "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
@@ -3289,7 +3289,7 @@
       "ex": [
        {
         "title": "通过指针加一",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入一个整数，用指针参数的函数把它加 1 后输出。",
         "starter": "#include <stdio.h>\n\nvoid addOne(int *p) {\n    // 补全\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    addOne(&a);\n    printf(\"%d\\n\", a);\n    return 0;\n}",
         "hint": "函数里写 (*p)++；注意括号。",
@@ -3324,7 +3324,7 @@
       "ex": [
        {
         "title": "递归阶乘",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（0 ≤ n ≤ 12），用递归输出 n!。",
         "starter": "#include <stdio.h>\n\nlong long fact(int n) {\n    // 补全（先想出口）\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
         "hint": "n <= 1 时返回 1，否则 n * fact(n-1)。",
@@ -3389,7 +3389,7 @@
        },
        {
         "title": "反转输出",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，倒序输出。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
         "hint": "正着读进数组，倒着输出。",
@@ -3465,7 +3465,7 @@
       "ex": [
        {
         "title": "数组求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，写函数 sumOf 求和后输出。",
         "starter": "#include <stdio.h>\n\nint sumOf(int a[], int n) {\n    // 补全\n    return 0;\n}\n\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sumOf(a, n));\n    return 0;\n}",
         "hint": "循环累加 a[i]。",
@@ -3526,7 +3526,7 @@
        },
        {
         "title": "统计字符",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行单词，第二行字符，输出该字符出现次数。",
         "starter": "#include <stdio.h>\nint main() {\n    char s[105], c;\n    scanf(\"%s %c\", s, &c);\n    // 统计出现次数\n    return 0;\n}",
         "hint": "遍历到 '\\0'，相等就计数。",
@@ -3573,7 +3573,7 @@
       "ex": [
        {
         "title": "用 strlen 求长度",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入一个单词，用 strlen 输出长度。",
         "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n\n    return 0;\n}",
         "hint": "printf(\"%d\\n\", (int)strlen(s));",
@@ -3621,7 +3621,7 @@
       "ex": [
        {
         "title": "用指针交换",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入两个整数，用指针交换后输出。",
         "starter": "#include <stdio.h>\nint main() {\n    int a, b, t;\n    scanf(\"%d %d\", &a, &b);\n    int *p = &a, *q = &b;\n    // 交换\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
         "hint": "t = *p; *p = *q; *q = t;",
@@ -3662,7 +3662,7 @@
       "ex": [
        {
         "title": "用指针求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用指针遍历求总和。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a;\n    // 用 p 求和\n\n    return 0;\n    return 0;\n}",
         "hint": "sum += *(p + i);",
@@ -3703,7 +3703,7 @@
       "ex": [
        {
         "title": "动态数组求和",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 分配数组并求和。",
         "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 用 malloc 分配、读入、求和、free\n\n    return 0;\n}",
         "hint": "int *a = (int*)malloc(n * sizeof(int)); 最后 free(a)。",
@@ -3751,7 +3751,7 @@
       "ex": [
        {
         "title": "结构体求平均",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数成绩，用结构体存后输出平均分（两位小数）。",
         "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    return 0;\n}",
         "hint": "累加后除以 n，注意用 double。",
@@ -3792,7 +3792,7 @@
       "ex": [
        {
         "title": "颜色名字",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 0/1/2，输出 red/green/blue（用 enum）。",
         "starter": "#include <stdio.h>\n\nenum Color { RED, GREEN, BLUE };\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    enum Color c = (enum Color)x;\n    // 用 switch 输出\n\n    return 0;\n}",
         "hint": "switch (c) 里写 case RED 这样的名字。",
@@ -3837,7 +3837,7 @@
       "ex": [
        {
         "title": "最高分的人",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，接下来 n 行“姓名 成绩”，输出成绩最高的姓名。",
         "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    return 0;\n}",
         "hint": "读进结构体数组，记录最大值下标。",
@@ -3937,7 +3937,7 @@
       "ex": [
        {
         "title": "宏求最大值",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入两个整数，用宏 MAX 输出较大的那个。",
         "starter": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n\n    return 0;\n}",
         "hint": "printf(\"%d\\n\", MAX(a, b));",
@@ -3991,7 +3991,7 @@
       "ex": [
        {
         "title": "二进制中 1 的个数",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "读入一个非负整数，输出它二进制里 1 的个数。",
         "starter": "#include <stdio.h>\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    // 统计 1 的个数\n    return 0;\n}",
         "hint": "while (x) { cnt += x & 1; x >>= 1; }",
@@ -4036,7 +4036,7 @@
       "ex": [
        {
         "title": "数组清零",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 memset 清零后输出。",
         "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n\n    return 0;\n}",
         "hint": "memset(a, 0, n * sizeof(int)); 再逐个输出。",
@@ -4080,7 +4080,7 @@
       "ex": [
        {
         "title": "冒泡排序输出",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从小到大输出。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 读入并冒泡排序\n    return 0;\n}",
         "hint": "两层循环，比较 a[j] 与 a[j+1]。",
@@ -4115,7 +4115,7 @@
       "ex": [
        {
         "title": "选择排序输出",
-        "level": "简单",
+        "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用选择排序从小到大输出。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 选择排序后输出\n    return 0;\n}",
         "hint": "每轮记录最小值的下标 mn。",
@@ -4163,7 +4163,7 @@
       "ex": [
        {
         "title": "有序数组查找",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，第二行递增整数，第三行目标 x。找到输出下标（从 0 开始），否则 -1。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], x;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &x);\n    // 二分查找\n    return 0;\n}",
         "hint": "循环条件 l <= r。",
@@ -4215,7 +4215,7 @@
       "ex": [
        {
         "title": "括号匹配",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "读入只含 ( 和 ) 的字符串，匹配输出 yes，否则 no。",
         "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 用数组模拟栈判断\n    return 0;\n}",
         "hint": "遇到 ( 入栈，) 出栈，最后栈必须为空。",
@@ -4260,7 +4260,7 @@
       "ex": [
        {
         "title": "按顺序输出",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n 和 n 个整数，用队列存起来再按入队顺序输出。",
         "starter": "#include <stdio.h>\nint main() {\n    int n, q[105], head = 0, tail = 0, x;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) { scanf(\"%d\", &x); q[tail++] = x; }\n    // 依次出队输出\n\n    return 0;\n    return 0;\n}",
         "hint": "while (head < tail) printf(\"%d \", q[head++]);",
@@ -4314,7 +4314,7 @@
       "ex": [
        {
         "title": "输出链表",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "读入 n 和 n 个整数，用头插法建链表后按链表顺序输出。",
         "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node { int val; struct Node *next; };\n\nint main() {\n    int n, x;\n    scanf(\"%d\", &n);\n    struct Node *head = 0;\n    // 头插法建链表\n\n    return 0;\n}",
         "hint": "头插法得到逆序，这正是链表顺序。",
@@ -4356,7 +4356,7 @@
       "ex": [
        {
         "title": "斐波那契",
-        "level": "简单",
+        "level": "普通",
         "prompt": "读入 n（1 ≤ n ≤ 30），输出第 n 项。f(1)=f(2)=1。",
         "starter": "#include <stdio.h>\n\nint fib(int n) {\n    // 补全\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
         "hint": "n <= 2 返回 1。",
@@ -4401,7 +4401,7 @@
       "ex": [
        {
         "title": "爬楼梯",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "一次走 1 级或 2 级，读入 n，输出走到第 n 级的方案数。",
         "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // f[i] = f[i-1] + f[i-2]\n    return 0;\n}",
         "hint": "f[1]=1, f[2]=2。",
@@ -4453,7 +4453,7 @@
       "ex": [
        {
         "title": "二叉树中序遍历",
-        "level": "进阶",
+        "level": "困难",
         "prompt": "第一行 n，第二行 n 个整数（按完全二叉树顺序）。输出中序遍历，空格分隔。",
         "starter": "#include <stdio.h>\n\nint n, a[105];\n\nvoid dfs(int i) {\n    // 补全：左、根、右\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &a[i]);\n    dfs(1);\n    printf(\"\\n\");\n    return 0;\n}",
         "hint": "if (i > n) return; dfs(2*i); printf; dfs(2*i+1);",
@@ -5341,7 +5341,7 @@
   /* ============ 知识库：常用代码区（原有条目 + 头文件标注） ============ */
 
   // ---------------- 状态 ----------------
-  var state = { lang: 'cpp', level: 'basic', chapter: LANGS.cpp.basic[0].id, sectionIndex: 0, mode: 'std', exerciseIndex: 0 };
+  var state = { lang: 'cpp', level: 'basic', chapter: LANGS.cpp.basic[0].id, sectionIndex: 0, mode: 'std', exerciseIndex: 0, exLevel: '全部' };
   var editor = null;
   var aiExercise = null;   // AI 现场生成的题
   var kbTarget = null;     // 从知识库点「AI 出题」时的目标条目
@@ -5516,7 +5516,26 @@
       if (s.ex.length === 0) {
         html += '<p>这一节暂时没有练习题，可以点右上角「✨ AI 出题」现场生成一道。</p>';
       }
+      // 难度分层：入门 / 普通 / 困难
+      var levels = ['全部', '入门', '普通', '困难'];
+      var counts = { '全部': s.ex.length, '入门': 0, '普通': 0, '困难': 0 };
+      s.ex.forEach(function (e) {
+        var lv = (e.level === '简单') ? '普通' : (e.level === '进阶' ? '困难' : e.level);
+        if (counts[lv] === undefined) counts[lv] = 0;
+        counts[lv]++;
+      });
+      html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px">';
+      levels.forEach(function (lv) {
+        var on = state.exLevel === lv;
+        html += '<button class="btn" data-exlv="' + lv + '" style="' +
+          (on ? 'background:var(--blue);color:#fff;border-color:var(--blue)' : '') + '">' +
+          lv + ' · ' + (counts[lv] || 0) + '</button>';
+      });
+      html += '</div>';
+
       s.ex.forEach(function (e, i) {
+        var lv = (e.level === '简单') ? '普通' : (e.level === '进阶' ? '困难' : (e.level || '入门'));
+        if (state.exLevel !== '全部' && lv !== state.exLevel) return;
         var active = i === state.exerciseIndex;
         html += '<div class="card" style="' + (active ? 'border-color:var(--blue-light);box-shadow:0 4px 14px rgba(77,107,254,.10)' : '') + '">';
         html += '<h2 style="font-size:14px">' + esc((i + 1) + '. ' + e.title) + '</h2>';
@@ -5524,7 +5543,9 @@
         html += '<div class="kv"><b>输入示例</b><code>' + esc(e.tests[0].stdin.replace(/\n$/, '')) + '</code></div>';
         html += '<div class="kv"><b>期望输出</b><code>' + esc(e.tests[0].expect) + '</code></div>';
         html += '<div class="tags">';
-        html += '<span class="tag">难度：' + esc(e.level || '入门') + '</span>';
+        var lvColor = lv === '入门' ? '#2e9e5b' : (lv === '困难' ? '#d93b3b' : '#b07b2e');
+        html += '<span class="tag" style="background:' + lvColor + '1a;color:' + lvColor + '">' +
+          lv + '</span>';
         html += '<span class="tag">' + e.tests.length + ' 个测试点</span>';
         html += '<span class="tag">' + esc(s.name) + '</span>';
         html += '</div>';
@@ -5566,6 +5587,12 @@
     el.doc.querySelectorAll('[data-answer]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         showAnswer(Number(btn.dataset.answer));
+      });
+    });
+    el.doc.querySelectorAll('[data-exlv]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.exLevel = btn.dataset.exlv;
+        renderDoc();
       });
     });
     el.doc.querySelectorAll('[data-hint]').forEach(function (btn) {
@@ -6253,6 +6280,7 @@
   });
 
   el.section.addEventListener('change', function () {
+    state.exLevel = '全部';
     state.sectionIndex = Number(el.section.value);
     state.exerciseIndex = 0;
     aiExercise = null;
