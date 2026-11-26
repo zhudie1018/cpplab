@@ -332,8 +332,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "cin(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出乘积\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -524,8 +524,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "cin(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出乘积\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -710,8 +710,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "cin(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出乘积\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -890,8 +890,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "cin(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出乘积\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -2570,11 +2570,11 @@
       ],
       "ex": [
        {
-        "title": "字符串长度",
+        "title": "string 长度",
         "level": "入门",
-        "prompt": "读入一个不含空格的字符串，输出长度。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 数到 '\\0'\n    return 0;\n}",
-        "hint": "while (s[len] != '\\0') len++;",
+        "prompt": "读入一个单词，输出它的长度。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // 输出长度\n    return 0;\n}",
+        "hint": "s.size()。",
         "tests": [
          {
           "stdin": "hello\n",
@@ -2583,24 +2583,11 @@
         ]
        },
        {
-        "title": "统计字符",
+        "title": "string 首字符",
         "level": "入门",
-        "prompt": "第一行字符串，第二行一个字符，输出该字符出现次数。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105], c;\n    cin >> s >> c;\n    // 统计次数\n    return 0;\n}",
-        "hint": "遍历到 '\\0'，相等就 ++cnt。",
-        "tests": [
-         {
-          "stdin": "banana a\n",
-          "expect": "3"
-         }
-        ]
-       },
-       {
-        "title": "输出首字符",
-        "level": "入门",
-        "prompt": "读入一个单词，输出它的第一个字符。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 输出 s[0]\n    return 0;\n}",
-        "hint": "cout(\"%c\\n\", s[0]);",
+        "prompt": "读入一个单词，输出第一个字符。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // 输出 s[0]\n    return 0;\n}",
+        "hint": "cout << s[0] << endl;",
         "tests": [
          {
           "stdin": "hello\n",
@@ -2609,24 +2596,24 @@
         ]
        },
        {
-        "title": "统计元音",
+        "title": "string 统计字符",
         "level": "入门",
-        "prompt": "读入一个小写单词，输出其中 a、e、i、o、u 的总个数。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 统计元音\n    return 0;\n}",
-        "hint": "逐个判断是否为 aeiou。",
+        "prompt": "第一行单词，第二行一个字符，输出该字符出现次数。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    char c;\n    cin >> s >> c;\n    // 统计次数\n    return 0;\n}",
+        "hint": "范围 for 遍历 s。",
         "tests": [
          {
-          "stdin": "hello\n",
-          "expect": "2"
+          "stdin": "banana a\n",
+          "expect": "3"
          }
         ]
        },
        {
-        "title": "字符串反转",
+        "title": "string 反转",
         "level": "入门",
         "prompt": "读入一个单词，倒序输出。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 倒着输出\n    return 0;\n}",
-        "hint": "先求长度，再从 len-1 打印到 0。",
+        "starter": "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // 倒序输出\n    return 0;\n}",
+        "hint": "reverse(s.begin(), s.end())。",
         "tests": [
          {
           "stdin": "abc\n",
@@ -2635,11 +2622,11 @@
         ]
        },
        {
-        "title": "转大写",
-        "level": "普通",
-        "prompt": "读入一个单词，输出全大写形式（只含小写字母）。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 逐个减 32\n    return 0;\n}",
-        "hint": "小写字母减 32 变成大写。",
+        "title": "string 转大写",
+        "level": "入门",
+        "prompt": "读入一个单词，输出全大写。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // 每个字符减 32\n    return 0;\n}",
+        "hint": "for (char &c : s) c = c - 'a' + 'A';",
         "tests": [
          {
           "stdin": "abc\n",
@@ -2648,11 +2635,24 @@
         ]
        },
        {
-        "title": "回文判断",
+        "title": "string 拼接",
+        "level": "普通",
+        "prompt": "读入两个单词，输出拼在一起的结果。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string a, b;\n    cin >> a >> b;\n    // 拼接输出\n    return 0;\n}",
+        "hint": "cout << a + b << endl;",
+        "tests": [
+         {
+          "stdin": "ab cd\n",
+          "expect": "abcd"
+         }
+        ]
+       },
+       {
+        "title": "string 回文判断",
         "level": "普通",
         "prompt": "读入一个单词，是回文输出 yes，否则 no。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 首尾比较\n    return 0;\n}",
-        "hint": "i 从头、j 从尾，向中间比较。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // 首尾比较\n    return 0;\n}",
+        "hint": "i 从 0、j 从 len-1 向中间比较。",
         "tests": [
          {
           "stdin": "level\n",
@@ -2665,24 +2665,24 @@
         ]
        },
        {
-        "title": "单词长度最大值",
+        "title": "string 子串查找",
         "level": "普通",
-        "prompt": "第一行 n，接下来 n 行各一个单词，输出最长单词的长度。",
-        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    char s[105];\n    int mx = 0;\n    // 逐个读入求长度最大值\n    return 0;\n}",
-        "hint": "每次读入后求长度并更新 mx。",
+        "prompt": "读入主串和子串，输出子串第一次出现的下标，没有输出 -1。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s, p;\n    cin >> s >> p;\n    // 用 s.find\n    return 0;\n}",
+        "hint": "find 找不到返回 string::npos。",
         "tests": [
          {
-          "stdin": "3\nhi\nhello\nabc\n",
-          "expect": "5"
+          "stdin": "hello world\n",
+          "expect": "6"
          }
         ]
        },
        {
-        "title": "统计单词数",
+        "title": "统计单词数（整行）",
         "level": "困难",
-        "prompt": "读入一行（含空格），输出其中的单词个数（单词之间一个空格，首尾无空格）。",
-        "starter": "char s[200];\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
-        "hint": "用 fgets 读整行，空格数 + 1。",
+        "prompt": "读入一行（含空格），输出单词个数。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    getline(cin, s);\n    // 数空格 + 1\n    return 0;\n}",
+        "hint": "空格个数 + 1。",
         "tests": [
          {
           "stdin": "hello world abc\n",
@@ -5268,35 +5268,9 @@
       ],
       "ex": [
        {
-        "title": "文件写入",
-        "level": "入门",
-        "prompt": "把 42 写进 a.txt，再读出来输出。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 42 << endl;\n    out.close();\n    ifstream in(\"a.txt\");\n    int x;\n    in >> x;\n    cout << x << endl;\n    return 0;\n}",
-        "hint": "已经写好，直接运行。",
-        "tests": [
-         {
-          "stdin": "",
-          "expect": "42"
-         }
-        ]
-       },
-       {
-        "title": "读文件求和",
-        "level": "入门",
-        "prompt": "a.txt 里有 n 和 n 个整数，读出来求和输出。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    int n, x, s = 0;\n    in >> n;\n    for (int i = 0; i < n; i++) { in >> x; s += x; }\n    cout << s << endl;\n    return 0;\n}",
-        "hint": "读 n 后循环累加。",
-        "tests": [
-         {
-          "stdin": "",
-          "expect": "10"
-         }
-        ]
-       },
-       {
         "title": "try/catch 除零",
         "level": "入门",
-        "prompt": "读入 a b，若 b 为 0 抛出异常并输出 \"error\"，否则输出 a/b。",
+        "prompt": "读入 a、b，b 为 0 时抛出异常并输出 error，否则输出 a/b。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    try {\n        if (b == 0) throw 0;\n        cout << a / b << endl;\n    } catch (int) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
@@ -5311,84 +5285,122 @@
         ]
        },
        {
-        "title": "string 长度",
+        "title": "throw 字符串",
         "level": "入门",
-        "prompt": "读入一个单词，输出长度。",
-        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    cout << s.size() << endl;\n    return 0;\n}",
-        "hint": "s.size()。",
-        "tests": [
-         {
-          "stdin": "hello\n",
-          "expect": "5"
-         }
-        ]
-       },
-       {
-        "title": "string 反转",
-        "level": "入门",
-        "prompt": "读入一个单词，倒序输出。",
-        "starter": "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    reverse(s.begin(), s.end());\n    cout << s << endl;\n    return 0;\n}",
-        "hint": "reverse(s.begin(), s.end())。",
-        "tests": [
-         {
-          "stdin": "abc\n",
-          "expect": "cba"
-         }
-        ]
-       },
-       {
-        "title": "异常捕获字符串",
-        "level": "普通",
-        "prompt": "读入一个字符串，长度小于 3 时抛出 string 异常并输出 \"short\"，否则输出长度。",
-        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    try {\n        if (s.size() < 3) throw string(\"short\");\n        cout << s.size() << endl;\n    } catch (string e) {\n        cout << e << endl;\n    }\n    return 0;\n}",
+        "prompt": "读入整数 n，n 为负时抛出 string 异常并输出 negative，否则输出 n。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    try {\n        if (n < 0) throw string(\"negative\");\n        cout << n << endl;\n    } catch (string e) {\n        cout << e << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
          {
-          "stdin": "hello\n",
+          "stdin": "5\n",
           "expect": "5"
          },
          {
-          "stdin": "ab\n",
-          "expect": "short"
+          "stdin": "-1\n",
+          "expect": "negative"
          }
         ]
        },
        {
-        "title": "文件追加",
-        "level": "普通",
-        "prompt": "先往 a.txt 写 1，再以追加方式写 2，最后读出并输出两行。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 1 << endl;\n    out.close();\n    ofstream app(\"a.txt\", ios::app);\n    app << 2 << endl;\n    app.close();\n    ifstream in(\"a.txt\");\n    int x;\n    while (in >> x) cout << x << endl;\n    return 0;\n}",
+        "title": "数组越界检查",
+        "level": "入门",
+        "prompt": "读入下标 i，若 i >= 5 抛异常输出 error，否则输出 a[i]（a = 1..5）。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5] = {1, 2, 3, 4, 5};\n    int i;\n    cin >> i;\n    try {\n        if (i < 0 || i >= 5) throw 0;\n        cout << a[i] << endl;\n    } catch (int) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
          {
-          "stdin": "",
-          "expect": "1\n2"
+          "stdin": "2\n",
+          "expect": "3"
+         },
+         {
+          "stdin": "9\n",
+          "expect": "error"
          }
         ]
        },
        {
-        "title": "统计文件行数",
+        "title": "文件打开失败",
+        "level": "入门",
+        "prompt": "用 ifstream 打开 notexist.txt，失败时输出 cannot open。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"notexist.txt\");\n    if (!in) { cout << \"cannot open\" << endl; return 0; }\n    cout << \"ok\" << endl;\n    return 0;\n}",
+        "hint": "if (!in) 判失败。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "cannot open"
+         }
+        ]
+       },
+       {
+        "title": "文件写入 42",
+        "level": "入门",
+        "prompt": "把 42 写进 a.txt 再读出来输出。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 42 << endl;\n    out.close();\n    ifstream in(\"a.txt\");\n    int x;\n    in >> x;\n    cout << x << endl;\n    return 0;\n}",
+        "hint": "已经写好。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "42"
+         }
+        ]
+       },
+       {
+        "title": "捕获所有异常",
         "level": "普通",
-        "prompt": "a.txt 中有若干行文本，输出行数。",
-        "starter": "#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    string line;\n    int cnt = 0;\n    while (getline(in, line)) cnt++;\n    cout << cnt << endl;\n    return 0;\n}",
-        "hint": "getline 循环计数。",
+        "prompt": "读入 a、b，用 catch(...) 统一捕获除零并输出 error。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    try {\n        if (b == 0) throw 1;\n        cout << a / b << endl;\n    } catch (...) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
+        "hint": "catch(...) 可以捕获任何异常。",
         "tests": [
          {
-          "stdin": "",
-          "expect": "2"
+          "stdin": "8 2\n",
+          "expect": "4"
+         },
+         {
+          "stdin": "1 0\n",
+          "expect": "error"
          }
         ]
        },
        {
-        "title": "文件读写 + 结构体",
-        "level": "困难",
-        "prompt": "把两个学生的姓名和分数写进 a.txt，再读出来按分数从高到低输出姓名。",
-        "starter": "#include <fstream>\n#include <string>\nusing namespace std;\n\nstruct S { string name; int score; };\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << \"A 90\\nB 95\\n\";\n    out.close();\n    ifstream in(\"a.txt\");\n    S a[10];\n    int n = 0;\n    while (in >> a[n].name >> a[n].score) n++;\n    // 排序后输出\n    return 0;\n}",
-        "hint": "读完后按 score 冒泡降序。",
+        "title": "读文件求和",
+        "level": "普通",
+        "prompt": "a.txt 中有 n 和 n 个整数，读出来求和输出。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    int n, x, s = 0;\n    in >> n;\n    for (int i = 0; i < n; i++) { in >> x; s += x; }\n    cout << s << endl;\n    return 0;\n}",
+        "hint": "已经写好。",
         "tests": [
          {
           "stdin": "",
-          "expect": "B\nA"
+          "expect": "10"
+         }
+        ]
+       },
+       {
+        "title": "自定义异常类",
+        "level": "普通",
+        "prompt": "定义异常类 BadInput，读入 n，n 超过 100 时抛出并输出 too big。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    struct BadInput {};\n    int n;\n    cin >> n;\n    try {\n        if (n > 100) throw BadInput();\n        cout << n << endl;\n    } catch (BadInput &) {\n        cout << \"too big\" << endl;\n    }\n    return 0;\n}",
+        "hint": "结构体也能当异常类型。",
+        "tests": [
+         {
+          "stdin": "50\n",
+          "expect": "50"
+         },
+         {
+          "stdin": "200\n",
+          "expect": "too big"
+         }
+        ]
+       },
+       {
+        "title": "文件逐行处理",
+        "level": "困难",
+        "prompt": "a.txt 有两行文本，逐行读出来，输出每行的长度（一行一个）。",
+        "starter": "#include <iostream>\n#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    string line;\n    while (getline(in, line)) cout << line.size() << endl;\n    return 0;\n}",
+        "hint": "getline 循环读。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "5\n3"
          }
         ]
        }
@@ -5420,35 +5432,9 @@
       ],
       "ex": [
        {
-        "title": "文件写入",
-        "level": "入门",
-        "prompt": "把 42 写进 a.txt，再读出来输出。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 42 << endl;\n    out.close();\n    ifstream in(\"a.txt\");\n    int x;\n    in >> x;\n    cout << x << endl;\n    return 0;\n}",
-        "hint": "已经写好，直接运行。",
-        "tests": [
-         {
-          "stdin": "",
-          "expect": "42"
-         }
-        ]
-       },
-       {
-        "title": "读文件求和",
-        "level": "入门",
-        "prompt": "a.txt 里有 n 和 n 个整数，读出来求和输出。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    int n, x, s = 0;\n    in >> n;\n    for (int i = 0; i < n; i++) { in >> x; s += x; }\n    cout << s << endl;\n    return 0;\n}",
-        "hint": "读 n 后循环累加。",
-        "tests": [
-         {
-          "stdin": "",
-          "expect": "10"
-         }
-        ]
-       },
-       {
         "title": "try/catch 除零",
         "level": "入门",
-        "prompt": "读入 a b，若 b 为 0 抛出异常并输出 \"error\"，否则输出 a/b。",
+        "prompt": "读入 a、b，b 为 0 时抛出异常并输出 error，否则输出 a/b。",
         "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    try {\n        if (b == 0) throw 0;\n        cout << a / b << endl;\n    } catch (int) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
@@ -5463,84 +5449,122 @@
         ]
        },
        {
-        "title": "string 长度",
+        "title": "throw 字符串",
         "level": "入门",
-        "prompt": "读入一个单词，输出长度。",
-        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    cout << s.size() << endl;\n    return 0;\n}",
-        "hint": "s.size()。",
-        "tests": [
-         {
-          "stdin": "hello\n",
-          "expect": "5"
-         }
-        ]
-       },
-       {
-        "title": "string 反转",
-        "level": "入门",
-        "prompt": "读入一个单词，倒序输出。",
-        "starter": "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    reverse(s.begin(), s.end());\n    cout << s << endl;\n    return 0;\n}",
-        "hint": "reverse(s.begin(), s.end())。",
-        "tests": [
-         {
-          "stdin": "abc\n",
-          "expect": "cba"
-         }
-        ]
-       },
-       {
-        "title": "异常捕获字符串",
-        "level": "普通",
-        "prompt": "读入一个字符串，长度小于 3 时抛出 string 异常并输出 \"short\"，否则输出长度。",
-        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    try {\n        if (s.size() < 3) throw string(\"short\");\n        cout << s.size() << endl;\n    } catch (string e) {\n        cout << e << endl;\n    }\n    return 0;\n}",
+        "prompt": "读入整数 n，n 为负时抛出 string 异常并输出 negative，否则输出 n。",
+        "starter": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    try {\n        if (n < 0) throw string(\"negative\");\n        cout << n << endl;\n    } catch (string e) {\n        cout << e << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
          {
-          "stdin": "hello\n",
+          "stdin": "5\n",
           "expect": "5"
          },
          {
-          "stdin": "ab\n",
-          "expect": "short"
+          "stdin": "-1\n",
+          "expect": "negative"
          }
         ]
        },
        {
-        "title": "文件追加",
-        "level": "普通",
-        "prompt": "先往 a.txt 写 1，再以追加方式写 2，最后读出并输出两行。",
-        "starter": "#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 1 << endl;\n    out.close();\n    ofstream app(\"a.txt\", ios::app);\n    app << 2 << endl;\n    app.close();\n    ifstream in(\"a.txt\");\n    int x;\n    while (in >> x) cout << x << endl;\n    return 0;\n}",
+        "title": "数组越界检查",
+        "level": "入门",
+        "prompt": "读入下标 i，若 i >= 5 抛异常输出 error，否则输出 a[i]（a = 1..5）。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5] = {1, 2, 3, 4, 5};\n    int i;\n    cin >> i;\n    try {\n        if (i < 0 || i >= 5) throw 0;\n        cout << a[i] << endl;\n    } catch (int) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
         "hint": "已经写好，直接运行。",
         "tests": [
          {
-          "stdin": "",
-          "expect": "1\n2"
+          "stdin": "2\n",
+          "expect": "3"
+         },
+         {
+          "stdin": "9\n",
+          "expect": "error"
          }
         ]
        },
        {
-        "title": "统计文件行数",
+        "title": "文件打开失败",
+        "level": "入门",
+        "prompt": "用 ifstream 打开 notexist.txt，失败时输出 cannot open。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"notexist.txt\");\n    if (!in) { cout << \"cannot open\" << endl; return 0; }\n    cout << \"ok\" << endl;\n    return 0;\n}",
+        "hint": "if (!in) 判失败。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "cannot open"
+         }
+        ]
+       },
+       {
+        "title": "文件写入 42",
+        "level": "入门",
+        "prompt": "把 42 写进 a.txt 再读出来输出。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << 42 << endl;\n    out.close();\n    ifstream in(\"a.txt\");\n    int x;\n    in >> x;\n    cout << x << endl;\n    return 0;\n}",
+        "hint": "已经写好。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "42"
+         }
+        ]
+       },
+       {
+        "title": "捕获所有异常",
         "level": "普通",
-        "prompt": "a.txt 中有若干行文本，输出行数。",
-        "starter": "#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    string line;\n    int cnt = 0;\n    while (getline(in, line)) cnt++;\n    cout << cnt << endl;\n    return 0;\n}",
-        "hint": "getline 循环计数。",
+        "prompt": "读入 a、b，用 catch(...) 统一捕获除零并输出 error。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    try {\n        if (b == 0) throw 1;\n        cout << a / b << endl;\n    } catch (...) {\n        cout << \"error\" << endl;\n    }\n    return 0;\n}",
+        "hint": "catch(...) 可以捕获任何异常。",
         "tests": [
          {
-          "stdin": "",
-          "expect": "2"
+          "stdin": "8 2\n",
+          "expect": "4"
+         },
+         {
+          "stdin": "1 0\n",
+          "expect": "error"
          }
         ]
        },
        {
-        "title": "文件读写 + 结构体",
-        "level": "困难",
-        "prompt": "把两个学生的姓名和分数写进 a.txt，再读出来按分数从高到低输出姓名。",
-        "starter": "#include <fstream>\n#include <string>\nusing namespace std;\n\nstruct S { string name; int score; };\n\nint main() {\n    ofstream out(\"a.txt\");\n    out << \"A 90\\nB 95\\n\";\n    out.close();\n    ifstream in(\"a.txt\");\n    S a[10];\n    int n = 0;\n    while (in >> a[n].name >> a[n].score) n++;\n    // 排序后输出\n    return 0;\n}",
-        "hint": "读完后按 score 冒泡降序。",
+        "title": "读文件求和",
+        "level": "普通",
+        "prompt": "a.txt 中有 n 和 n 个整数，读出来求和输出。",
+        "starter": "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    int n, x, s = 0;\n    in >> n;\n    for (int i = 0; i < n; i++) { in >> x; s += x; }\n    cout << s << endl;\n    return 0;\n}",
+        "hint": "已经写好。",
         "tests": [
          {
           "stdin": "",
-          "expect": "B\nA"
+          "expect": "10"
+         }
+        ]
+       },
+       {
+        "title": "自定义异常类",
+        "level": "普通",
+        "prompt": "定义异常类 BadInput，读入 n，n 超过 100 时抛出并输出 too big。",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    struct BadInput {};\n    int n;\n    cin >> n;\n    try {\n        if (n > 100) throw BadInput();\n        cout << n << endl;\n    } catch (BadInput &) {\n        cout << \"too big\" << endl;\n    }\n    return 0;\n}",
+        "hint": "结构体也能当异常类型。",
+        "tests": [
+         {
+          "stdin": "50\n",
+          "expect": "50"
+         },
+         {
+          "stdin": "200\n",
+          "expect": "too big"
+         }
+        ]
+       },
+       {
+        "title": "文件逐行处理",
+        "level": "困难",
+        "prompt": "a.txt 有两行文本，逐行读出来，输出每行的长度（一行一个）。",
+        "starter": "#include <iostream>\n#include <fstream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"a.txt\");\n    string line;\n    while (getline(in, line)) cout << line.size() << endl;\n    return 0;\n}",
+        "hint": "getline 循环读。",
+        "tests": [
+         {
+          "stdin": "",
+          "expect": "5\n3"
          }
         ]
        }
@@ -6285,8 +6309,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出乘积\n    return 0;\n}",
+        "hint": "printf(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -6986,8 +7010,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出乘积\n    return 0;\n}",
+        "hint": "printf(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -7657,8 +7681,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出乘积\n    return 0;\n}",
+        "hint": "printf(\"%d\\n\", a * b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -8064,7 +8088,7 @@
         "title": "统计单词数",
         "level": "困难",
         "prompt": "读入一行（含空格），输出其中的单词个数（单词之间一个空格，首尾无空格）。",
-        "starter": "char s[200];\n#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
+        "starter": "#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
         "hint": "用 fgets 读整行，空格数 + 1。",
         "tests": [
          {
@@ -8391,7 +8415,7 @@
         "title": "统计单词数",
         "level": "困难",
         "prompt": "读入一行（含空格），输出其中的单词个数（单词之间一个空格，首尾无空格）。",
-        "starter": "char s[200];\n#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
+        "starter": "#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
         "hint": "用 fgets 读整行，空格数 + 1。",
         "tests": [
          {
@@ -8988,7 +9012,7 @@
         "title": "统计单词数",
         "level": "困难",
         "prompt": "读入一行（含空格），输出其中的单词个数（单词之间一个空格，首尾无空格）。",
-        "starter": "char s[200];\n#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
+        "starter": "#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
         "hint": "用 fgets 读整行，空格数 + 1。",
         "tests": [
          {
