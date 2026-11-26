@@ -298,8 +298,8 @@
         "title": "两数之和",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a+b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b);",
         "tests": [
          {
           "stdin": "3 4\n",
@@ -315,8 +315,8 @@
         "title": "两数之差",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a-b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出差\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a - b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出差\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a - b);",
         "tests": [
          {
           "stdin": "9 4\n",
@@ -332,8 +332,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
+        "hint": "cin(\"%d %d\", &a, &b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -349,7 +349,7 @@
         "title": "商与余数",
         "level": "入门",
         "prompt": "读入两个正整数 a、b，输出商和余数，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出商 余数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出商 余数\n    return 0;\n}",
         "hint": "商是 a / b，余数是 a % b。",
         "tests": [
          {
@@ -366,8 +366,8 @@
         "title": "保留两位小数",
         "level": "入门",
         "prompt": "读入一个小数，输出保留两位小数的结果。",
-        "starter": "#include <stdio.h>\nint main() {\n    double x;\n    scanf(\"%lf\", &x);\n    // 输出保留两位\n    return 0;\n}",
-        "hint": "格式符写 %.2f。",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    double x;\n    cin >> x;\n    // 输出保留两位\n    return 0;\n}",
+        "hint": "用 fixed << setprecision(2)。",
         "tests": [
          {
           "stdin": "3.14159\n",
@@ -383,8 +383,8 @@
         "title": "三数之和",
         "level": "普通",
         "prompt": "读入三个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b + c);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b + c);",
         "tests": [
          {
           "stdin": "1 2 3\n",
@@ -400,7 +400,7 @@
         "title": "温度换算",
         "level": "普通",
         "prompt": "读入摄氏温度整数 c，输出华氏温度（保留一位小数），公式 F = c × 9 / 5 + 32。",
-        "starter": "#include <stdio.h>\nint main() {\n    int c;\n    scanf(\"%d\", &c);\n    // 输出华氏温度\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int c;\n    cin >> c;\n    // 输出华氏温度\n    return 0;\n}",
         "hint": "注意用 9.0 / 5 避免整数除法。",
         "tests": [
          {
@@ -417,7 +417,7 @@
         "title": "圆的面积",
         "level": "普通",
         "prompt": "读入半径 r（整数），输出面积，保留两位小数，π 取 3.14159。",
-        "starter": "#include <stdio.h>\nint main() {\n    int r;\n    scanf(\"%d\", &r);\n    // 输出面积\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int r;\n    cin >> r;\n    // 输出面积\n    return 0;\n}",
         "hint": "面积 = 3.14159 * r * r。",
         "tests": [
          {
@@ -434,7 +434,7 @@
         "title": "四位数反转",
         "level": "困难",
         "prompt": "读入一个四位数，输出它倒过来的数（如 1234 → 4321）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 拆出各位再组合\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 拆出各位再组合\n    return 0;\n}",
         "hint": "用 % 和 / 拆出千、百、十、个位。",
         "tests": [
          {
@@ -490,8 +490,8 @@
         "title": "两数之和",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a+b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b);",
         "tests": [
          {
           "stdin": "3 4\n",
@@ -507,8 +507,8 @@
         "title": "两数之差",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a-b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出差\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a - b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出差\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a - b);",
         "tests": [
          {
           "stdin": "9 4\n",
@@ -524,8 +524,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
+        "hint": "cin(\"%d %d\", &a, &b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -541,7 +541,7 @@
         "title": "商与余数",
         "level": "入门",
         "prompt": "读入两个正整数 a、b，输出商和余数，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出商 余数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出商 余数\n    return 0;\n}",
         "hint": "商是 a / b，余数是 a % b。",
         "tests": [
          {
@@ -558,8 +558,8 @@
         "title": "保留两位小数",
         "level": "入门",
         "prompt": "读入一个小数，输出保留两位小数的结果。",
-        "starter": "#include <stdio.h>\nint main() {\n    double x;\n    scanf(\"%lf\", &x);\n    // 输出保留两位\n    return 0;\n}",
-        "hint": "格式符写 %.2f。",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    double x;\n    cin >> x;\n    // 输出保留两位\n    return 0;\n}",
+        "hint": "用 fixed << setprecision(2)。",
         "tests": [
          {
           "stdin": "3.14159\n",
@@ -575,8 +575,8 @@
         "title": "三数之和",
         "level": "普通",
         "prompt": "读入三个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b + c);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b + c);",
         "tests": [
          {
           "stdin": "1 2 3\n",
@@ -592,7 +592,7 @@
         "title": "温度换算",
         "level": "普通",
         "prompt": "读入摄氏温度整数 c，输出华氏温度（保留一位小数），公式 F = c × 9 / 5 + 32。",
-        "starter": "#include <stdio.h>\nint main() {\n    int c;\n    scanf(\"%d\", &c);\n    // 输出华氏温度\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int c;\n    cin >> c;\n    // 输出华氏温度\n    return 0;\n}",
         "hint": "注意用 9.0 / 5 避免整数除法。",
         "tests": [
          {
@@ -609,7 +609,7 @@
         "title": "圆的面积",
         "level": "普通",
         "prompt": "读入半径 r（整数），输出面积，保留两位小数，π 取 3.14159。",
-        "starter": "#include <stdio.h>\nint main() {\n    int r;\n    scanf(\"%d\", &r);\n    // 输出面积\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int r;\n    cin >> r;\n    // 输出面积\n    return 0;\n}",
         "hint": "面积 = 3.14159 * r * r。",
         "tests": [
          {
@@ -626,7 +626,7 @@
         "title": "四位数反转",
         "level": "困难",
         "prompt": "读入一个四位数，输出它倒过来的数（如 1234 → 4321）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 拆出各位再组合\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 拆出各位再组合\n    return 0;\n}",
         "hint": "用 % 和 / 拆出千、百、十、个位。",
         "tests": [
          {
@@ -676,8 +676,8 @@
         "title": "两数之和",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a+b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b);",
         "tests": [
          {
           "stdin": "3 4\n",
@@ -693,8 +693,8 @@
         "title": "两数之差",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a-b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出差\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a - b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出差\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a - b);",
         "tests": [
          {
           "stdin": "9 4\n",
@@ -710,8 +710,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
+        "hint": "cin(\"%d %d\", &a, &b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -727,7 +727,7 @@
         "title": "商与余数",
         "level": "入门",
         "prompt": "读入两个正整数 a、b，输出商和余数，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出商 余数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出商 余数\n    return 0;\n}",
         "hint": "商是 a / b，余数是 a % b。",
         "tests": [
          {
@@ -744,8 +744,8 @@
         "title": "保留两位小数",
         "level": "入门",
         "prompt": "读入一个小数，输出保留两位小数的结果。",
-        "starter": "#include <stdio.h>\nint main() {\n    double x;\n    scanf(\"%lf\", &x);\n    // 输出保留两位\n    return 0;\n}",
-        "hint": "格式符写 %.2f。",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    double x;\n    cin >> x;\n    // 输出保留两位\n    return 0;\n}",
+        "hint": "用 fixed << setprecision(2)。",
         "tests": [
          {
           "stdin": "3.14159\n",
@@ -761,8 +761,8 @@
         "title": "三数之和",
         "level": "普通",
         "prompt": "读入三个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b + c);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b + c);",
         "tests": [
          {
           "stdin": "1 2 3\n",
@@ -778,7 +778,7 @@
         "title": "温度换算",
         "level": "普通",
         "prompt": "读入摄氏温度整数 c，输出华氏温度（保留一位小数），公式 F = c × 9 / 5 + 32。",
-        "starter": "#include <stdio.h>\nint main() {\n    int c;\n    scanf(\"%d\", &c);\n    // 输出华氏温度\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int c;\n    cin >> c;\n    // 输出华氏温度\n    return 0;\n}",
         "hint": "注意用 9.0 / 5 避免整数除法。",
         "tests": [
          {
@@ -795,7 +795,7 @@
         "title": "圆的面积",
         "level": "普通",
         "prompt": "读入半径 r（整数），输出面积，保留两位小数，π 取 3.14159。",
-        "starter": "#include <stdio.h>\nint main() {\n    int r;\n    scanf(\"%d\", &r);\n    // 输出面积\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int r;\n    cin >> r;\n    // 输出面积\n    return 0;\n}",
         "hint": "面积 = 3.14159 * r * r。",
         "tests": [
          {
@@ -812,7 +812,7 @@
         "title": "四位数反转",
         "level": "困难",
         "prompt": "读入一个四位数，输出它倒过来的数（如 1234 → 4321）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 拆出各位再组合\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 拆出各位再组合\n    return 0;\n}",
         "hint": "用 % 和 / 拆出千、百、十、个位。",
         "tests": [
          {
@@ -856,8 +856,8 @@
         "title": "两数之和",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a+b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b);",
         "tests": [
          {
           "stdin": "3 4\n",
@@ -873,8 +873,8 @@
         "title": "两数之差",
         "level": "入门",
         "prompt": "读入两个整数 a、b，输出 a-b。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出差\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a - b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出差\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a - b);",
         "tests": [
          {
           "stdin": "9 4\n",
@@ -890,8 +890,8 @@
         "title": "两数之积",
         "level": "入门",
         "prompt": "读入两个整数，输出它们的乘积。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
-        "hint": "scanf(\"%d %d\", &a, &b);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    // 读入并输出乘积\n    return 0;\n}",
+        "hint": "cin(\"%d %d\", &a, &b);",
         "tests": [
          {
           "stdin": "6 7\n",
@@ -907,7 +907,7 @@
         "title": "商与余数",
         "level": "入门",
         "prompt": "读入两个正整数 a、b，输出商和余数，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 输出商 余数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出商 余数\n    return 0;\n}",
         "hint": "商是 a / b，余数是 a % b。",
         "tests": [
          {
@@ -924,8 +924,8 @@
         "title": "保留两位小数",
         "level": "入门",
         "prompt": "读入一个小数，输出保留两位小数的结果。",
-        "starter": "#include <stdio.h>\nint main() {\n    double x;\n    scanf(\"%lf\", &x);\n    // 输出保留两位\n    return 0;\n}",
-        "hint": "格式符写 %.2f。",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    double x;\n    cin >> x;\n    // 输出保留两位\n    return 0;\n}",
+        "hint": "用 fixed << setprecision(2)。",
         "tests": [
          {
           "stdin": "3.14159\n",
@@ -941,8 +941,8 @@
         "title": "三数之和",
         "level": "普通",
         "prompt": "读入三个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出和\n    return 0;\n}",
-        "hint": "printf(\"%d\\n\", a + b + c);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出和\n    return 0;\n}",
+        "hint": "cout(\"%d\\n\", a + b + c);",
         "tests": [
          {
           "stdin": "1 2 3\n",
@@ -958,7 +958,7 @@
         "title": "温度换算",
         "level": "普通",
         "prompt": "读入摄氏温度整数 c，输出华氏温度（保留一位小数），公式 F = c × 9 / 5 + 32。",
-        "starter": "#include <stdio.h>\nint main() {\n    int c;\n    scanf(\"%d\", &c);\n    // 输出华氏温度\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int c;\n    cin >> c;\n    // 输出华氏温度\n    return 0;\n}",
         "hint": "注意用 9.0 / 5 避免整数除法。",
         "tests": [
          {
@@ -975,7 +975,7 @@
         "title": "圆的面积",
         "level": "普通",
         "prompt": "读入半径 r（整数），输出面积，保留两位小数，π 取 3.14159。",
-        "starter": "#include <stdio.h>\nint main() {\n    int r;\n    scanf(\"%d\", &r);\n    // 输出面积\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int r;\n    cin >> r;\n    // 输出面积\n    return 0;\n}",
         "hint": "面积 = 3.14159 * r * r。",
         "tests": [
          {
@@ -992,7 +992,7 @@
         "title": "四位数反转",
         "level": "困难",
         "prompt": "读入一个四位数，输出它倒过来的数（如 1234 → 4321）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 拆出各位再组合\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 拆出各位再组合\n    return 0;\n}",
         "hint": "用 % 和 / 拆出千、百、十、个位。",
         "tests": [
          {
@@ -1049,7 +1049,7 @@
         "title": "奇偶判断",
         "level": "入门",
         "prompt": "读入整数 n，偶数输出 even，奇数输出 odd。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "n % 2 == 0 是偶数。",
         "tests": [
          {
@@ -1066,7 +1066,7 @@
         "title": "正负数判断",
         "level": "入门",
         "prompt": "读入整数 n，正数输出 positive，负数输出 negative，零输出 zero。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "注意 0 要单独处理。",
         "tests": [
          {
@@ -1087,7 +1087,7 @@
         "title": "三个数最大",
         "level": "入门",
         "prompt": "读入三个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
         "tests": [
          {
@@ -1104,7 +1104,7 @@
         "title": "1 到 n 的和",
         "level": "入门",
         "prompt": "读入 n，输出 1+2+…+n。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 累加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 累加\n    return 0;\n}",
         "hint": "循环从 1 加到 n。",
         "tests": [
          {
@@ -1121,7 +1121,7 @@
         "title": "阶乘",
         "level": "入门",
         "prompt": "读入 n（0≤n≤12），输出 n!。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
         "tests": [
          {
@@ -1138,7 +1138,7 @@
         "title": "倒序输出",
         "level": "普通",
         "prompt": "读入 n，从 n 倒着输出到 1，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "for 里从 n 减到 1。",
         "tests": [
          {
@@ -1151,8 +1151,8 @@
         "title": "九九乘法表一行",
         "level": "普通",
         "prompt": "读入 n（1≤n≤9），输出 n 的乘法表：n*1=… 到 n*9=…，每个一行。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 输出 9 行\n    return 0;\n}",
-        "hint": "格式：printf(\"%d*%d=%d\\n\", n, i, n * i);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 输出 9 行\n    return 0;\n}",
+        "hint": "格式：cout(\"%d*%d=%d\\n\", n, i, n * i);",
         "tests": [
          {
           "stdin": "3\n",
@@ -1164,7 +1164,7 @@
         "title": "各位数字之和",
         "level": "普通",
         "prompt": "读入正整数 n，输出它各位数字之和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 不断取 % 10 再加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 不断取 % 10 再加\n    return 0;\n}",
         "hint": "while (n > 0) { s += n % 10; n /= 10; }",
         "tests": [
          {
@@ -1181,7 +1181,7 @@
         "title": "判断素数",
         "level": "困难",
         "prompt": "读入 n（n≥2），是素数输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 试除到 sqrt(n)\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 试除到 sqrt(n)\n    return 0;\n}",
         "hint": "i 从 2 试到 i*i <= n。",
         "tests": [
          {
@@ -1231,7 +1231,7 @@
         "title": "奇偶判断",
         "level": "入门",
         "prompt": "读入整数 n，偶数输出 even，奇数输出 odd。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "n % 2 == 0 是偶数。",
         "tests": [
          {
@@ -1248,7 +1248,7 @@
         "title": "正负数判断",
         "level": "入门",
         "prompt": "读入整数 n，正数输出 positive，负数输出 negative，零输出 zero。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "注意 0 要单独处理。",
         "tests": [
          {
@@ -1269,7 +1269,7 @@
         "title": "三个数最大",
         "level": "入门",
         "prompt": "读入三个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
         "tests": [
          {
@@ -1286,7 +1286,7 @@
         "title": "1 到 n 的和",
         "level": "入门",
         "prompt": "读入 n，输出 1+2+…+n。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 累加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 累加\n    return 0;\n}",
         "hint": "循环从 1 加到 n。",
         "tests": [
          {
@@ -1303,7 +1303,7 @@
         "title": "阶乘",
         "level": "入门",
         "prompt": "读入 n（0≤n≤12），输出 n!。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
         "tests": [
          {
@@ -1320,7 +1320,7 @@
         "title": "倒序输出",
         "level": "普通",
         "prompt": "读入 n，从 n 倒着输出到 1，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "for 里从 n 减到 1。",
         "tests": [
          {
@@ -1333,8 +1333,8 @@
         "title": "九九乘法表一行",
         "level": "普通",
         "prompt": "读入 n（1≤n≤9），输出 n 的乘法表：n*1=… 到 n*9=…，每个一行。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 输出 9 行\n    return 0;\n}",
-        "hint": "格式：printf(\"%d*%d=%d\\n\", n, i, n * i);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 输出 9 行\n    return 0;\n}",
+        "hint": "格式：cout(\"%d*%d=%d\\n\", n, i, n * i);",
         "tests": [
          {
           "stdin": "3\n",
@@ -1346,7 +1346,7 @@
         "title": "各位数字之和",
         "level": "普通",
         "prompt": "读入正整数 n，输出它各位数字之和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 不断取 % 10 再加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 不断取 % 10 再加\n    return 0;\n}",
         "hint": "while (n > 0) { s += n % 10; n /= 10; }",
         "tests": [
          {
@@ -1363,7 +1363,7 @@
         "title": "判断素数",
         "level": "困难",
         "prompt": "读入 n（n≥2），是素数输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 试除到 sqrt(n)\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 试除到 sqrt(n)\n    return 0;\n}",
         "hint": "i 从 2 试到 i*i <= n。",
         "tests": [
          {
@@ -1413,7 +1413,7 @@
         "title": "奇偶判断",
         "level": "入门",
         "prompt": "读入整数 n，偶数输出 even，奇数输出 odd。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "n % 2 == 0 是偶数。",
         "tests": [
          {
@@ -1430,7 +1430,7 @@
         "title": "正负数判断",
         "level": "入门",
         "prompt": "读入整数 n，正数输出 positive，负数输出 negative，零输出 zero。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "注意 0 要单独处理。",
         "tests": [
          {
@@ -1451,7 +1451,7 @@
         "title": "三个数最大",
         "level": "入门",
         "prompt": "读入三个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
         "tests": [
          {
@@ -1468,7 +1468,7 @@
         "title": "1 到 n 的和",
         "level": "入门",
         "prompt": "读入 n，输出 1+2+…+n。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 累加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 累加\n    return 0;\n}",
         "hint": "循环从 1 加到 n。",
         "tests": [
          {
@@ -1485,7 +1485,7 @@
         "title": "阶乘",
         "level": "入门",
         "prompt": "读入 n（0≤n≤12），输出 n!。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
         "tests": [
          {
@@ -1502,7 +1502,7 @@
         "title": "倒序输出",
         "level": "普通",
         "prompt": "读入 n，从 n 倒着输出到 1，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "for 里从 n 减到 1。",
         "tests": [
          {
@@ -1515,8 +1515,8 @@
         "title": "九九乘法表一行",
         "level": "普通",
         "prompt": "读入 n（1≤n≤9），输出 n 的乘法表：n*1=… 到 n*9=…，每个一行。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 输出 9 行\n    return 0;\n}",
-        "hint": "格式：printf(\"%d*%d=%d\\n\", n, i, n * i);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 输出 9 行\n    return 0;\n}",
+        "hint": "格式：cout(\"%d*%d=%d\\n\", n, i, n * i);",
         "tests": [
          {
           "stdin": "3\n",
@@ -1528,7 +1528,7 @@
         "title": "各位数字之和",
         "level": "普通",
         "prompt": "读入正整数 n，输出它各位数字之和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 不断取 % 10 再加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 不断取 % 10 再加\n    return 0;\n}",
         "hint": "while (n > 0) { s += n % 10; n /= 10; }",
         "tests": [
          {
@@ -1545,7 +1545,7 @@
         "title": "判断素数",
         "level": "困难",
         "prompt": "读入 n（n≥2），是素数输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 试除到 sqrt(n)\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 试除到 sqrt(n)\n    return 0;\n}",
         "hint": "i 从 2 试到 i*i <= n。",
         "tests": [
          {
@@ -1595,7 +1595,7 @@
         "title": "奇偶判断",
         "level": "入门",
         "prompt": "读入整数 n，偶数输出 even，奇数输出 odd。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "n % 2 == 0 是偶数。",
         "tests": [
          {
@@ -1612,7 +1612,7 @@
         "title": "正负数判断",
         "level": "入门",
         "prompt": "读入整数 n，正数输出 positive，负数输出 negative，零输出 zero。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "注意 0 要单独处理。",
         "tests": [
          {
@@ -1633,7 +1633,7 @@
         "title": "三个数最大",
         "level": "入门",
         "prompt": "读入三个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
         "tests": [
          {
@@ -1650,7 +1650,7 @@
         "title": "1 到 n 的和",
         "level": "入门",
         "prompt": "读入 n，输出 1+2+…+n。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 累加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 累加\n    return 0;\n}",
         "hint": "循环从 1 加到 n。",
         "tests": [
          {
@@ -1667,7 +1667,7 @@
         "title": "阶乘",
         "level": "入门",
         "prompt": "读入 n（0≤n≤12），输出 n!。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
         "tests": [
          {
@@ -1684,7 +1684,7 @@
         "title": "倒序输出",
         "level": "普通",
         "prompt": "读入 n，从 n 倒着输出到 1，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "for 里从 n 减到 1。",
         "tests": [
          {
@@ -1697,8 +1697,8 @@
         "title": "九九乘法表一行",
         "level": "普通",
         "prompt": "读入 n（1≤n≤9），输出 n 的乘法表：n*1=… 到 n*9=…，每个一行。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 输出 9 行\n    return 0;\n}",
-        "hint": "格式：printf(\"%d*%d=%d\\n\", n, i, n * i);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 输出 9 行\n    return 0;\n}",
+        "hint": "格式：cout(\"%d*%d=%d\\n\", n, i, n * i);",
         "tests": [
          {
           "stdin": "3\n",
@@ -1710,7 +1710,7 @@
         "title": "各位数字之和",
         "level": "普通",
         "prompt": "读入正整数 n，输出它各位数字之和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 不断取 % 10 再加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 不断取 % 10 再加\n    return 0;\n}",
         "hint": "while (n > 0) { s += n % 10; n /= 10; }",
         "tests": [
          {
@@ -1727,7 +1727,7 @@
         "title": "判断素数",
         "level": "困难",
         "prompt": "读入 n（n≥2），是素数输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 试除到 sqrt(n)\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 试除到 sqrt(n)\n    return 0;\n}",
         "hint": "i 从 2 试到 i*i <= n。",
         "tests": [
          {
@@ -1777,7 +1777,7 @@
         "title": "奇偶判断",
         "level": "入门",
         "prompt": "读入整数 n，偶数输出 even，奇数输出 odd。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "n % 2 == 0 是偶数。",
         "tests": [
          {
@@ -1794,7 +1794,7 @@
         "title": "正负数判断",
         "level": "入门",
         "prompt": "读入整数 n，正数输出 positive，负数输出 negative，零输出 zero。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 判断\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 判断\n    return 0;\n}",
         "hint": "注意 0 要单独处理。",
         "tests": [
          {
@@ -1815,7 +1815,7 @@
         "title": "三个数最大",
         "level": "入门",
         "prompt": "读入三个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 输出最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    // 输出最大值\n    return 0;\n}",
         "hint": "先假设 a 最大，再依次比较。",
         "tests": [
          {
@@ -1832,7 +1832,7 @@
         "title": "1 到 n 的和",
         "level": "入门",
         "prompt": "读入 n，输出 1+2+…+n。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 累加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 累加\n    return 0;\n}",
         "hint": "循环从 1 加到 n。",
         "tests": [
          {
@@ -1849,7 +1849,7 @@
         "title": "阶乘",
         "level": "入门",
         "prompt": "读入 n（0≤n≤12），输出 n!。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 求阶乘\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 求阶乘\n    return 0;\n}",
         "hint": "long long 存结果；0! = 1。",
         "tests": [
          {
@@ -1866,7 +1866,7 @@
         "title": "倒序输出",
         "level": "普通",
         "prompt": "读入 n，从 n 倒着输出到 1，用空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "for 里从 n 减到 1。",
         "tests": [
          {
@@ -1879,8 +1879,8 @@
         "title": "九九乘法表一行",
         "level": "普通",
         "prompt": "读入 n（1≤n≤9），输出 n 的乘法表：n*1=… 到 n*9=…，每个一行。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 输出 9 行\n    return 0;\n}",
-        "hint": "格式：printf(\"%d*%d=%d\\n\", n, i, n * i);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 输出 9 行\n    return 0;\n}",
+        "hint": "格式：cout(\"%d*%d=%d\\n\", n, i, n * i);",
         "tests": [
          {
           "stdin": "3\n",
@@ -1892,7 +1892,7 @@
         "title": "各位数字之和",
         "level": "普通",
         "prompt": "读入正整数 n，输出它各位数字之和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 不断取 % 10 再加\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 不断取 % 10 再加\n    return 0;\n}",
         "hint": "while (n > 0) { s += n % 10; n /= 10; }",
         "tests": [
          {
@@ -1909,7 +1909,7 @@
         "title": "判断素数",
         "level": "困难",
         "prompt": "读入 n（n≥2），是素数输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 试除到 sqrt(n)\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 试除到 sqrt(n)\n    return 0;\n}",
         "hint": "i 从 2 试到 i*i <= n。",
         "tests": [
          {
@@ -1960,7 +1960,7 @@
         "title": "用函数求和",
         "level": "入门",
         "prompt": "读入两个整数，写函数 add 返回它们的和。",
-        "starter": "#include <stdio.h>\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", add(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << add(a, b) << endl;\n    return 0;\n}",
         "hint": "return a + b;",
         "tests": [
          {
@@ -1973,7 +1973,7 @@
         "title": "用函数求最大值",
         "level": "入门",
         "prompt": "读入两个整数，写函数 maxOf 返回较大的。",
-        "starter": "#include <stdio.h>\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", maxOf(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << maxOf(a, b) << endl;\n    return 0;\n}",
         "hint": "if (a > b) return a; return b;",
         "tests": [
          {
@@ -1986,7 +1986,7 @@
         "title": "用函数求绝对值",
         "level": "入门",
         "prompt": "读入整数，写函数 myAbs 返回绝对值。",
-        "starter": "#include <stdio.h>\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", myAbs(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << myAbs(n) << endl;\n    return 0;\n}",
         "hint": "x < 0 时返回 -x。",
         "tests": [
          {
@@ -2003,7 +2003,7 @@
         "title": "用函数求平方",
         "level": "入门",
         "prompt": "读入整数，写函数 sq 返回它的平方。",
-        "starter": "#include <stdio.h>\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", sq(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << sq(n) << endl;\n    return 0;\n}",
         "hint": "return x * x;",
         "tests": [
          {
@@ -2016,7 +2016,7 @@
         "title": "用函数判断奇偶",
         "level": "入门",
         "prompt": "读入整数，写函数 isEven 返回 1/0，main 里输出 even/odd。",
-        "starter": "#include <stdio.h>\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", isEven(n) ? \"even\" : \"odd\");\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << isEven(n) ? \"even\" : \"odd\" << endl;\n    return 0;\n}",
         "hint": "return x % 2 == 0;",
         "tests": [
          {
@@ -2033,7 +2033,7 @@
         "title": "用函数求幂",
         "level": "普通",
         "prompt": "读入底数 a 和指数 b（b≥0），写函数 myPow 返回 a 的 b 次方。",
-        "starter": "#include <stdio.h>\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%lld\\n\", myPow(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << myPow(a, b) << endl;\n    return 0;\n}",
         "hint": "循环乘 b 次，结果初值 1。",
         "tests": [
          {
@@ -2046,7 +2046,7 @@
         "title": "用函数求 gcd",
         "level": "普通",
         "prompt": "读入两个正整数，写函数 gcd 返回最大公约数（辗转相除）。",
-        "starter": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << gcd(a, b) << endl;\n    return 0;\n}",
         "hint": "return b ? gcd(b, a % b) : a;",
         "tests": [
          {
@@ -2059,7 +2059,7 @@
         "title": "递归求阶乘",
         "level": "普通",
         "prompt": "读入 n（0≤n≤12），用递归函数 fact 输出 n!。",
-        "starter": "#include <stdio.h>\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fact(n) << endl;\n    return 0;\n}",
         "hint": "n <= 1 返回 1，否则 n * fact(n-1)。",
         "tests": [
          {
@@ -2072,7 +2072,7 @@
         "title": "递归求斐波那契",
         "level": "困难",
         "prompt": "读入 n（1≤n≤25），用递归输出第 n 项，f(1)=f(2)=1。",
-        "starter": "#include <stdio.h>\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fib(n) << endl;\n    return 0;\n}",
         "hint": "n <= 2 返回 1。",
         "tests": [
          {
@@ -2118,7 +2118,7 @@
         "title": "用函数求和",
         "level": "入门",
         "prompt": "读入两个整数，写函数 add 返回它们的和。",
-        "starter": "#include <stdio.h>\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", add(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << add(a, b) << endl;\n    return 0;\n}",
         "hint": "return a + b;",
         "tests": [
          {
@@ -2131,7 +2131,7 @@
         "title": "用函数求最大值",
         "level": "入门",
         "prompt": "读入两个整数，写函数 maxOf 返回较大的。",
-        "starter": "#include <stdio.h>\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", maxOf(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << maxOf(a, b) << endl;\n    return 0;\n}",
         "hint": "if (a > b) return a; return b;",
         "tests": [
          {
@@ -2144,7 +2144,7 @@
         "title": "用函数求绝对值",
         "level": "入门",
         "prompt": "读入整数，写函数 myAbs 返回绝对值。",
-        "starter": "#include <stdio.h>\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", myAbs(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << myAbs(n) << endl;\n    return 0;\n}",
         "hint": "x < 0 时返回 -x。",
         "tests": [
          {
@@ -2161,7 +2161,7 @@
         "title": "用函数求平方",
         "level": "入门",
         "prompt": "读入整数，写函数 sq 返回它的平方。",
-        "starter": "#include <stdio.h>\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", sq(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << sq(n) << endl;\n    return 0;\n}",
         "hint": "return x * x;",
         "tests": [
          {
@@ -2174,7 +2174,7 @@
         "title": "用函数判断奇偶",
         "level": "入门",
         "prompt": "读入整数，写函数 isEven 返回 1/0，main 里输出 even/odd。",
-        "starter": "#include <stdio.h>\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", isEven(n) ? \"even\" : \"odd\");\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << isEven(n) ? \"even\" : \"odd\" << endl;\n    return 0;\n}",
         "hint": "return x % 2 == 0;",
         "tests": [
          {
@@ -2191,7 +2191,7 @@
         "title": "用函数求幂",
         "level": "普通",
         "prompt": "读入底数 a 和指数 b（b≥0），写函数 myPow 返回 a 的 b 次方。",
-        "starter": "#include <stdio.h>\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%lld\\n\", myPow(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << myPow(a, b) << endl;\n    return 0;\n}",
         "hint": "循环乘 b 次，结果初值 1。",
         "tests": [
          {
@@ -2204,7 +2204,7 @@
         "title": "用函数求 gcd",
         "level": "普通",
         "prompt": "读入两个正整数，写函数 gcd 返回最大公约数（辗转相除）。",
-        "starter": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << gcd(a, b) << endl;\n    return 0;\n}",
         "hint": "return b ? gcd(b, a % b) : a;",
         "tests": [
          {
@@ -2217,7 +2217,7 @@
         "title": "递归求阶乘",
         "level": "普通",
         "prompt": "读入 n（0≤n≤12），用递归函数 fact 输出 n!。",
-        "starter": "#include <stdio.h>\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fact(n) << endl;\n    return 0;\n}",
         "hint": "n <= 1 返回 1，否则 n * fact(n-1)。",
         "tests": [
          {
@@ -2230,7 +2230,7 @@
         "title": "递归求斐波那契",
         "level": "困难",
         "prompt": "读入 n（1≤n≤25），用递归输出第 n 项，f(1)=f(2)=1。",
-        "starter": "#include <stdio.h>\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fib(n) << endl;\n    return 0;\n}",
         "hint": "n <= 2 返回 1。",
         "tests": [
          {
@@ -2264,7 +2264,7 @@
         "title": "用函数求和",
         "level": "入门",
         "prompt": "读入两个整数，写函数 add 返回它们的和。",
-        "starter": "#include <stdio.h>\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", add(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << add(a, b) << endl;\n    return 0;\n}",
         "hint": "return a + b;",
         "tests": [
          {
@@ -2277,7 +2277,7 @@
         "title": "用函数求最大值",
         "level": "入门",
         "prompt": "读入两个整数，写函数 maxOf 返回较大的。",
-        "starter": "#include <stdio.h>\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", maxOf(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint maxOf(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << maxOf(a, b) << endl;\n    return 0;\n}",
         "hint": "if (a > b) return a; return b;",
         "tests": [
          {
@@ -2290,7 +2290,7 @@
         "title": "用函数求绝对值",
         "level": "入门",
         "prompt": "读入整数，写函数 myAbs 返回绝对值。",
-        "starter": "#include <stdio.h>\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", myAbs(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint myAbs(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << myAbs(n) << endl;\n    return 0;\n}",
         "hint": "x < 0 时返回 -x。",
         "tests": [
          {
@@ -2307,7 +2307,7 @@
         "title": "用函数求平方",
         "level": "入门",
         "prompt": "读入整数，写函数 sq 返回它的平方。",
-        "starter": "#include <stdio.h>\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", sq(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint sq(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << sq(n) << endl;\n    return 0;\n}",
         "hint": "return x * x;",
         "tests": [
          {
@@ -2320,7 +2320,7 @@
         "title": "用函数判断奇偶",
         "level": "入门",
         "prompt": "读入整数，写函数 isEven 返回 1/0，main 里输出 even/odd。",
-        "starter": "#include <stdio.h>\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", isEven(n) ? \"even\" : \"odd\");\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint isEven(int x) {\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << isEven(n) ? \"even\" : \"odd\" << endl;\n    return 0;\n}",
         "hint": "return x % 2 == 0;",
         "tests": [
          {
@@ -2337,7 +2337,7 @@
         "title": "用函数求幂",
         "level": "普通",
         "prompt": "读入底数 a 和指数 b（b≥0），写函数 myPow 返回 a 的 b 次方。",
-        "starter": "#include <stdio.h>\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%lld\\n\", myPow(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long myPow(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << myPow(a, b) << endl;\n    return 0;\n}",
         "hint": "循环乘 b 次，结果初值 1。",
         "tests": [
          {
@@ -2350,7 +2350,7 @@
         "title": "用函数求 gcd",
         "level": "普通",
         "prompt": "读入两个正整数，写函数 gcd 返回最大公约数（辗转相除）。",
-        "starter": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint gcd(int a, int b) {\n    return 0;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << gcd(a, b) << endl;\n    return 0;\n}",
         "hint": "return b ? gcd(b, a % b) : a;",
         "tests": [
          {
@@ -2363,7 +2363,7 @@
         "title": "递归求阶乘",
         "level": "普通",
         "prompt": "读入 n（0≤n≤12），用递归函数 fact 输出 n!。",
-        "starter": "#include <stdio.h>\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nlong long fact(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fact(n) << endl;\n    return 0;\n}",
         "hint": "n <= 1 返回 1，否则 n * fact(n-1)。",
         "tests": [
          {
@@ -2376,7 +2376,7 @@
         "title": "递归求斐波那契",
         "level": "困难",
         "prompt": "读入 n（1≤n≤25），用递归输出第 n 项，f(1)=f(2)=1。",
-        "starter": "#include <stdio.h>\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint fib(int n) {\n    return 1;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << fib(n) << endl;\n    return 0;\n}",
         "hint": "n <= 2 返回 1。",
         "tests": [
          {
@@ -2429,7 +2429,7 @@
         "title": "数组求和",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 读入并求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 读入并求和\n    return 0;\n}",
         "hint": "边读边加，或读完再循环。",
         "tests": [
          {
@@ -2442,7 +2442,7 @@
         "title": "数组最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最大值\n    return 0;\n}",
         "hint": "mx 初值取 a[0]。",
         "tests": [
          {
@@ -2455,7 +2455,7 @@
         "title": "数组最小值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最小值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最小值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最小值\n    return 0;\n}",
         "hint": "mn 初值取 a[0]。",
         "tests": [
          {
@@ -2468,7 +2468,7 @@
         "title": "逆序输出",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，倒序输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "从 n-1 循环到 0。",
         "tests": [
          {
@@ -2481,7 +2481,7 @@
         "title": "统计偶数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出其中偶数的个数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], c = 0;\n    scanf(\"%d\", &n);\n    // 统计偶数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], c = 0;\n    cin >> n;\n    // 统计偶数\n    return 0;\n}",
         "hint": "a[i] % 2 == 0 就 ++c。",
         "tests": [
          {
@@ -2494,7 +2494,7 @@
         "title": "平均值",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出平均值（保留两位小数）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], s = 0;\n    scanf(\"%d\", &n);\n    // 求和后除以 n\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], s = 0;\n    cin >> n;\n    // 求和后除以 n\n    return 0;\n}",
         "hint": "除以 (double)n。",
         "tests": [
          {
@@ -2507,7 +2507,7 @@
         "title": "最大值的下标",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值第一次出现的下标（从 0 开始）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 记录最大值的下标\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 记录最大值的下标\n    return 0;\n}",
         "hint": "用 mx 和 pos 一起更新。",
         "tests": [
          {
@@ -2520,7 +2520,7 @@
         "title": "升序排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从小到大输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后输出\n    return 0;\n}",
         "hint": "冒泡或选择排序都行。",
         "tests": [
          {
@@ -2533,7 +2533,7 @@
         "title": "第二大的数",
         "level": "困难",
         "prompt": "第一行 n（n≥2），第二行 n 个互不相同的整数，输出第二大的数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后取 a[n-2]\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后取 a[n-2]\n    return 0;\n}",
         "hint": "排序后倒数第二个就是第二大。",
         "tests": [
          {
@@ -2573,7 +2573,7 @@
         "title": "字符串长度",
         "level": "入门",
         "prompt": "读入一个不含空格的字符串，输出长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 数到 '\\0'\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 数到 '\\0'\n    return 0;\n}",
         "hint": "while (s[len] != '\\0') len++;",
         "tests": [
          {
@@ -2586,7 +2586,7 @@
         "title": "统计字符",
         "level": "入门",
         "prompt": "第一行字符串，第二行一个字符，输出该字符出现次数。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105], c;\n    scanf(\"%s %c\", s, &c);\n    // 统计次数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105], c;\n    cin >> s >> c;\n    // 统计次数\n    return 0;\n}",
         "hint": "遍历到 '\\0'，相等就 ++cnt。",
         "tests": [
          {
@@ -2599,8 +2599,8 @@
         "title": "输出首字符",
         "level": "入门",
         "prompt": "读入一个单词，输出它的第一个字符。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 输出 s[0]\n    return 0;\n}",
-        "hint": "printf(\"%c\\n\", s[0]);",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 输出 s[0]\n    return 0;\n}",
+        "hint": "cout(\"%c\\n\", s[0]);",
         "tests": [
          {
           "stdin": "hello\n",
@@ -2612,7 +2612,7 @@
         "title": "统计元音",
         "level": "入门",
         "prompt": "读入一个小写单词，输出其中 a、e、i、o、u 的总个数。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 统计元音\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 统计元音\n    return 0;\n}",
         "hint": "逐个判断是否为 aeiou。",
         "tests": [
          {
@@ -2625,7 +2625,7 @@
         "title": "字符串反转",
         "level": "入门",
         "prompt": "读入一个单词，倒序输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 倒着输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 倒着输出\n    return 0;\n}",
         "hint": "先求长度，再从 len-1 打印到 0。",
         "tests": [
          {
@@ -2638,7 +2638,7 @@
         "title": "转大写",
         "level": "普通",
         "prompt": "读入一个单词，输出全大写形式（只含小写字母）。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 逐个减 32\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 逐个减 32\n    return 0;\n}",
         "hint": "小写字母减 32 变成大写。",
         "tests": [
          {
@@ -2651,7 +2651,7 @@
         "title": "回文判断",
         "level": "普通",
         "prompt": "读入一个单词，是回文输出 yes，否则 no。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 首尾比较\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    // 首尾比较\n    return 0;\n}",
         "hint": "i 从头、j 从尾，向中间比较。",
         "tests": [
          {
@@ -2668,7 +2668,7 @@
         "title": "单词长度最大值",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行各一个单词，输出最长单词的长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[105];\n    int mx = 0;\n    // 逐个读入求长度最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    char s[105];\n    int mx = 0;\n    // 逐个读入求长度最大值\n    return 0;\n}",
         "hint": "每次读入后求长度并更新 mx。",
         "tests": [
          {
@@ -2681,7 +2681,7 @@
         "title": "统计单词数",
         "level": "困难",
         "prompt": "读入一行（含空格），输出其中的单词个数（单词之间一个空格，首尾无空格）。",
-        "starter": "char s[200];\n#include <stdio.h>\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
+        "starter": "char s[200];\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char s[200];\n    fgets(s, sizeof(s), stdin);\n    // 数空格 + 1\n    return 0;\n}",
         "hint": "用 fgets 读整行，空格数 + 1。",
         "tests": [
          {
@@ -2733,7 +2733,7 @@
         "title": "数组求和",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 读入并求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 读入并求和\n    return 0;\n}",
         "hint": "边读边加，或读完再循环。",
         "tests": [
          {
@@ -2746,7 +2746,7 @@
         "title": "数组最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最大值\n    return 0;\n}",
         "hint": "mx 初值取 a[0]。",
         "tests": [
          {
@@ -2759,7 +2759,7 @@
         "title": "数组最小值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最小值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最小值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最小值\n    return 0;\n}",
         "hint": "mn 初值取 a[0]。",
         "tests": [
          {
@@ -2772,7 +2772,7 @@
         "title": "逆序输出",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，倒序输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "从 n-1 循环到 0。",
         "tests": [
          {
@@ -2785,7 +2785,7 @@
         "title": "统计偶数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出其中偶数的个数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], c = 0;\n    scanf(\"%d\", &n);\n    // 统计偶数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], c = 0;\n    cin >> n;\n    // 统计偶数\n    return 0;\n}",
         "hint": "a[i] % 2 == 0 就 ++c。",
         "tests": [
          {
@@ -2798,7 +2798,7 @@
         "title": "平均值",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出平均值（保留两位小数）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], s = 0;\n    scanf(\"%d\", &n);\n    // 求和后除以 n\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], s = 0;\n    cin >> n;\n    // 求和后除以 n\n    return 0;\n}",
         "hint": "除以 (double)n。",
         "tests": [
          {
@@ -2811,7 +2811,7 @@
         "title": "最大值的下标",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值第一次出现的下标（从 0 开始）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 记录最大值的下标\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 记录最大值的下标\n    return 0;\n}",
         "hint": "用 mx 和 pos 一起更新。",
         "tests": [
          {
@@ -2824,7 +2824,7 @@
         "title": "升序排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从小到大输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后输出\n    return 0;\n}",
         "hint": "冒泡或选择排序都行。",
         "tests": [
          {
@@ -2837,7 +2837,7 @@
         "title": "第二大的数",
         "level": "困难",
         "prompt": "第一行 n（n≥2），第二行 n 个互不相同的整数，输出第二大的数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后取 a[n-2]\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后取 a[n-2]\n    return 0;\n}",
         "hint": "排序后倒数第二个就是第二大。",
         "tests": [
          {
@@ -2877,7 +2877,7 @@
         "title": "数组求和",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出它们的和。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 读入并求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 读入并求和\n    return 0;\n}",
         "hint": "边读边加，或读完再循环。",
         "tests": [
          {
@@ -2890,7 +2890,7 @@
         "title": "数组最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最大值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最大值\n    return 0;\n}",
         "hint": "mx 初值取 a[0]。",
         "tests": [
          {
@@ -2903,7 +2903,7 @@
         "title": "数组最小值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出最小值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 求最小值\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 求最小值\n    return 0;\n}",
         "hint": "mn 初值取 a[0]。",
         "tests": [
          {
@@ -2916,7 +2916,7 @@
         "title": "逆序输出",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，倒序输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 倒序输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 倒序输出\n    return 0;\n}",
         "hint": "从 n-1 循环到 0。",
         "tests": [
          {
@@ -2929,7 +2929,7 @@
         "title": "统计偶数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，输出其中偶数的个数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], c = 0;\n    scanf(\"%d\", &n);\n    // 统计偶数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], c = 0;\n    cin >> n;\n    // 统计偶数\n    return 0;\n}",
         "hint": "a[i] % 2 == 0 就 ++c。",
         "tests": [
          {
@@ -2942,7 +2942,7 @@
         "title": "平均值",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出平均值（保留两位小数）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105], s = 0;\n    scanf(\"%d\", &n);\n    // 求和后除以 n\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105], s = 0;\n    cin >> n;\n    // 求和后除以 n\n    return 0;\n}",
         "hint": "除以 (double)n。",
         "tests": [
          {
@@ -2955,7 +2955,7 @@
         "title": "最大值的下标",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，输出最大值第一次出现的下标（从 0 开始）。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 记录最大值的下标\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 记录最大值的下标\n    return 0;\n}",
         "hint": "用 mx 和 pos 一起更新。",
         "tests": [
          {
@@ -2968,7 +2968,7 @@
         "title": "升序排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，从小到大输出，空格隔开。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后输出\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后输出\n    return 0;\n}",
         "hint": "冒泡或选择排序都行。",
         "tests": [
          {
@@ -2981,7 +2981,7 @@
         "title": "第二大的数",
         "level": "困难",
         "prompt": "第一行 n（n≥2），第二行 n 个互不相同的整数，输出第二大的数。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    // 排序后取 a[n-2]\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    // 排序后取 a[n-2]\n    return 0;\n}",
         "hint": "排序后倒数第二个就是第二大。",
         "tests": [
          {
@@ -3034,7 +3034,7 @@
         "title": "指针交换",
         "level": "入门",
         "prompt": "读入两个整数，用指针交换后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
         "hint": "t = *p; *p = *q; *q = t;",
         "tests": [
          {
@@ -3047,7 +3047,7 @@
         "title": "取地址与解引用",
         "level": "入门",
         "prompt": "读入一个整数，用指针把它乘以 2 后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;\n    cin >> a;\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
         "hint": "*p *= 2;",
         "tests": [
          {
@@ -3060,7 +3060,7 @@
         "title": "指针遍历数组",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求和并输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
         "hint": "sum += *(p + i);",
         "tests": [
          {
@@ -3073,7 +3073,7 @@
         "title": "指针找最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
         "hint": "*(p + i) 与 mx 比较。",
         "tests": [
          {
@@ -3086,7 +3086,7 @@
         "title": "指针求字符串长度",
         "level": "入门",
         "prompt": "读入一个单词，用指针（不用 strlen）输出长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
         "hint": "while (*p) p++;",
         "tests": [
          {
@@ -3099,7 +3099,7 @@
         "title": "指针逆序输出",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用指针倒序输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
         "hint": "p 递减打印。",
         "tests": [
          {
@@ -3112,7 +3112,7 @@
         "title": "动态数组求和",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来求和。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
         "hint": "int *a = malloc(n * sizeof(int));",
         "tests": [
          {
@@ -3125,7 +3125,7 @@
         "title": "动态数组排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来排序后输出。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc + 冒泡排序\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc + 冒泡排序\n    return 0;\n}",
         "hint": "先在堆上申请数组，再排序。",
         "tests": [
          {
@@ -3138,7 +3138,7 @@
         "title": "指针实现字符串反转",
         "level": "困难",
         "prompt": "读入一个单词，原地反转（用两个指针）。",
-        "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 头尾指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <string>\n\nint main() {\n    char s[105];\n    cin >> s;\n    // 头尾指针交换\n    return 0;\n}",
         "hint": "i 从 0、j 从 len-1 交换。",
         "tests": [
          {
@@ -3178,7 +3178,7 @@
         "title": "指针交换",
         "level": "入门",
         "prompt": "读入两个整数，用指针交换后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
         "hint": "t = *p; *p = *q; *q = t;",
         "tests": [
          {
@@ -3191,7 +3191,7 @@
         "title": "取地址与解引用",
         "level": "入门",
         "prompt": "读入一个整数，用指针把它乘以 2 后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;\n    cin >> a;\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
         "hint": "*p *= 2;",
         "tests": [
          {
@@ -3204,7 +3204,7 @@
         "title": "指针遍历数组",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求和并输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
         "hint": "sum += *(p + i);",
         "tests": [
          {
@@ -3217,7 +3217,7 @@
         "title": "指针找最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
         "hint": "*(p + i) 与 mx 比较。",
         "tests": [
          {
@@ -3230,7 +3230,7 @@
         "title": "指针求字符串长度",
         "level": "入门",
         "prompt": "读入一个单词，用指针（不用 strlen）输出长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
         "hint": "while (*p) p++;",
         "tests": [
          {
@@ -3243,7 +3243,7 @@
         "title": "指针逆序输出",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用指针倒序输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
         "hint": "p 递减打印。",
         "tests": [
          {
@@ -3256,7 +3256,7 @@
         "title": "动态数组求和",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来求和。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
         "hint": "int *a = malloc(n * sizeof(int));",
         "tests": [
          {
@@ -3269,7 +3269,7 @@
         "title": "动态数组排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来排序后输出。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc + 冒泡排序\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc + 冒泡排序\n    return 0;\n}",
         "hint": "先在堆上申请数组，再排序。",
         "tests": [
          {
@@ -3282,7 +3282,7 @@
         "title": "指针实现字符串反转",
         "level": "困难",
         "prompt": "读入一个单词，原地反转（用两个指针）。",
-        "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 头尾指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <string>\n\nint main() {\n    char s[105];\n    cin >> s;\n    // 头尾指针交换\n    return 0;\n}",
         "hint": "i 从 0、j 从 len-1 交换。",
         "tests": [
          {
@@ -3322,7 +3322,7 @@
         "title": "指针交换",
         "level": "入门",
         "prompt": "读入两个整数，用指针交换后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
         "hint": "t = *p; *p = *q; *q = t;",
         "tests": [
          {
@@ -3335,7 +3335,7 @@
         "title": "取地址与解引用",
         "level": "入门",
         "prompt": "读入一个整数，用指针把它乘以 2 后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;\n    cin >> a;\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
         "hint": "*p *= 2;",
         "tests": [
          {
@@ -3348,7 +3348,7 @@
         "title": "指针遍历数组",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求和并输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
         "hint": "sum += *(p + i);",
         "tests": [
          {
@@ -3361,7 +3361,7 @@
         "title": "指针找最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
         "hint": "*(p + i) 与 mx 比较。",
         "tests": [
          {
@@ -3374,7 +3374,7 @@
         "title": "指针求字符串长度",
         "level": "入门",
         "prompt": "读入一个单词，用指针（不用 strlen）输出长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
         "hint": "while (*p) p++;",
         "tests": [
          {
@@ -3387,7 +3387,7 @@
         "title": "指针逆序输出",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用指针倒序输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
         "hint": "p 递减打印。",
         "tests": [
          {
@@ -3400,7 +3400,7 @@
         "title": "动态数组求和",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来求和。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
         "hint": "int *a = malloc(n * sizeof(int));",
         "tests": [
          {
@@ -3413,7 +3413,7 @@
         "title": "动态数组排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来排序后输出。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc + 冒泡排序\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc + 冒泡排序\n    return 0;\n}",
         "hint": "先在堆上申请数组，再排序。",
         "tests": [
          {
@@ -3426,7 +3426,7 @@
         "title": "指针实现字符串反转",
         "level": "困难",
         "prompt": "读入一个单词，原地反转（用两个指针）。",
-        "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 头尾指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <string>\n\nint main() {\n    char s[105];\n    cin >> s;\n    // 头尾指针交换\n    return 0;\n}",
         "hint": "i 从 0、j 从 len-1 交换。",
         "tests": [
          {
@@ -3472,7 +3472,7 @@
         "title": "指针交换",
         "level": "入门",
         "prompt": "读入两个整数，用指针交换后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    int *p = &a, *q = &b;\n    // 用指针交换\n    return 0;\n}",
         "hint": "t = *p; *p = *q; *q = t;",
         "tests": [
          {
@@ -3485,7 +3485,7 @@
         "title": "取地址与解引用",
         "level": "入门",
         "prompt": "读入一个整数，用指针把它乘以 2 后输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;\n    cin >> a;\n    int *p = &a;\n    // 通过指针修改\n    return 0;\n}",
         "hint": "*p *= 2;",
         "tests": [
          {
@@ -3498,7 +3498,7 @@
         "title": "指针遍历数组",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求和并输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, s = 0;\n    // 用 p 求和\n    return 0;\n}",
         "hint": "sum += *(p + i);",
         "tests": [
          {
@@ -3511,7 +3511,7 @@
         "title": "指针找最大值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数，用指针求最大值。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a, mx = *p;\n    // 用指针比较\n    return 0;\n}",
         "hint": "*(p + i) 与 mx 比较。",
         "tests": [
          {
@@ -3524,7 +3524,7 @@
         "title": "指针求字符串长度",
         "level": "入门",
         "prompt": "读入一个单词，用指针（不用 strlen）输出长度。",
-        "starter": "#include <stdio.h>\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    char s[105];\n    cin >> s;\n    char *p = s;\n    // 移到 '\\0'\n    return 0;\n}",
         "hint": "while (*p) p++;",
         "tests": [
          {
@@ -3537,7 +3537,7 @@
         "title": "指针逆序输出",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用指针倒序输出。",
-        "starter": "#include <stdio.h>\nint main() {\n    int n, a[105];\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\nint main() {\n    int n, a[105];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    int *p = a + n - 1;\n    // 从后往前\n    return 0;\n}",
         "hint": "p 递减打印。",
         "tests": [
          {
@@ -3550,7 +3550,7 @@
         "title": "动态数组求和",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来求和。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc 后读入求和，最后 free\n    return 0;\n}",
         "hint": "int *a = malloc(n * sizeof(int));",
         "tests": [
          {
@@ -3563,7 +3563,7 @@
         "title": "动态数组排序",
         "level": "普通",
         "prompt": "第一行 n，第二行 n 个整数，用 malloc 存起来排序后输出。",
-        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // malloc + 冒泡排序\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // malloc + 冒泡排序\n    return 0;\n}",
         "hint": "先在堆上申请数组，再排序。",
         "tests": [
          {
@@ -3576,7 +3576,7 @@
         "title": "指针实现字符串反转",
         "level": "困难",
         "prompt": "读入一个单词，原地反转（用两个指针）。",
-        "starter": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[105];\n    scanf(\"%s\", s);\n    // 头尾指针交换\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <string>\n\nint main() {\n    char s[105];\n    cin >> s;\n    // 头尾指针交换\n    return 0;\n}",
         "hint": "i 从 0、j 从 len-1 交换。",
         "tests": [
          {
@@ -3623,8 +3623,8 @@
         "title": "结构体存学生",
         "level": "入门",
         "prompt": "读入姓名和分数，输出「姓名 分数」。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    scanf(\"%s %d\", s.name, &s.score);\n    // 输出\n    return 0;\n}",
-        "hint": "printf(\"%s %d\\n\", s.name, s.score);",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    cin >> s.name >> s.score;\n    // 输出\n    return 0;\n}",
+        "hint": "cout(\"%s %d\\n\", s.name, s.score);",
         "tests": [
          {
           "stdin": "A 90\n",
@@ -3636,7 +3636,7 @@
         "title": "结构体求平均分",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，求平均（两位小数）。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
         "hint": "累加后除以 (double)n。",
         "tests": [
          {
@@ -3649,7 +3649,7 @@
         "title": "结构体最值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出最高分。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
         "hint": "记录最大 score。",
         "tests": [
          {
@@ -3662,7 +3662,7 @@
         "title": "二维坐标距离",
         "level": "入门",
         "prompt": "读入两个点 (x1,y1)、(x2,y2)，输出距离（两位小数）。",
-        "starter": "#include <stdio.h>\n#include <math.h>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    scanf(\"%d %d %d %d\", &a.x, &a.y, &b.x, &b.y);\n    // 求距离\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <cmath>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    cin >> a.x >> a.y >> b.x >> b.y;\n    // 求距离\n    return 0;\n}",
         "hint": "sqrt(dx*dx + dy*dy)。",
         "tests": [
          {
@@ -3675,7 +3675,7 @@
         "title": "结构体计数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出及格（≥60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
         "hint": "score >= 60 就 ++cnt。",
         "tests": [
          {
@@ -3688,7 +3688,7 @@
         "title": "结构体按分数排序",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，按分数从高到低输出姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
         "hint": "冒泡按 score 降序交换整个结构体。",
         "tests": [
          {
@@ -3701,7 +3701,7 @@
         "title": "结构体找最高分姓名",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出分数最高者的姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
         "hint": "记录 mx 和对应下标。",
         "tests": [
          {
@@ -3714,7 +3714,7 @@
         "title": "结构体统计不及格",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出不及格（<60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
         "hint": "score < 60 就 ++cnt。",
         "tests": [
          {
@@ -3727,7 +3727,7 @@
         "title": "结构体统计平均与最高",
         "level": "困难",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，第一行输出平均分（两位小数），第二行输出最高分姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
         "hint": "分两趟处理，或边读边统计。",
         "tests": [
          {
@@ -3773,8 +3773,8 @@
         "title": "结构体存学生",
         "level": "入门",
         "prompt": "读入姓名和分数，输出「姓名 分数」。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    scanf(\"%s %d\", s.name, &s.score);\n    // 输出\n    return 0;\n}",
-        "hint": "printf(\"%s %d\\n\", s.name, s.score);",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    cin >> s.name >> s.score;\n    // 输出\n    return 0;\n}",
+        "hint": "cout(\"%s %d\\n\", s.name, s.score);",
         "tests": [
          {
           "stdin": "A 90\n",
@@ -3786,7 +3786,7 @@
         "title": "结构体求平均分",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，求平均（两位小数）。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
         "hint": "累加后除以 (double)n。",
         "tests": [
          {
@@ -3799,7 +3799,7 @@
         "title": "结构体最值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出最高分。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
         "hint": "记录最大 score。",
         "tests": [
          {
@@ -3812,7 +3812,7 @@
         "title": "二维坐标距离",
         "level": "入门",
         "prompt": "读入两个点 (x1,y1)、(x2,y2)，输出距离（两位小数）。",
-        "starter": "#include <stdio.h>\n#include <math.h>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    scanf(\"%d %d %d %d\", &a.x, &a.y, &b.x, &b.y);\n    // 求距离\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <cmath>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    cin >> a.x >> a.y >> b.x >> b.y;\n    // 求距离\n    return 0;\n}",
         "hint": "sqrt(dx*dx + dy*dy)。",
         "tests": [
          {
@@ -3825,7 +3825,7 @@
         "title": "结构体计数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出及格（≥60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
         "hint": "score >= 60 就 ++cnt。",
         "tests": [
          {
@@ -3838,7 +3838,7 @@
         "title": "结构体按分数排序",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，按分数从高到低输出姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
         "hint": "冒泡按 score 降序交换整个结构体。",
         "tests": [
          {
@@ -3851,7 +3851,7 @@
         "title": "结构体找最高分姓名",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出分数最高者的姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
         "hint": "记录 mx 和对应下标。",
         "tests": [
          {
@@ -3864,7 +3864,7 @@
         "title": "结构体统计不及格",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出不及格（<60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
         "hint": "score < 60 就 ++cnt。",
         "tests": [
          {
@@ -3877,7 +3877,7 @@
         "title": "结构体统计平均与最高",
         "level": "困难",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，第一行输出平均分（两位小数），第二行输出最高分姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
         "hint": "分两趟处理，或边读边统计。",
         "tests": [
          {
@@ -3923,8 +3923,8 @@
         "title": "结构体存学生",
         "level": "入门",
         "prompt": "读入姓名和分数，输出「姓名 分数」。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    scanf(\"%s %d\", s.name, &s.score);\n    // 输出\n    return 0;\n}",
-        "hint": "printf(\"%s %d\\n\", s.name, s.score);",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    struct Student s;\n    cin >> s.name >> s.score;\n    // 输出\n    return 0;\n}",
+        "hint": "cout(\"%s %d\\n\", s.name, s.score);",
         "tests": [
          {
           "stdin": "A 90\n",
@@ -3936,7 +3936,7 @@
         "title": "结构体求平均分",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，求平均（两位小数）。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入并求平均\n    return 0;\n}",
         "hint": "累加后除以 (double)n。",
         "tests": [
          {
@@ -3949,7 +3949,7 @@
         "title": "结构体最值",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出最高分。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 求最高分\n    return 0;\n}",
         "hint": "记录最大 score。",
         "tests": [
          {
@@ -3962,7 +3962,7 @@
         "title": "二维坐标距离",
         "level": "入门",
         "prompt": "读入两个点 (x1,y1)、(x2,y2)，输出距离（两位小数）。",
-        "starter": "#include <stdio.h>\n#include <math.h>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    scanf(\"%d %d %d %d\", &a.x, &a.y, &b.x, &b.y);\n    // 求距离\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n#include <cmath>\n\nstruct Point { int x, y; };\n\nint main() {\n    struct Point a, b;\n    cin >> a.x >> a.y >> b.x >> b.y;\n    // 求距离\n    return 0;\n}",
         "hint": "sqrt(dx*dx + dy*dy)。",
         "tests": [
          {
@@ -3975,7 +3975,7 @@
         "title": "结构体计数",
         "level": "入门",
         "prompt": "第一行 n，第二行 n 个整数分数，输出及格（≥60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计及格人数\n    return 0;\n}",
         "hint": "score >= 60 就 ++cnt。",
         "tests": [
          {
@@ -3988,7 +3988,7 @@
         "title": "结构体按分数排序",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，按分数从高到低输出姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 读入、排序、输出姓名\n    return 0;\n}",
         "hint": "冒泡按 score 降序交换整个结构体。",
         "tests": [
          {
@@ -4001,7 +4001,7 @@
         "title": "结构体找最高分姓名",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出分数最高者的姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 找最大值并输出姓名\n    return 0;\n}",
         "hint": "记录 mx 和对应下标。",
         "tests": [
          {
@@ -4014,7 +4014,7 @@
         "title": "结构体统计不及格",
         "level": "普通",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，输出不及格（<60）的人数。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 统计不及格人数\n    return 0;\n}",
         "hint": "score < 60 就 ++cnt。",
         "tests": [
          {
@@ -4027,7 +4027,7 @@
         "title": "结构体统计平均与最高",
         "level": "困难",
         "prompt": "第一行 n，接下来 n 行「姓名 分数」，第一行输出平均分（两位小数），第二行输出最高分姓名。",
-        "starter": "#include <stdio.h>\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
+        "starter": "#include <iostream>\nusing namespace std;\n\nstruct Student { char name[20]; int score; };\n\nint main() {\n    int n;\n    cin >> n;\n    struct Student a[105];\n    // 输出平均分和最高分姓名\n    return 0;\n}",
         "hint": "分两趟处理，或边读边统计。",
         "tests": [
          {
