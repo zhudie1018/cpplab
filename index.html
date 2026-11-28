@@ -214,6 +214,7 @@
     <span class="hello-text" id="helloText">今天也一起加油呀～</span>
   </div>    <span class="spacer"></span>
   <button class="btn" id="btnKB" title="常用代码速查">📚 知识库</button>
+  <select id="aiLevel" title="AI 出题的难度" style="padding:6px 8px;font-size:12.5px"><option value="入门">入门</option><option value="普通">普通</option><option value="困难">困难</option></select>
   <button class="btn" id="btnAI" title="用 AI 按当前小节出一道新题">✨ AI 出题</button>
   <button class="btn" id="btnSet" title="填写自己的 API Key">⚙ 设置</button>
   <button class="btn primary" id="btnRun">▶ 运行 / 判题</button>
@@ -13189,7 +13190,8 @@
       ? ('学生正在学：' + kbTarget.name + '（' + kbTarget.sig + '）\n'
          + '作用：' + kbTarget.desc + '\n'
          + (kbTarget.note ? ('要点：' + kbTarget.note + '\n') : '')
-         + '\n请出一道必须用到它的编程题，专门练这个点：\n'
+         + '\n请出一道必须用到它的编程题，专门练这个点，难度：'
+         + (document.getElementById('aiLevel') || {value: '入门'}).value + '\n'
          + '1. 题目要小，正确代码不超过 20 行，体现这个函数/语法的典型用法；\n'
          + '2. 优先用 C++，只有 C 版本的函数就用 C；只用标准输入输出；\n'
          + '3. 测试点 2~3 个，输入输出确定且唯一；\n'
@@ -13201,8 +13203,10 @@
       : null;
     var user = kbTarget ? kbUser :
       '语言：' + LANGS[state.lang].name + '\n章节：' + c.name + ' / ' + s.name + '\n本节要点：' + s.intro + '\n已有题目：' + (titles.join('、') || '无') +
-      '\n\n请出一道新的练习题，要求：\n' +
-      '1. 一题只考一个知识点，难度以初学者为准，正确代码不超过 15 行；\n' +
+      '\n\n请出一道新的练习题，难度要求：' + (document.getElementById('aiLevel') || {value: '入门'}).value + '\n' +
+      '难度说明：入门=只考本节最基础的一个点，代码不超过 10 行；普通=要组合两个知识点或需要处理边界，代码 10~20 行；困难=要有算法思路或易错细节，代码 20~35 行。\n' +
+      '要求：\n' +
+      '1. 一题只考本节的点；\n' +
       '2. 只用标准输入输出，不要随机数、不要文件；\n' +
       '3. 测试点 2~3 个，输入输出必须确定且唯一，注意换行和空格；\n' +
       '4. 不要出需要浮点精度比较的题；\n' +
